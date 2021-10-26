@@ -1,0 +1,10 @@
+# Build Outputs
+*.qcow2
+
+# Direnv
+.direnv/
+
+# Editor
+.vscode/
+
+/tmp
