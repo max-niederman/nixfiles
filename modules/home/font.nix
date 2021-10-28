@@ -4,15 +4,17 @@ with lib;
 let
   cfg = config.max.font;
 
-  selectionOpts = with types; {
-    packages = mkOption {
-      type = listOf package;
-      example = pkgs.noto-fonts;
-    };
+  selection = with types; {
+    options = {
+      packages = mkOption {
+        type = listOf package;
+        example = pkgs.noto-fonts;
+      };
 
-    name = mkOption {
-      type = str;
-      example = "Noto Sans";
+      name = mkOption {
+        type = str;
+        example = "Noto Sans";
+      };
     };
   };
 in
@@ -26,7 +28,7 @@ in
 
     selections = {
       default = mkOption {
-        type = types.submodule selectionOpts;
+        type = types.submodule selection;
         default = {
           packages = with pkgs; [
             noto-fonts
@@ -38,7 +40,7 @@ in
       };
 
       decoration = mkOption {
-        type = types.submodule selectionOpts;
+        type = types.submodule selection;
         default = let name = "Iosevka"; in
           {
             packages = [ (pkgs.nerdfonts.override { fonts = [ name ]; }) ];
@@ -47,7 +49,7 @@ in
       };
 
       code = mkOption {
-        type = types.submodule selectionOpts;
+        type = types.submodule selection;
         default = let name = "FiraCode"; in
           {
             packages = [ (pkgs.nerdfonts.override { fonts = [ name ]; }) ];
@@ -60,6 +62,10 @@ in
   config = mkIf cfg.enable {
     fonts.fontconfig.enable = true;
 
-    home.packages = flatten (mapAttrsToList (selection: font: font.package) cfg.selections);
+    home.packages = flatten (
+      mapAttrsToList
+        (selection: font: font.packages)
+        cfg.selections
+    );
   };
 }

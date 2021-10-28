@@ -1,18 +1,15 @@
 { config, pkgs, lib, ... }:
 
-with lib;
-let
-  cfg = config.max;
-in
 {
   imports = [
     ./font.nix
-    ./shell
+    ./shell.nix
     ./desktop
+    ./app
   ];
 
-  options.max = {
+  config = {
+    # Without this, home-manager thinks we're using 18.03. IDFK
+    home.stateVersion = lib.trivial.release;
   };
-
-  config = { };
 }

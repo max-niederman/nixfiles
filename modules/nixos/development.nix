@@ -2,10 +2,10 @@
 
 with lib;
 let
-  cfg = config.max.dev;
+  cfg = config.max.development;
 in
 {
-  options.max.dev = {
+  options.max.development = {
     enable = mkOption {
       type = types.bool;
       default = true;

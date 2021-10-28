@@ -5,34 +5,19 @@ let
   cfg = config.max.shell;
 in
 {
-  options.max.shell = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-      description = "Enable shell configuration.";
-    };
-  };
-
-  config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      thefuck
-
-      # Utilities
-      neofetch
-      wget
-      unzip
-    ];
+  config = {
+    home.packages = with pkgs; [ thefuck ];
 
     programs = {
-      # Shells
+      # Shell
       fish = {
         enable = true;
 
         shellInit = ''
-          thefuck --alias | source
+          ${pkgs.thefuck}/bin/thefuck --alias | source
         '';
         promptInit = ''
-          starship init fish | source
+          ${pkgs.starship}/bin/starship init fish | source
         '';
 
         shellAbbrs = {
@@ -52,7 +37,7 @@ in
         ];
       };
 
-      # Prompts
+      # Prompt
       starship = {
         enable = true;
 
@@ -65,28 +50,6 @@ in
           vicmd_symbol = "[λ](bold yellow)";
         };
       };
-
-      # Utilities
-
-      lsd = {
-        enable = true;
-        enableAliases = true;
-      };
-
-      direnv = {
-        enable = true;
-
-        nix-direnv = {
-          enable = true;
-          enableFlakes = true;
-        };
-
-        enableFishIntegration = true;
-        enableBashIntegration = true;
-      };
-
-      gpg.enable = true;
-      bat.enable = true;
     };
   };
 }

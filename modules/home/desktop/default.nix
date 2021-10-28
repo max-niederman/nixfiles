@@ -7,7 +7,6 @@ in
 {
   imports = [
     ./wm
-    ./app
   ];
 
   options.max.desktop = {
@@ -41,6 +40,12 @@ in
       music = "$HOME/music";
       pictures = "$HOME/pictures";
       videos = "$HOME/videos";
+    };
+
+    max.desktop = {
+      wm = {
+        bspwm.enable = true;
+      };
     };
   };
 }

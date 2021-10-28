@@ -10,8 +10,6 @@
   };
 
   home-manager.users.max = {
-    max = {
-      desktop.wm.bspwm.monitors = { };
-    };
+    max = { };
   };
 }

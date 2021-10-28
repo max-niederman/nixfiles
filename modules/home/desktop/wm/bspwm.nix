@@ -6,11 +6,7 @@ let
 in
 {
   options.max.desktop.wm.bspwm = {
-    enable = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable BSPWM.";
-    };
+    enable = mkEnableOption "Enable BSPWM";
 
     sxhkd.enable = mkOption {
       type = types.bool;
@@ -20,6 +16,7 @@ in
 
     monitors = mkOption {
       type = with types; attrsOf (listOf str);
+      default = { };
       example = {
         "eDP-1" = [ "I" "II" "III" "IV" "V" "VI" "VII" "IIX" "IX" "X" ];
       };
@@ -37,17 +34,6 @@ in
         border_width = 1;
         window_gap = 15;
       };
-
-      startupPrograms = [
-        # Source Luthien colors
-        "source ~/.local/share/luthien/outputs/plugins/templates/bspwm.sh"
-
-        # Start dunst
-        "$HOME/.config/dunst/start.sh"
-
-        # Start polybar
-        "$HOME/.config/polybar/start.sh"
-      ];
 
       rules = {
         "discord" = {
