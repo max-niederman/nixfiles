@@ -2,7 +2,7 @@
 
 with lib;
 {
-  config = mkIf config.max.app.enable {
+  config = mkIf (config.max.app.enable && config.max.desktop.enable) {
     home.packages = with pkgs; [
       # Reading
       calibre

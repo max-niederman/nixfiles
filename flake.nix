@@ -40,6 +40,10 @@
         builder = nixpkgs.lib.makeOverridable nixpkgs.lib.nixosSystem;
         modules = [ ./hosts/run.nix ];
       };
+
+      wsl = {
+        modules = [ ./hosts/wsl ];
+      };
     };
 
     ### Development Environment ###
