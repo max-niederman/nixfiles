@@ -16,6 +16,8 @@ with pkgs; {
           { from = "host"; host.port = 8088; guest.port = 80; }
           { from = "host"; host.port = 8022; guest.port = 22; }
         ];
+
+        resolution = { x = 1920; y = 1080; };
       };
 
       formatAttr = "vm";

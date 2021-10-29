@@ -9,7 +9,5 @@
     root.initialHashedPassword = "EIlwTlxEfyPhc";
   };
 
-  home-manager.users.max = {
-    max = { };
-  };
+  home-manager.users.max = { };
 }

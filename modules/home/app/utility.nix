@@ -9,6 +9,7 @@ with lib;
         enableAliases = true;
       };
 
+      htop.enable = true;
       bat.enable = true;
     };
   };

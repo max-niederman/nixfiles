@@ -9,7 +9,7 @@
   ];
 
   config = {
-    # Without this, home-manager thinks we're using 18.03. IDFK
+    # Without this, home-manager thinks we're using 18.03 for some reason.
     home.stateVersion = lib.trivial.release;
   };
 }

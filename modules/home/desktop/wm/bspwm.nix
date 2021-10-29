@@ -24,8 +24,8 @@ in
     };
   };
 
-  config = {
-    xsession.windowManager.bspwm = mkIf cfg.enable {
+  config = mkIf cfg.enable {
+    xsession.windowManager.bspwm = {
       enable = true;
 
       monitors = cfg.monitors;
@@ -48,7 +48,7 @@ in
       };
     };
 
-    services.sxhkd = {
+    services.sxhkd = mkIf cfg.sxhkd.enable {
       enable = true;
       keybindings = {
         #
@@ -66,7 +66,7 @@ in
         "super + alt + u" = "firefox --private-window";
 
         # program launcher
-        "super + @space" = "$HOME/.config/rofi/scripts/launcher.sh";
+        "super + @space" = "rofi -show run";
         "super + alt + @space" = "rofi -show drun";
 
         # window switcher

@@ -7,6 +7,7 @@ in
 {
   imports = [
     ./wm
+    ./launcher.nix
   ];
 
   options.max.desktop = {
