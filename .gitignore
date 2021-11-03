@@ -1,5 +1,6 @@
 # Build Outputs
 *.qcow2
+/result
 
 # Direnv
 .direnv/

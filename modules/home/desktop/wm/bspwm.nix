@@ -62,8 +62,8 @@ in
         "super + Return" = "alacritty";
 
         # web browser
-        "super + u" = "firefox --new-window";
-        "super + alt + u" = "firefox --private-window";
+        "super + u" = "firefox-devedition --new-window";
+        "super + alt + u" = "firefox-devedition --private-window";
 
         # program launcher
         "super + @space" = "rofi -show run";

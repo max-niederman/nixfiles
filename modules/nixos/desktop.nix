@@ -47,9 +47,7 @@ in
         libinput.enable = true;
       };
 
-      interception-tools = mkIf cfg.rebindCaps {
-        enable = true;
-      };
+      interception-tools.enable = cfg.rebindCaps;
     };
   };
 }

@@ -12,11 +12,18 @@ in
       description = "Whether to manage users.";
     };
 
+    users = mkOption {
+      type = types.listOf types.str;
+      default = [ "max" ];
+      example = [ "max" ];
+      description = "List of users to create.";
+    };
+
     admins = mkOption {
       type = types.listOf types.str;
       default = [ "max" ];
       example = [ "max" ];
-      description = "List of admin users to create.";
+      description = "List of admin users.";
     };
 
     home-manager.enable = mkOption {
@@ -27,13 +34,16 @@ in
   };
 
   config = mkIf cfg.enable {
-    users.users = attrsets.genAttrs cfg.admins
-      (name: {
+    users.mutableUsers = false;
+    users.users = attrsets.recursiveUpdate
+      (attrsets.genAttrs cfg.users (name: {
         isNormalUser = true;
         createHome = true;
-        extraGroups = [ "wheel" "docker" "networkmanager" ];
         shell = pkgs.fish;
-      });
+      }))
+      (attrsets.genAttrs cfg.admins (name: {
+        extraGroups = [ "wheel" "docker" "networkmanager" ];
+      }));
 
     programs.fish.enable = true;
 
@@ -43,6 +53,9 @@ in
       useGlobalPkgs = true;
       useUserPackages = true;
       sharedModules = [ ../home ];
+
+      # if the user attribute doesn't exist, home-manager won't activate
+      users = attrsets.genAttrs cfg.users (_: { });
     };
   };
 }

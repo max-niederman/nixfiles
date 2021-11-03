@@ -7,4 +7,8 @@
     ./development.nix
     ./desktop.nix
   ];
+
+  config = {
+    system.stateVersion = lib.trivial.release;
+  };
 }

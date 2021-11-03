@@ -18,6 +18,14 @@ with pkgs; {
         ];
 
         resolution = { x = 1920; y = 1080; };
+
+        memorySize = 2048;
+        cores = 4;
+
+        qemu.options = [
+          "-enable-kvm"
+          "-vga virtio"
+        ];
       };
 
       formatAttr = "vm";

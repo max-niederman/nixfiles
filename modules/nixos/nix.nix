@@ -34,7 +34,7 @@ in
       experimental-features = nix-command flakes
     '';
 
-    binaryCaches = cfg.binaryCaches;
+    trustedBinaryCaches = cfg.binaryCaches;
     binaryCachePublicKeys = cfg.binaryCachePublicKeys;
   };
 }

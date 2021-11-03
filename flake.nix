@@ -29,8 +29,8 @@
     ### Default ###
 
     hostDefaults.modules = [
-      ./modules/nixos
       home-manager.nixosModules.home-manager
+      ./modules/nixos
     ];
 
     ### Hosts ###
@@ -44,6 +44,8 @@
       wsl = {
         modules = [ ./hosts/wsl ];
       };
+
+      max-desktop.modules = [ ./hosts/max-desktop ];
     };
 
     ### Development Environment ###
