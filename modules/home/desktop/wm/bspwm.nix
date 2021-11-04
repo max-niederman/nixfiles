@@ -53,6 +53,7 @@ in
       keybindings =
         let
           browser = "${config.programs.firefox.package}/bin/.firefox-wrapped";
+          launcher = "${config.programs.rofi.package}/bin/rofi";
         in
         {
           #
@@ -74,7 +75,7 @@ in
           "super + alt + @space" = "rofi -show drun";
 
           # window switcher
-          "alt + Tab" = "rofi -show window";
+          "alt + Tab" = "${launcher} -show window";
 
           # take a screenshot
           "Print" = "flameshot gui";

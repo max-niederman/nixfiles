@@ -44,6 +44,7 @@ in
     };
 
     max.desktop = {
+      launcher.enable = true;
       wm = {
         bspwm.enable = true;
       };

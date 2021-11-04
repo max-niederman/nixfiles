@@ -10,7 +10,9 @@
     [ "root" "max" ]
     (_: { hashedPassword = "$6$Ohc1YSDm2G$/SEepwBIsunwyKry74IcmQ.u7aRr.5XKv.AlymeYemadgn1irIVNe3yRhN/TOTYob56jgcAOD4km1yi/KGnNr."; });
 
-  hardware.cpu.amd.updateMicrocode = true;
+  hardware = {
+    cpu.amd.updateMicrocode = true;
+  };
 
   boot = {
     loader = {
@@ -32,15 +34,14 @@
     };
   };
 
-  networking = {
-    
-  };
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
 
-  services = {
-    avahi = {
-      enable = true;
-      nssmdns = true;
-      publish.enable = true;
-    };
+    alsa.enable = true;
+    alsa.support32Bit = true;
+
+    pulse.enable = true;
+    media-session.enable = true;
   };
 }
