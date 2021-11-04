@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./networking.nix
   ];
 
   users.users = lib.genAttrs
@@ -29,6 +30,10 @@
         preLVM = true;
       };
     };
+  };
+
+  networking = {
+    
   };
 
   services = {
