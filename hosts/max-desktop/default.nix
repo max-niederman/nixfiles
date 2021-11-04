@@ -4,6 +4,8 @@
   imports = [
     ./hardware-configuration.nix
     ./networking.nix
+    ./audio.nix
+    ./graphics.nix
   ];
 
   users.users = lib.genAttrs
@@ -32,16 +34,5 @@
         preLVM = true;
       };
     };
-  };
-
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-
-    alsa.enable = true;
-    alsa.support32Bit = true;
-
-    pulse.enable = true;
-    media-session.enable = true;
   };
 }

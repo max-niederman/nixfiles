@@ -6,7 +6,7 @@ let
 in
 {
   config = {
-    home.packages = with pkgs; [ thefuck ];
+    home.packages = with pkgs; [ thefuck tealdeer ];
 
     programs = {
       # Shell
