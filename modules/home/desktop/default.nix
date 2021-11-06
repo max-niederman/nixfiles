@@ -6,8 +6,9 @@ let
 in
 {
   imports = [
-    ./wm
     ./launcher.nix
+    ./wallpaper
+    ./wm
   ];
 
   options.max.desktop = {
@@ -45,7 +46,9 @@ in
 
     max.desktop = {
       launcher.enable = true;
+      wallpaper.enable = true;
       wm = {
+        awesome.enable = false;
         bspwm.enable = true;
       };
     };

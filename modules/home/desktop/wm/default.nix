@@ -1,6 +1,6 @@
 {
   imports = [
-    ./xmonad.nix
-    ./bspwm.nix
+    ./awesome
+    ./bspwm
   ];
 }

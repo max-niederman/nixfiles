@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     ./networking.nix
     ./audio.nix
-    ./graphics.nix
+    ./desktop.nix
   ];
 
   users.users = lib.genAttrs
@@ -35,4 +35,6 @@
       };
     };
   };
+
+  time.timeZone = "America/Los_Angelos";
 }

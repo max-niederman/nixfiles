@@ -9,6 +9,8 @@ with lib;
       libgen-cli
 
       # Watching
+      mpv
+      jellyfin-mpv-shim
       jellyfin-media-player
     ];
 
