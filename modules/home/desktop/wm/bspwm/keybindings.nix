@@ -1,4 +1,4 @@
-{ browser, launcher }:
+{ terminal, browser, launcher, flameshot }:
 
 {
   #
@@ -9,21 +9,21 @@
   "super + i" = "dunstctl context";
 
   # terminal emulator
-  "super + Return" = "alacritty";
+  "super + Return" = "${terminal}";
 
   # web browser
   "super + u" = "${browser} --new-window";
   "super + alt + u" = "${browser} --private-window";
 
   # program launcher
-  "super + @space" = "rofi -show run";
-  "super + alt + @space" = "rofi -show drun";
+  "super + @space" = "${launcher} -show run";
+  "super + alt + @space" = "${launcher} -show drun";
 
   # window switcher
   "alt + Tab" = "${launcher} -show window";
 
   # take a screenshot
-  "Print" = "flameshot gui";
+  "Print" = "${flameshot} gui";
 
   # reload sxhkd's config
   "super + alt + Escape" = "pkill -USR1 -x sxhkd";

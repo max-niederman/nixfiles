@@ -45,11 +45,15 @@ in
       };
     };
 
+    services.flameshot.enable = true;
+
     services.sxhkd = mkIf cfg.sxhkd.enable {
       enable = true;
       keybindings = import ./keybindings.nix {
+        terminal = "${config.programs.alacritty.package}/bin/alacritty";
         browser = "${config.programs.firefox.package}/bin/.firefox-wrapped";
         launcher = "${config.programs.rofi.package}/bin/rofi";
+        flameshot = "${pkgs.flameshot}/bin/flameshot";
       };
     };
   };
