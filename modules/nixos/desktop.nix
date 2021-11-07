@@ -64,6 +64,11 @@ in
                   EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
           '';
       };
+
+
+      # various applications, including VS Code, need the org.freedesktop.secrets service
+      # this would be in home/app/crypto.nix, but it doesn't work there for whatever reason
+      gnome.gnome-keyring.enable = true;
     };
   };
 }

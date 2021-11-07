@@ -53,6 +53,10 @@
       };
     };
 
+    xsession.initExtra = ''
+      ${pkgs.autorandr}/bin/autorandr -c
+    '';
+
     max.desktop = {
       wm.bspwm.monitors = {
         "DisplayPort-1" = [ "IV" "V" "VI" ];
