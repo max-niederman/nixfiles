@@ -9,6 +9,8 @@
   ];
 
   config = {
+    nixpkgs.config.allowUnfree = true;
+
     system.stateVersion = lib.trivial.release;
   };
 }

@@ -45,7 +45,7 @@
         modules = [ ./hosts/wsl ];
       };
 
-      max-desktop.modules = [ ./hosts/max-desktop ];
+      tar-minyatur.modules = [ ./hosts/tar-minyatur ];
     };
 
     ### Development Environment ###

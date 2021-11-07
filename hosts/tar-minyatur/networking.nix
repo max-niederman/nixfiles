@@ -2,7 +2,7 @@
 
 {
   networking = {
-    hostName = "max-desktop";
+    hostName = "tar-minyatur";
 
     networkmanager.enable = true;
   };
