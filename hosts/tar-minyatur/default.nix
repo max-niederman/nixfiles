@@ -36,5 +36,5 @@
     };
   };
 
-  time.timeZone = "America/Los_Angelos";
+  time.timeZone = "America/Los_Angeles";
 }
