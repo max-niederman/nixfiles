@@ -9,6 +9,7 @@ with lib;
 
     services = {
       keybase.enable = true;
+      gpg-agent.enable = true;
     };
   };
 }

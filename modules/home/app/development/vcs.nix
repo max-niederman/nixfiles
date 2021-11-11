@@ -30,6 +30,12 @@ in
         userEmail = cfg.userEmail;
         userName = cfg.userName;
 
+        signing = {
+          key = null; # let GPG decide
+          gpgPath = "${config.programs.gpg.package}/bin/gpg2";
+          signByDefault = true;
+        };
+
         extraConfig = {
           init.defaultBranch = "main";
           pull.rebase = false;
