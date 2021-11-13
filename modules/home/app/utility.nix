@@ -12,5 +12,9 @@ with lib;
       htop.enable = true;
       bat.enable = true;
     };
+
+    home.packages = with pkgs; [
+      wget
+    ];
   };
 }

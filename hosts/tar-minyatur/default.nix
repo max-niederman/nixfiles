@@ -37,4 +37,9 @@
   };
 
   time.timeZone = "America/Los_Angeles";
+
+  system.autoUpgrade = {
+    enable = true;
+    dates = "daily";
+  };
 }

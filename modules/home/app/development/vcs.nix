@@ -42,5 +42,9 @@ in
         };
       };
     };
+
+    home.packages = with pkgs; [
+      git-crypt # transparent file encryption
+    ];
   };
 }

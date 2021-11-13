@@ -11,6 +11,9 @@
   config = {
     nixpkgs.config.allowUnfree = true;
 
-    system.stateVersion = lib.trivial.release;
+    system = {
+      stateVersion = lib.trivial.release;
+      autoUpgrade.flake = lib.mkForce "github:max-niederman/nixfiles";
+    };
   };
 }
