@@ -4,6 +4,7 @@
   imports = [
     ./nix.nix
     ./users.nix
+    ./networking
     ./development.nix
     ./desktop.nix
   ];
