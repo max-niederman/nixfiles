@@ -33,6 +33,11 @@
       fsType = "ext4";
     };
 
+  fileSystems."/mnt/homelab" =
+    { device = "192.168.0.10:/data";
+      fsType = "nfs";
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/6f697509-ce82-4c5e-8351-c2cb72ea81ef"; }
     ];
