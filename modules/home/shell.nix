@@ -16,7 +16,7 @@ in
         shellInit = ''
           ${pkgs.thefuck}/bin/thefuck --alias | source
         '';
-        promptInit = ''
+        interactiveShellInit = ''
           ${pkgs.starship}/bin/starship init fish | source
         '';
 

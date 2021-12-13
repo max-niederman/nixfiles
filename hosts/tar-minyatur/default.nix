@@ -36,6 +36,8 @@
     };
   };
 
+  services.printing.enable = true;
+
   time.timeZone = "America/Los_Angeles";
 
   system.autoUpgrade = {

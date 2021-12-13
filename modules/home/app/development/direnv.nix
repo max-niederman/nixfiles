@@ -6,10 +6,7 @@ with lib;
     programs.direnv = {
       enable = true;
 
-      nix-direnv = {
-        enable = true;
-        enableFlakes = true;
-      };
+      nix-direnv.enable = true;
 
       enableFishIntegration = true;
       enableBashIntegration = true;

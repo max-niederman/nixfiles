@@ -16,7 +16,6 @@
 
     system = {
       stateVersion = lib.trivial.release;
-      autoUpgrade.flake = lib.mkForce "github:max-niederman/nixfiles";
     };
   };
 }
