@@ -26,6 +26,7 @@
         device = "nodev";
         efiSupport = true;
         enableCryptodisk = true;
+        configurationLimit = 8;
       };
     };
     initrd.luks.devices = {
