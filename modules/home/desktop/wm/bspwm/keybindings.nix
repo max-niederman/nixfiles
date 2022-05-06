@@ -114,4 +114,16 @@
 
   # move floating window
   "super + {Left,Down,Up,Right}" = "bspc node -v {-20 0,0 20,0 -20,20 0}";
+
+  #
+  # miscellaneous
+  #
+
+  # panic
+  # TODO: mute all sounds
+  "super + ctrl + p" = ''
+    bspc desktop -f ^1; \
+    bspc desktop -f ^4; \
+    bspc desktop -f ^7;
+  '';
 }

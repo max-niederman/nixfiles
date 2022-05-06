@@ -6,12 +6,12 @@ with lib;
     programs = {
       firefox = {
         enable = true;
-        package = pkgs.firefox-devedition-bin;
+        package = pkgs.firefox-beta-bin;
       };
 
       chromium = {
         enable = true;
-        package = pkgs.ungoogled-chromium.override { enableWideVine = true; };
+        package = pkgs.chromium.override { enableWideVine = true; };
       };
     };
   };

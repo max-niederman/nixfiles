@@ -4,7 +4,7 @@
   inputs = {
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
 
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
 
     home-manager = {
