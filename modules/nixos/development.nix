@@ -18,10 +18,10 @@ in
       description = "Enable text editors.";
     };
 
-    docker.enable = mkOption {
+    containers.enable = mkOption {
       type = types.bool;
       default = true;
-      description = "Enable Docker virtualisation";
+      description = "Enable container virtualisation";
     };
   };
 
@@ -33,6 +33,11 @@ in
       vimAlias = true;
     };
 
-    virtualisation.docker.enable = cfg.docker.enable;
+    virtualisation.podman = mkIf cfg.containers.enable {
+      enable = true;
+
+      dockerCompat = true;
+      dockerSocket.enable = true;
+    };
   };
 }
