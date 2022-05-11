@@ -34,7 +34,9 @@ in
       experimental-features = nix-command flakes
     '';
 
-    trustedBinaryCaches = cfg.binaryCaches;
-    binaryCachePublicKeys = cfg.binaryCachePublicKeys;
+    settings = {
+      trusted-substituters = cfg.binaryCaches;
+      trusted-public-keys = cfg.binaryCachePublicKeys;
+    };
   };
 }

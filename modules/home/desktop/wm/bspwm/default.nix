@@ -42,6 +42,10 @@ in
         "Picture-in-Picture" = {
           state = "floating";
         };
+        # float godot debug window
+        "Godot_Engine" = {
+          state = "floating";
+        };
       };
     };
 

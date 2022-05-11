@@ -21,8 +21,8 @@ in
 
   config = mkIf cfg.enable {
     i18n.inputMethod = {
-      enabled = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [ mozc ];
+      enabled = "fcitx";
+      fcitx.engines = with pkgs.fcitx-engines; [ mozc ];
     };
 
     services = {

@@ -25,10 +25,10 @@ in
       description = "Enable text editors.";
     };
 
-    docker.enable = mkOption {
+    containers.enable = mkOption {
       type = types.bool;
       default = true;
-      description = "Enable Docker virtualisation";
+      description = "Enable container virtualisation";
     };
 
     vscode-server.enable = mkOption {
@@ -46,8 +46,11 @@ in
       vimAlias = true;
     };
 
-    virtualisation.docker.enable = cfg.docker.enable;
+    virtualisation.podman = mkIf cfg.containers.enable {
+      enable = true;
 
-    services.vscode-server.enable = cfg.vscode-server.enable;
+      dockerCompat = true;
+      dockerSocket.enable = true;
+    };
   };
 }

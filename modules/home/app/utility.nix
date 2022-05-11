@@ -15,6 +15,9 @@ with lib;
 
     home.packages = with pkgs; [
       wget
+
+      gnome.nautilus
+      gnome.file-roller
     ];
   };
 }

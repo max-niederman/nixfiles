@@ -12,6 +12,13 @@ in
   config = mkIf cfg.enable {
     programs.vscode = {
       enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        # languages
+        matklad.rust-analyzer
+
+        # debuggers
+        vadimcn.vscode-lldb
+      ];
     };
   };
 }

@@ -23,18 +23,13 @@
       fsType = "vfat";
     };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/c0c610ac-a14f-4c36-bdd2-6aab872c2dea";
-      fsType = "ext4";
-    };
-
   fileSystems."/mnt/hdd" =
     { device = "/dev/disk/by-uuid/9fad5da3-bdf6-483d-b729-b301a2680726";
       fsType = "ext4";
     };
 
   fileSystems."/mnt/homelab" =
-    { device = "192.168.0.10:/data";
+    { device = "192.168.0.11:/data";
       fsType = "nfs";
     };
 
