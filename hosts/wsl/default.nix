@@ -8,15 +8,7 @@ in
 {
   imports = [
     "${modulesPath}/profiles/minimal.nix"
-
-    (fetchTarball {
-        url = "https://github.com/msteen/nixos-vscode-server/tarball/4ff559b20c2f9200ae59b4516bbc7c0cbc04b22d";
-        sha256 = "14zqbjsm675ahhkdmpncsypxiyhc4c9kyhabpwf37q6qg73h8xz5";
-    })
   ];
-
-  # Enable VS Code server
-  services.vscode-server.enable = true;
 
   # WSL is closer to a container than anything else
   boot.isContainer = true;
@@ -24,10 +16,15 @@ in
   environment.etc.hosts.enable = false;
   environment.etc."resolv.conf".enable = false;
 
+  # No clue what this does, but it doesn't build without it
+  environment.noXlibs = false;
+
   networking.dhcpcd.enable = false;
 
+  users.mutableUsers = mkForce true;
   users.users.${defaultUser} = {
     isNormalUser = true;
+    uid = 1000;
     extraGroups = [ "wheel" ];
   };
 
