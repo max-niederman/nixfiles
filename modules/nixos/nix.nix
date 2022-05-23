@@ -11,21 +11,6 @@ in
       default = true;
       description = "Enable Nix configuration.";
     };
-
-    binaryCaches = mkOption {
-      type = types.listOf types.str;
-      default = [
-        "https://cachix.cachix.org"
-        "https://nix-community.cachix.org"
-      ];
-    };
-    binaryCachePublicKeys = mkOption {
-      type = types.listOf types.str;
-      default = [
-        "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-    };
   };
 
   config.nix = mkIf cfg.enable {
@@ -35,8 +20,16 @@ in
     '';
 
     settings = {
-      trusted-substituters = cfg.binaryCaches;
-      trusted-public-keys = cfg.binaryCachePublicKeys;
+      substituters = [
+        "https://cachix.cachix.org"
+        "https://nix-community.cachix.org"
+        "https://hydra.iohk.io"
+      ];
+      trusted-public-keys = [
+        "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
+      ];
     };
   };
 }

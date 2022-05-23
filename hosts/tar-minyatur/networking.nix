@@ -7,7 +7,7 @@
     networkmanager.enable = true;
 
     # the firewall apparently blocks outgoing ssh connections
-    firewall.enable = false;
+    # firewall.enable = false;
   };
 
   services.avahi = {
