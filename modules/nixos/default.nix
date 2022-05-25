@@ -7,6 +7,7 @@
     ./networking
     ./development.nix
     ./desktop.nix
+    ./crypto.nix
   ];
 
   config = {

@@ -10,7 +10,6 @@ in
     ./terminal.nix
     ./browser.nix
     ./media.nix
-    ./crypto.nix
     ./development
   ];
 
