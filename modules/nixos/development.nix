@@ -30,12 +30,6 @@ in
       default = true;
       description = "Enable container virtualisation";
     };
-
-    vscode-server.enable = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable VS Code remote server";
-    };
   };
 
   config = mkIf cfg.enable {

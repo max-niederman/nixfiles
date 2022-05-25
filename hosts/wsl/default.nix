@@ -55,6 +55,8 @@ in
     wantedBy = [ "multi-user.target" ];
   };
 
+  services.vscode-server.enable = true;
+
   max = {
     users.admins = [ defaultUser ];
     desktop.enable = false;
