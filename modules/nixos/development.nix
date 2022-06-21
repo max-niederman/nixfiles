@@ -43,6 +43,10 @@ in
     virtualisation.podman = mkIf cfg.containers.enable {
       enable = true;
 
+      extraPackages = with pkgs; [
+        criu # for checkpoint and restore
+      ];
+
       dockerCompat = true;
       dockerSocket.enable = true;
     };

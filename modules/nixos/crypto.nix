@@ -15,5 +15,9 @@ with lib;
         pinentryFlavor = "curses";
       };
     };
+
+    environment.systemPackages = with pkgs; [
+      git-crypt
+    ];
   };
 }

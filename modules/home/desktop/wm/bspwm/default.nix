@@ -8,12 +8,6 @@ in
   options.max.desktop.wm.bspwm = {
     enable = mkEnableOption "Enable BSPWM";
 
-    sxhkd.enable = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable the Simple X Hotkey Daemon.";
-    };
-
     monitors = mkOption {
       type = with types; attrsOf (listOf str);
       default = { };
@@ -49,9 +43,7 @@ in
       };
     };
 
-    services.flameshot.enable = true;
-
-    services.sxhkd = mkIf cfg.sxhkd.enable {
+    services.sxhkd = {
       enable = true;
       keybindings = import ./keybindings.nix {
         terminal = "${config.programs.alacritty.package}/bin/alacritty";
@@ -60,5 +52,7 @@ in
         flameshot = "${pkgs.flameshot}/bin/flameshot";
       };
     };
+    services.trayer.enable = true;
+    services.flameshot.enable = true;
   };
 }

@@ -70,5 +70,7 @@
         desktop = "^8";
       };
     };
+
+    services.trayer.settings.monitor = 2;
   }];
 }
