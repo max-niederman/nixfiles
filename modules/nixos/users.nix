@@ -42,7 +42,7 @@ in
         shell = pkgs.fish;
       }))
       (attrsets.genAttrs cfg.admins (name: {
-        extraGroups = [ "wheel" "podman" "networkmanager" ];
+        extraGroups = [ "wheel" "podman" "docker" "networkmanager" ];
       }));
 
     programs.fish.enable = true;

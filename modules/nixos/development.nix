@@ -46,9 +46,14 @@ in
       extraPackages = with pkgs; [
         criu # for checkpoint and restore
       ];
+    };
 
-      dockerCompat = true;
-      dockerSocket.enable = true;
+    virtualisation.docker = mkIf cfg.containers.enable {
+      enable = true;
+      autoPrune = {
+        enable = true;
+        dates = "weekly";
+      };
     };
   };
 }
