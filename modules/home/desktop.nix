@@ -1,19 +1,12 @@
-{ config, pkgs, lib, flakeInputs, ... }:
+{ config, pkgs, lib, ... }:
 
-let
-  inherit (flakeInputs) hyprland;
-in
 {
-  imports = [
-    hyprland.homeManagerModules.default
-  ];
-
   config = {
     wayland.windowManager.hyprland = {
       enable = true;
-      xwayland = true;
-      nvidiaPatches = true;
-      recommendedEnvironment = true;
+      xwayland.enable = true;
+      nvidiaPatches.enable = true;
+      recommendedEnvironment.enable = true;
     };
   };
 }

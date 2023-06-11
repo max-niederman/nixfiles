@@ -15,7 +15,7 @@
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, hyprland, ... }:
     let
       inherit (nixpkgs) lib;
 
@@ -40,13 +40,16 @@
           defaultModules = [
             home-manager.nixosModules.home-manager
             nixosModules.default
+
+            {
+              home-manager.sharedModules = [
+                hyprland.homeManagerModules.default
+              ];
+            }
           ];
           system = modules: lib.nixosSystem {
             inherit system pkgs;
             modules = defaultModules ++ modules;
-            specialArgs = {
-              flakeInputs = inputs;
-            };
           };
         in
         {
