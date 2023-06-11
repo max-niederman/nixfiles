@@ -21,8 +21,9 @@
 
       overlay = import ./overlay;
 
+      system = "x86_64-linux"; # TODO: add support for other archs
       pkgs = import nixpkgs {
-        system = "x86_64-linux";
+        inherit system;
         allowUnfree = true;
         overlays = [ overlay ];
       };
@@ -41,7 +42,7 @@
             nixosModules.default
           ];
           system = modules: lib.nixosSystem {
-            system = "x86_64-linux";
+            inherit system pkgs;
             modules = defaultModules ++ modules;
             specialArgs = {
               flakeInputs = inputs;
