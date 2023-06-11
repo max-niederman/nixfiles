@@ -1,5 +1,8 @@
 { config, pkgs, lib, ... }:
 
+let
+  secrets = import ./secrets.nix;
+in
 {
   config = {
     users = {
@@ -12,6 +15,8 @@
           "networkmanager"
         ];
         shell = pkgs.nushell;
+
+        inherit (secrets) hashedPassword;
 
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINmdKg6WzEiyKysklc3YAKLjHEDLZq4RAjRYlSVbwHs9 max@tar-minyatur"
