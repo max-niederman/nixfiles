@@ -5,7 +5,6 @@
     ./nix.nix
     ./desktop.nix
     ./user.nix
+    ./crypto.nix
   ];
-
-  config = { };
 }
