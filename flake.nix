@@ -16,44 +16,40 @@
   };
 
   outputs = { self, nixpkgs, home-manager, hyprland, ... }:
-    let
-      inherit (nixpkgs) lib;
-
-      overlay = import ./overlay;
-
-      system = "x86_64-linux"; # TODO: add support for other archs
-      pkgs = import nixpkgs {
-        inherit system;
-        allowUnfree = true;
-        overlays = [ overlay ];
-      };
-    in
     rec {
-      overlays.default = overlay;
+      overlays.default = import ./overlay;
 
-      nixosModules = {
-        default = import ./modules/nixos;
-      };
+      nixosModules.default = import ./modules/nixos;
 
       nixosConfigurations =
         let
           defaultModules = [
+            {
+              nixpkgs = {
+                overlays = [ overlays.default ];
+                config = {
+                  allowUnfree = true;
+                };
+              };
+            }
             home-manager.nixosModules.home-manager
-            nixosModules.default
-
             {
               home-manager.sharedModules = [
                 hyprland.homeManagerModules.default
               ];
             }
+
+            nixosModules.default
           ];
-          system = modules: lib.nixosSystem {
-            inherit system pkgs;
+          system = { system, modules }: nixpkgs.lib.nixosSystem {
             modules = defaultModules ++ modules;
           };
         in
         {
-          tar-elendil = system [ ./hosts/tar-elendil ];
+          tar-elendil = system {
+            system = "x86_64-linux";
+            modules = [ ./hosts/tar-elendil ];
+          };
         };
     };
 }

@@ -21,6 +21,19 @@
       };
     };
 
+    services.xserver.videoDrivers = [ "nvidia" ];
+    hardware.opengl.enable = true;
+    hardware.nvidia.prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+
+
     networking = {
       hostName = "tar-elendil";
       networkmanager.enable = true;
@@ -30,5 +43,7 @@
       # use the state version of the system, from the **NixOS** config
       home.stateVersion = config.system.stateVersion;
     }];
+
+    environment.systemPackages = [ pkgs.max-secret ];
   };
 }

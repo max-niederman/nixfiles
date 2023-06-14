@@ -1,1 +1,3 @@
-self: super: { }
+self: super: {
+  max-secret = super.hello;
+}
