@@ -33,17 +33,28 @@
         $mainMod = SUPER
 
         bind = $mainMod, W, killactive
+        bind = $mainMod, M, fullscreen
 
         bind = $mainMod, Space,  exec, fuzzel
         bind = $mainMod, Return, exec, kitty
         bind = $mainMod, U,      exec, firefox
 
-        bind = $mainMod,       1, workspace, 1
-        bind = $mainMod,       2, workspace, 2
-        bind = $mainMod,       3, workspace, 3
-        bind = $mainMod SHIFT, 1, movetoworkspace, 1
-        bind = $mainMod SHIFT, 2, movetoworkspace, 2
-        bind = $mainMod SHIFT, 3, movetoworkspace, 3
+        ${lib.strings.concatMapStringsSep
+          "\n"
+          (n: let n' = builtins.toString n; in ''
+            bind = $mainMod,       ${n'}, workspace, ${n'}
+            bind = $mainMod SHIFT, ${n'}, movetoworkspace, ${n'}
+          '')
+          (lib.lists.range 1 9)}
+        
+        bind = $mainMod,       H, movefocus, l
+        bind = $mainMod,       J, movefocus, d
+        bind = $mainMod,       K, movefocus, u
+        bind = $mainMod,       L, movefocus, r
+        bind = $mainMod SHIFT, H, movewindow, l
+        bind = $mainMod SHIFT, J, movewindow, d
+        bind = $mainMod SHIFT, K, movewindow, u
+        bind = $mainMod SHIFT, L, movewindow, r
       '';
     };
 
