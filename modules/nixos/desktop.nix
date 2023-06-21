@@ -2,6 +2,11 @@
 
 {
   config = {
+    programs.hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
+
     i18n.inputMethod = {
       enabled = "fcitx5";
       fcitx5.addons = with pkgs; [ fcitx5-mozc ];
@@ -30,6 +35,7 @@
       alsa.enable = true;
       pulse.enable = true;
     };
+    security.rtkit.enable = true;
 
     fonts = {
       fonts = with pkgs; [

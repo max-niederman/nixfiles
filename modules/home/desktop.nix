@@ -4,11 +4,13 @@
   config = {
     wayland.windowManager.hyprland = {
       enable = true;
-      xwayland.enable = true;
+      package = null;
       recommendedEnvironment = true;
 
       extraConfig = ''
         monitor = eDP-1, 1920x1200@60, 0x0, 1
+
+        exec-once=${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
 
         input {
           kb_layout  = us
@@ -62,9 +64,13 @@
       enable = true;
       settings = {
         main = {
-          prompt = "λ ";
+          prompt = "λ";
         };
       };
     };
+
+    home.packages = with pkgs; [
+      hyprpicker
+    ];
   };
 }
