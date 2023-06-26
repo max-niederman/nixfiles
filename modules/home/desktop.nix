@@ -60,6 +60,11 @@
       '';
     };
 
+    programs.eww = {
+      # enable = true;
+      configDir = ./eww;
+    };
+
     programs.fuzzel = {
       enable = true;
       settings = {

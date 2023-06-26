@@ -12,6 +12,7 @@ in
         createHome = true;
         extraGroups = [
           "wheel"
+          "video"
           "networkmanager"
         ];
         shell = pkgs.nushell;

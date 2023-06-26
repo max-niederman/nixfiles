@@ -33,11 +33,17 @@
       nvidiaBusId = "PCI:1:0:0";
     };
 
+    hardware.bluetooth.enable = true;
+    services.blueman.enable = true;
+
+    programs.light.enable = true;
 
     networking = {
       hostName = "tar-elendil";
       networkmanager.enable = true;
     };
+
+    time.timeZone = "America/Los_Angeles";
 
     home-manager.sharedModules = [{
       # use the state version of the system, from the **NixOS** config

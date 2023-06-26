@@ -41,8 +41,13 @@
       fonts = with pkgs; [
         ibm-plex
 
+        noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-cjk-serif
+        noto-fonts-emoji
+
         (nerdfonts.override {
-          fonts = [ "FiraCode" ];
+          fonts = [ "FiraCode" "Iosevka" ];
         })
       ];
 
@@ -50,9 +55,9 @@
       enableDefaultFonts = false;
 
       fontconfig.defaultFonts = {
-        serif = [ "IBM Plex Serif" ];
-        sansSerif = [ "IBM Plex Sans" ];
-        monospace = [ "IBM Plex Mono" ];
+        serif = [ "IBM Plex Serif" "Noto Serif CJK" "Noto Color Emoji" ];
+        sansSerif = [ "IBM Plex Sans" "Noto Sans CJK" "Noto Color Emoji" ];
+        monospace = [ "IBM Plex Mono" "Noto Sans Mono CJK" "Noto Color Emoji" ];
       };
     };
 

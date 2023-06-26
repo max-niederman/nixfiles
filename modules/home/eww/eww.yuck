@@ -1,0 +1,55 @@
+(defwidget bar []
+  (centerbox :orientation "horizontal"
+    (box)
+    (box)
+    (rightside)))
+
+(defwidget rightside []
+  (box :orientation "horizontal"
+       :space-evenly false
+       :spacing 15 
+       :halign "end"
+       :class "rightside"
+    (metric :label {power.icon}
+            :value {power.level})
+    (metric :label "󰃝"
+            :value {display.brightness}
+            :onchange `nu ./scripts/display.nu set-brightness {}`)
+    (metric :label {audio.muted ? "󰖁" : "󰕾"}
+            :value {audio.volume}
+            :onclick `nu ./scripts/audio.nu toggle-mute`
+            :onchange `nu ./scripts/audio.nu set-volume {}`)
+    {datetime.date}
+    {datetime.time}))
+
+(defwidget workspaces []
+  (box ))
+
+(deflisten audio `nu ./scripts/audio.nu notify`)
+(deflisten datetime `nu ./scripts/datetime.nu notify`)
+(deflisten display `nu ./scripts/display.nu notify`)
+(deflisten power `nu ./scripts/power.nu notify`)
+
+(defwidget metric [label value ?onchange ?onclick]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (button :class "label"
+            :onclick onclick
+      label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+(defwindow bar
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "20px"
+                               :width "1880px"
+                               :height "40px"
+                               :anchor "bottom center")
+           :stacking "fg"
+           :exclusive true
+  (bar))
