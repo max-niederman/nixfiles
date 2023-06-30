@@ -36,8 +36,6 @@
     hardware.bluetooth.enable = true;
     services.blueman.enable = true;
 
-    programs.light.enable = true;
-
     networking = {
       hostName = "tar-elendil";
       networkmanager.enable = true;
@@ -49,7 +47,5 @@
       # use the state version of the system, from the **NixOS** config
       home.stateVersion = config.system.stateVersion;
     }];
-
-    environment.systemPackages = [ pkgs.max-secret ];
   };
 }
