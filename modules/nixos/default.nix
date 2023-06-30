@@ -6,5 +6,6 @@
     ./desktop.nix
     ./user.nix
     ./crypto.nix
+    ./development.nix
   ];
 }
