@@ -11,6 +11,7 @@
         monitor = eDP-1, 1920x1200@60, 0x0, 1
 
         exec-once=${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
+        exec-once=eww open bar
 
         input {
           kb_layout  = us
