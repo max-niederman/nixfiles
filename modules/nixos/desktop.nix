@@ -35,7 +35,20 @@
       alsa.enable = true;
       pulse.enable = true;
     };
+    sound = {
+      enable = true;
+      mediaKeys.enable = true;
+    };
     security.rtkit.enable = true;
+
+    programs.light.enable = true;
+    services.actkbd = {
+      enable = true;
+      bindings = [
+        { keys = [ 224 ]; events = [ "key" ]; command = "/run/wrappers/bin/light -A 10"; }
+        { keys = [ 225 ]; events = [ "key" ]; command = "/run/wrappers/bin/light -U 10"; }
+      ];
+    };
 
     fonts = {
       fonts = with pkgs; [
