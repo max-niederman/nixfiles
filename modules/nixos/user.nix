@@ -14,6 +14,7 @@ in
           "wheel"
           "video"
           "networkmanager"
+          "docker"
         ];
         shell = pkgs.nushell;
 
