@@ -7,5 +7,6 @@
     ./user.nix
     ./crypto.nix
     ./development.nix
+    ./network.nix
   ];
 }
