@@ -5,5 +5,6 @@
     ./shell.nix
     ./desktop.nix
     ./development.nix
+    ./editor.nix
   ];
 }

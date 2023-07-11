@@ -8,6 +8,9 @@
         enable = true;
         dates = "weekly";
       };
+      daemon.settings = {
+        features.buildkit = true;
+      };
     };
   };
 }

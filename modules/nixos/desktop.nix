@@ -50,6 +50,12 @@
       ];
     };
 
+    environment.systemPackages = with pkgs; [
+      xdg-utils # for stuff like xdg-open
+    ];
+
+    services.gnome.gnome-keyring.enable = true;
+
     fonts = {
       fonts = with pkgs; [
         ibm-plex
@@ -77,6 +83,10 @@
     nix.settings = {
       substituters = [ "https://hyprland.cachix.org" ];
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    };
+
+    programs.steam = {
+      enable = true;
     };
   };
 }
