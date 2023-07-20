@@ -8,6 +8,7 @@
       enableExtensionUpdateCheck = true;
       enableUpdateCheck = false;
 
+      mutableExtensionsDir = false;
       extensions = with pkgs.vscode-extensions; [
         mkhl.direnv
         editorconfig.editorconfig
@@ -17,8 +18,8 @@
         github.copilot
 
         jdinhlife.gruvbox
-        pkief.material-icon-theme
-        pkief.material-product-icons
+        # pkief.material-icon-theme
+        # pkief.material-product-icons
 
         github.vscode-pull-request-github
         github.codespaces
@@ -34,6 +35,9 @@
         yzhang.markdown-all-in-one
         davidanson.vscode-markdownlint
         marp-team.marp-vscode
+
+        # Typst
+        nvarner.typst-lsp
 
         # Nix
         jnoortheen.nix-ide
@@ -65,8 +69,8 @@
         "editor.fontLigatures" = true;
         "editor.fontSize" = 16;
         "workbench.colorTheme" = "Gruvbox Dark Hard";
-        "workbench.iconTheme" = "material-icon-theme";
-        "workbench.productIconTheme" = "material-product-icons";
+        # "workbench.iconTheme" = "material-icon-theme";
+        # "workbench.productIconTheme" = "material-product-icons";
 
         "editor.lineNumbers" = "relative";
         "editor.acceptSuggestionOnEnter" = "smart";
