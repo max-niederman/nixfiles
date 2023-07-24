@@ -8,22 +8,6 @@
       configFile.source = ./nu/config.nu;
     };
 
-    programs.fish = {
-      enable = true;
-
-      plugins = map
-        (p: {
-          name = lib.strings.removePrefix "fishplugin-" p.name;
-          src = p.src;
-        })
-        (with pkgs.fishPlugins; [
-          pisces
-          z
-          sponge
-          colored-man-pages
-        ]);
-    };
-
     programs.bash = {
       enable = true;
     };
@@ -32,7 +16,6 @@
       enable = true;
 
       enableNushellIntegration = true;
-      enableFishIntegration = true;
       enableBashIntegration = true;
 
       settings = {

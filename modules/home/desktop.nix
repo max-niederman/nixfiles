@@ -42,6 +42,8 @@
         bind = $mainMod, Return, exec, kitty
         bind = $mainMod, U,      exec, firefox
 
+        bind = ,         Print, exec, grim -g "$(slurp)" ~/Pictures/Screenshots/$(date -Iseconds).png
+
         ${lib.strings.concatMapStringsSep
           "\n"
           (n: let n' = builtins.toString n; in ''
@@ -58,6 +60,8 @@
         bind = $mainMod SHIFT, J, movewindow, d
         bind = $mainMod SHIFT, K, movewindow, u
         bind = $mainMod SHIFT, L, movewindow, r
+
+        bind = $mainMod,       S, togglefloating
       '';
     };
 
@@ -77,6 +81,8 @@
     };
 
     home.packages = with pkgs; [
+      grim
+      slurp
       hyprpicker
     ];
   };
