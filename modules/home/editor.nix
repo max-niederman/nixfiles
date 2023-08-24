@@ -70,8 +70,7 @@
         "editor.fontLigatures" = true;
         "editor.fontSize" = 16;
         "workbench.colorTheme" = "Gruvbox Dark Hard";
-        "workbench.iconTheme" = "material";
-        "workbench.productIconTheme" = "material";
+        "workbench.iconTheme" = "material-icon-theme";
 
         "editor.lineNumbers" = "relative";
         "editor.acceptSuggestionOnEnter" = "smart";

@@ -8,10 +8,8 @@
       recommendedEnvironment = true;
 
       extraConfig = ''
-        monitor = eDP-1, 1920x1200@60, 0x0, 1
-
-        exec-once=${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
-        exec-once=eww open bar
+        exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
+        exec-once = eww open bar
 
         input {
           kb_layout  = us
@@ -31,6 +29,10 @@
         misc {
           disable_hyprland_logo = true
           disable_splash_rendering = true
+        }
+
+        animations {
+          enabled = false
         }
 
         $mainMod = SUPER
@@ -66,7 +68,7 @@
     };
 
     programs.eww = {
-      # enable = true;
+      enable = true;
       package = pkgs.eww-wayland;
       configDir = ./eww;
     };
@@ -78,6 +80,10 @@
           prompt = "λ";
         };
       };
+    };
+
+    programs.firefox = {
+      enable = true;
     };
 
     home.packages = with pkgs; [

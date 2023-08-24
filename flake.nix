@@ -47,6 +47,10 @@
           };
         in
         {
+          tar-minyatur = system {
+            system = "x86_64-linux";
+            modules = [ ./hosts/tar-minyatur ];
+          };
           tar-elendil = system {
             system = "x86_64-linux";
             modules = [ ./hosts/tar-elendil ];
