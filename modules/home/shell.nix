@@ -31,11 +31,9 @@
       };
     };
 
-    programs.kitty = {
+    programs.wezterm = {
       enable = true;
-      font = {
-        name = "FiraCode Nerd Font";
-      };
+      extraConfig = builtins.readFile ./wezterm/wezterm.lua;
     };
 
     home.packages = with pkgs; [

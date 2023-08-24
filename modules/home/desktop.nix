@@ -41,7 +41,7 @@
         bind = $mainMod, M, fullscreen
 
         bind = $mainMod, Space,  exec, fuzzel
-        bind = $mainMod, Return, exec, kitty
+        bind = $mainMod, Return, exec, wezterm
         bind = $mainMod, U,      exec, firefox
 
         bind = ,         Print, exec, grim -g "$(slurp)" ~/Pictures/Screenshots/$(date -Iseconds).png
@@ -50,9 +50,14 @@
           "\n"
           (n: let n' = builtins.toString n; in ''
             bind = $mainMod,       ${n'}, workspace, ${n'}
-            bind = $mainMod SHIFT, ${n'}, movetoworkspace, ${n'}
+            bind = $mainMod SHIFT, ${n'}, movetoworkspacesilent, ${n'}
           '')
           (lib.lists.range 1 9)}
+
+        bind = $mainMod,       [, workspace, r-1
+        bind = $mainMod,       ], workspace, r+1
+        bind = $mainMod SHIFT, [, movetoworkspacesilent, r-1
+        bind = $mainMod SHIFT, ], movetoworkspacesilent, r+1
         
         bind = $mainMod,       H, movefocus, l
         bind = $mainMod,       J, movefocus, d
