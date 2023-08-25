@@ -14,6 +14,7 @@
         editorconfig.editorconfig
 
         vscodevim.vim
+        ms-vsliveshare.vsliveshare
 
         github.copilot
 
