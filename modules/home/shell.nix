@@ -19,6 +19,8 @@
       enableBashIntegration = true;
 
       settings = {
+        shell.disabled = false;
+
         aws.disabled = true;
         azure.disabled = true;
         gcloud.disabled = true;
