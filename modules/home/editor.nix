@@ -53,10 +53,13 @@
         # Python
         ms-python.python
         ms-python.vscode-pylance
-        ms-pyright.pyright
 
         # Haskell
         haskell.haskell
+        justusadam.language-haskell
+
+        # Go
+        golang.go
 
         # Web
         dbaeumer.vscode-eslint
@@ -71,17 +74,25 @@
         "editor.fontSize" = 16;
         "workbench.colorTheme" = "Gruvbox Dark Hard";
         "workbench.iconTheme" = "material-icon-theme";
+        # "workbench.productIconTheme" = "material-product-icons";
 
         "editor.lineNumbers" = "relative";
         "editor.acceptSuggestionOnEnter" = "smart";
         "editor.inlineSuggest.enabled" = true;
 
+        "direnv.path.executable" = "${pkgs.direnv}/bin/direnv";
+
         "python.languageServer" = "Pylance";
         "python.formatting.provider" = "black";
+
+        "haskell.manageHLS" = "PATH";
 
         "nix.serverPath" = "${pkgs.nil}/bin/nil";
 
         "[jsonc]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "[typescriptreact]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
       };
