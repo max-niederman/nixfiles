@@ -46,6 +46,8 @@
 
         bind = ,         Print, exec, grim -g "$(slurp)" ~/Pictures/Screenshots/$(date -Iseconds).png
 
+        bind = $mainMod, Backspace, exec, wlogout
+
         ${lib.strings.concatMapStringsSep
           "\n"
           (n: let n' = builtins.toString n; in ''
@@ -88,6 +90,10 @@
     };
 
     programs.firefox = {
+      enable = true;
+    };
+
+    programs.wlogout = {
       enable = true;
     };
 
