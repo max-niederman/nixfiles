@@ -14,7 +14,7 @@ in
           "wheel"
           "video"
           "networkmanager"
-          "docker"
+          "podman"
         ];
         shell = pkgs.nushell;
 

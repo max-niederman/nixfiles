@@ -60,6 +60,9 @@
       fonts = with pkgs; [
         ibm-plex
 
+        source-sans
+        source-serif
+
         noto-fonts
         noto-fonts-cjk-sans
         noto-fonts-cjk-serif
@@ -78,6 +81,8 @@
         sansSerif = [ "IBM Plex Sans" "Noto Sans CJK" "Noto Color Emoji" ];
         monospace = [ "IBM Plex Mono" "Noto Sans Mono CJK" "Noto Color Emoji" ];
       };
+
+      fontDir.enable = true;
     };
 
     nix.settings = {

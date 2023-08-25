@@ -2,14 +2,11 @@
 
 {
   config = {
-    virtualisation.docker = {
+    virtualisation.podman = {
       enable = true;
       autoPrune = {
         enable = true;
         dates = "weekly";
-      };
-      daemon.settings = {
-        features.buildkit = true;
       };
     };
   };
