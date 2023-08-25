@@ -101,6 +101,9 @@
       grim
       slurp
       hyprpicker
+      pavucontrol
+
+      webcord-vencord
     ];
   };
 }

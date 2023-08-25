@@ -40,6 +40,9 @@
 
     home.packages = with pkgs; [
       carapace
+
+      htop
+      neofetch
     ];
   };
 }
