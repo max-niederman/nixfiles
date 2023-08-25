@@ -9,5 +9,9 @@
         dates = "weekly";
       };
     };
+
+    programs.wireshark = {
+      enable = true;
+    };
   };
 }
