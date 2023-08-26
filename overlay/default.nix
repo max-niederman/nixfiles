@@ -1,1 +1,3 @@
-self: super: { }
+self: super: {
+  advantage-scope = self.callPackage ./advantage-scope { };
+}

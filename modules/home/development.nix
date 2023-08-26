@@ -63,6 +63,8 @@
       gcc
 
       nixpkgs-fmt
+
+      advantage-scope
     ];
   };
 }
