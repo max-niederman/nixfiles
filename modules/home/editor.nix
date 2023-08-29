@@ -96,6 +96,10 @@
         "[typescriptreact]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
+
+        "files.associations" = {
+          "*.mdx" = "markdown";
+        };
       };
     };
 
