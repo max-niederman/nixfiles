@@ -103,6 +103,8 @@
       hyprpicker
       pavucontrol
 
+      easyeffects
+
       webcord-vencord
     ];
   };
