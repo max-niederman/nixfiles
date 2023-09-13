@@ -13,5 +13,9 @@
     programs.wireshark = {
       enable = true;
     };
+
+    environment.systemPackages = [
+      config.boot.kernelPackages.perf
+    ];
   };
 }

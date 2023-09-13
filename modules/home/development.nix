@@ -67,6 +67,7 @@
       black
 
       rustup
+      cargo-flamegraph
 
       go
       gopls
