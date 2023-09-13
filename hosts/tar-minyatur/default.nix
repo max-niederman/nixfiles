@@ -22,6 +22,7 @@
     networking = {
       hostName = "tar-minyatur";
       networkmanager.enable = true;
+      firewall.enable = false;
     };
 
     time.timeZone = "America/Los_Angeles";
