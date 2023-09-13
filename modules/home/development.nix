@@ -59,10 +59,24 @@
     home.packages = with pkgs; [
       git-crypt # transparent file encryption
 
-      rustup
       gcc
 
+      python311
+      pypy3
+      poetry
+      black
+
+      rustup
+
+      go
+      gopls
+
       nixpkgs-fmt
+
+      sqlite
+      sqlite-utils
+
+      httpie
 
       advantage-scope
     ];

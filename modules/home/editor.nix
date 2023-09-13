@@ -59,6 +59,10 @@
         haskell.haskell
         justusadam.language-haskell
 
+        # C/C++
+        ms-vscode.cpptools
+        ms-vscode.cmake-tools
+
         # Go
         golang.go
 
@@ -104,6 +108,8 @@
     };
 
     home.packages = with pkgs; [
+      neovim
+
       jetbrains.idea-ultimate
     ];
   };
