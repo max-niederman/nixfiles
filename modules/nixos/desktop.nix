@@ -2,14 +2,34 @@
 
 {
   config = {
+    services.greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = ''
+            ${pkgs.greetd.tuigreet}/bin/tuigreet \
+              --cmd Hyprland \
+              --remember \
+              --remember-session \
+              --asterisks \
+              --power-shutdown "systemctl poweroff" \
+              --power-reboot "systemctl reboot" \
+              --window-padding 4 \
+              --container-padding 4
+          '';
+          user = "greeter";
+        };
+      };
+    };
+
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;
     };
 
     i18n.inputMethod = {
-      enabled = "fcitx5";
-      fcitx5.addons = with pkgs; [ fcitx5-mozc ];
+      enabled = "ibus";
+      ibus.engines = with pkgs.ibus-engines; [ mozc ];
     };
 
     services.interception-tools = {

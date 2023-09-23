@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, osConfig, pkgs, lib, ... }:
 
 {
   config = {
@@ -6,6 +6,15 @@
       enable = true;
       envFile.source = ./nu/env.nu;
       configFile.source = ./nu/config.nu;
+
+      environmentVariables = lib.attrsets.mapAttrs
+        (n: v: ''"${v}"'')
+        {
+          inherit (osConfig.environment.variables)
+            GTK_IM_MODULE
+            QT_IM_MODULE
+            XMODIFIERS;
+        };
     };
 
     programs.bash = {

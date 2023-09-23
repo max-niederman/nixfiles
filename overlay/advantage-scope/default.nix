@@ -1,4 +1,4 @@
-{ linkFarm, fetchurl, fetchFromGitHub, buildNpmPackage,  electron, python3, makeWrapper, makeDesktopItem }:
+{ linkFarm, fetchurl, fetchFromGitHub, buildNpmPackage, electron, python3, makeWrapper, makeDesktopItem }:
 
 let
   ffmpegStatic = linkFarm "ffmpeg-static" [

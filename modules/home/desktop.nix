@@ -11,6 +11,8 @@
         exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
         exec-once = eww open bar
 
+        exec-once = webcord
+
         input {
           kb_layout  = us
           kb_variant = altgr-intl
@@ -34,6 +36,8 @@
         animations {
           enabled = false
         }
+
+        windowrulev2 = workspace 8, class:^(WebCord)$
 
         $mainMod = SUPER
 

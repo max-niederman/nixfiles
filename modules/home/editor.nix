@@ -111,6 +111,11 @@
       neovim
 
       jetbrains.idea-ultimate
+      android-studio
     ];
+
+    home.sessionVariables = {
+      EDITOR = "nvim";
+    };
   };
 }
