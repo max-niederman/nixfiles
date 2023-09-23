@@ -59,7 +59,11 @@
     home.packages = with pkgs; [
       git-crypt # transparent file encryption
 
+      virt-manager-qt
+
       gcc
+      lldb
+      gdb
 
       python311
       pypy3
@@ -68,6 +72,11 @@
 
       rustup
       cargo-flamegraph
+      cargo-depgraph
+
+      ghc
+      cabal-install
+      haskell-language-server
 
       go
       gopls

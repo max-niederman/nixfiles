@@ -15,6 +15,7 @@ in
           "video"
           "networkmanager"
           "podman"
+          "libvirtd"
           "wireshark"
         ];
         shell = pkgs.nushell;
@@ -30,9 +31,6 @@ in
     security.sudo.wheelNeedsPassword = false;
 
     services.openssh.enable = true;
-
-    # needed for shell completions
-    programs.fish.enable = true;
 
     home-manager = {
       useGlobalPkgs = true;
