@@ -23,6 +23,7 @@
         pkief.material-product-icons
 
         github.vscode-pull-request-github
+        github.vscode-github-actions
         github.codespaces
         wakatime.vscode-wakatime
 
@@ -94,6 +95,9 @@
 
         "nix.serverPath" = "${pkgs.nil}/bin/nil";
 
+        "[markdown]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
         "[jsonc]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
