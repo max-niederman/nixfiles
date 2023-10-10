@@ -88,7 +88,7 @@
 
       httpie
 
-      advantage-scope
+      # advantage-scope
     ];
   };
 }
