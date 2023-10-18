@@ -22,7 +22,6 @@
         pull.rebase = true;
       };
     };
-    programs.gh.enable = true;
 
     programs.direnv = {
       enable = true;
@@ -57,6 +56,7 @@
     };
 
     home.packages = with pkgs; [
+      gh
       git-crypt # transparent file encryption
 
       virt-manager-qt
