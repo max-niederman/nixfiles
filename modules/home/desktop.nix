@@ -10,6 +10,7 @@
       extraConfig = ''
         exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
         exec-once = eww open bar
+        exec-once = swww init
 
         exec-once = webcord
 
@@ -26,6 +27,14 @@
 
         gestures {
           workspace_swipe = true
+        }
+
+        general {
+          border_size = 0
+        }
+
+        decoration {
+          rounding = 8
         }
 
         misc {
@@ -105,6 +114,7 @@
       grim
       slurp
       hyprpicker
+      swww
       pavucontrol
 
       easyeffects
