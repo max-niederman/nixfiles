@@ -2,6 +2,11 @@
 
 {
   config = {
+    services.avahi = {
+      enable = true;
+      nssmdns = true;
+    };
+
     services.tailscale = {
       enable = true;
     };

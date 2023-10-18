@@ -70,6 +70,8 @@
       ];
     };
 
+    services.printing.enable = true;
+
     environment.systemPackages = with pkgs; [
       xdg-utils # for stuff like xdg-open
     ];
