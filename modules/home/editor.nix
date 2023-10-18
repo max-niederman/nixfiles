@@ -77,9 +77,12 @@
       ];
 
       userSettings = {
+        "window.titleBarStyle" = "custom";
+
         "editor.fontFamily" = "FiraCode Nerd Font";
         "editor.fontLigatures" = true;
         "editor.fontSize" = 16;
+
         "workbench.colorTheme" = "Gruvbox Dark Hard";
         "workbench.iconTheme" = "material-icon-theme";
         # "workbench.productIconTheme" = "material-product-icons";
@@ -96,6 +99,8 @@
         "haskell.manageHLS" = "PATH";
 
         "nix.serverPath" = "${pkgs.nil}/bin/nil";
+
+        "svelte.enable-ts-plugin" = true;
 
         "[markdown]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
