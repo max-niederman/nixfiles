@@ -50,14 +50,18 @@
 
         $mainMod = SUPER
 
+        bindm = $mainMod, mouse:272, movewindow
+        bindm = $mainMod, mouse:273, resizewindow
+
         bind = $mainMod, W, killactive
         bind = $mainMod, M, fullscreen
 
         bind = $mainMod, Space,  exec, fuzzel
         bind = $mainMod, Return, exec, wezterm
         bind = $mainMod, U,      exec, firefox
+        bind = $mainMod, C,      exec, code
 
-        bind = ,         Print, exec, grim -g "$(slurp)" ~/Pictures/Screenshots/$(date -Iseconds).png
+        bind = ,         Print, exec, grim -g "$(slurp)" - | tee ~/Pictures/Screenshots/$(date -Iseconds).png | wl-copy --type image/png
 
         bind = $mainMod, Backspace, exec, wlogout
 
