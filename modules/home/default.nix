@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./nix.nix
     ./shell.nix
     ./desktop.nix
     ./development.nix
