@@ -53,8 +53,8 @@
         serayuzgur.crates
 
         # Python
-        ms-python.python
-        ms-python.vscode-pylance
+        # ms-python.python
+        # ms-python.vscode-pylance
 
         # Haskell
         haskell.haskell
