@@ -18,7 +18,7 @@
 
         github.copilot
 
-        jdinhlife.gruvbox
+        catppuccin.catppuccin-vsc
         pkief.material-icon-theme
         pkief.material-product-icons
 
@@ -81,7 +81,7 @@
         "editor.fontLigatures" = true;
         "editor.fontSize" = 16;
 
-        "workbench.colorTheme" = "Gruvbox Dark Hard";
+        "workbench.colorTheme" = "Catppuccin Macchiato";
         "workbench.iconTheme" = "material-icon-theme";
         # "workbench.productIconTheme" = "material-product-icons";
 

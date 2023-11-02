@@ -72,6 +72,11 @@
 
     services.printing.enable = true;
 
+    xdg = {
+      mime.enable = true;
+      icons.enable = true;
+    };
+
     environment.systemPackages = with pkgs; [
       xdg-utils # for stuff like xdg-open
     ];
@@ -79,7 +84,7 @@
     services.gnome.gnome-keyring.enable = true;
 
     fonts = {
-      fonts = with pkgs; [
+      packages = with pkgs; [
         ibm-plex
 
         source-sans
@@ -96,7 +101,7 @@
       ];
 
       # use user-specified fonts rather than defaults
-      enableDefaultFonts = false;
+      enableDefaultPackages = false;
 
       fontconfig.defaultFonts = {
         serif = [ "IBM Plex Serif" "Noto Serif CJK" "Noto Color Emoji" ];

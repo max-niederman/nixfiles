@@ -7,88 +7,130 @@
       package = null;
       recommendedEnvironment = true;
 
-      extraConfig = ''
-        exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
-        exec-once = eww open bar
-        exec-once = swww init
+      extraConfig =
+        let
+          catppuccinMacchiato = pkgs.fetchurl {
+            url = "https://github.com/catppuccin/hyprland/releases/download/v1.2/macchiato.conf";
+            hash = "sha256-e9aRm6w9cz/zapyvLIHFAFAkyMfbyS64Ie8axLlXorI=";
+          };
+        in
+        ''
+          source = ${catppuccinMacchiato}
 
-        exec-once = webcord
+          exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
+          exec-once = eww open bar
+          exec-once = swww init
 
-        input {
-          kb_layout  = us
-          kb_variant = altgr-intl
+          exec-once = webcord
 
-          follow_mouse = 1
+          input {
+            kb_layout  = us
+            kb_variant = altgr-intl
 
-          touchpad {
-            natural_scroll = true
+            follow_mouse = 1
+
+            touchpad {
+              natural_scroll = true
+            }
           }
-        }
 
-        gestures {
-          workspace_swipe = true
-        }
+          gestures {
+            workspace_swipe = true
+          }
 
-        general {
-          border_size = 0
-        }
+          general {
+            gaps_out = 25
+            gaps_in = 10
 
-        decoration {
-          rounding = 8
-        }
+            border_size = 0
+          }
 
-        misc {
-          disable_hyprland_logo = true
-          disable_splash_rendering = true
-        }
+          decoration {
+            rounding = 8
+          }
 
-        animations {
-          enabled = false
-        }
+          misc {
+            disable_hyprland_logo = true
+            disable_splash_rendering = true
+          }
 
-        windowrulev2 = workspace 8, class:^(WebCord)$
+          animations {
+            enabled = false
+          }
 
-        $mainMod = SUPER
+          windowrulev2 = workspace 8, class:^(WebCord)$
 
-        bindm = $mainMod, mouse:272, movewindow
-        bindm = $mainMod, mouse:273, resizewindow
+          $mainMod = SUPER
 
-        bind = $mainMod, W, killactive
-        bind = $mainMod, M, fullscreen
+          bindm = $mainMod, mouse:272, movewindow
+          bindm = $mainMod, mouse:273, resizewindow
 
-        bind = $mainMod, Space,  exec, fuzzel
-        bind = $mainMod, Return, exec, wezterm
-        bind = $mainMod, U,      exec, firefox
-        bind = $mainMod, C,      exec, code
+          bind = $mainMod, W, killactive
+          bind = $mainMod, M, fullscreen
 
-        bind = ,         Print, exec, grim -g "$(slurp)" - | tee ~/Pictures/Screenshots/$(date -Iseconds).png | wl-copy --type image/png
+          bind = $mainMod, Space,  exec, fuzzel
+          bind = $mainMod, Return, exec, wezterm
+          bind = $mainMod, U,      exec, firefox
+          bind = $mainMod, C,      exec, code
 
-        bind = $mainMod, Backspace, exec, wlogout
+          bind = ,         Print, exec, grim -g "$(slurp)" - | tee ~/Pictures/Screenshots/$(date -Iseconds).png | wl-copy --type image/ 
 
-        ${lib.strings.concatMapStringsSep
-          "\n"
-          (n: let n' = builtins.toString n; in ''
-            bind = $mainMod,       ${n'}, workspace, ${n'}
-            bind = $mainMod SHIFT, ${n'}, movetoworkspacesilent, ${n'}
-          '')
-          (lib.lists.range 1 9)}
+          bind = $mainMod, Backspace, exec, wlogout
 
-        bind = $mainMod,       [, workspace, r-1
-        bind = $mainMod,       ], workspace, r+1
-        bind = $mainMod SHIFT, [, movetoworkspacesilent, r-1
-        bind = $mainMod SHIFT, ], movetoworkspacesilent, r+1
+          ${lib.strings.concatMapStringsSep
+              "\n"
+              (n: let n' = builtins.toString n;
+              in ''
+              bind = $mainMod,       ${n'}, workspace, ${n'}
+              bind = $mainMod SHIFT, ${n'}, movetoworkspacesilent, ${n'}
+            '')
+              (lib.lists.range 1 9)}
+
+          bind = $mainMod,       [, workspace, r-1
+          bind = $mainMod,       ], workspace, r+1
+          bind = $mainMod SHIFT, [, movetoworkspacesilent, r-1
+          bind = $mainMod SHIFT, ], movetoworkspacesilent, r+1
         
-        bind = $mainMod,       H, movefocus, l
-        bind = $mainMod,       J, movefocus, d
-        bind = $mainMod,       K, movefocus, u
-        bind = $mainMod,       L, movefocus, r
-        bind = $mainMod SHIFT, H, movewindow, l
-        bind = $mainMod SHIFT, J, movewindow, d
-        bind = $mainMod SHIFT, K, movewindow, u
-        bind = $mainMod SHIFT, L, movewindow, r
+          bind = $mainMod,       H, movefocus, l
+          bind = $mainMod,       J, movefocus, d
+          bind = $mainMod,       K, movefocus, u
+          bind = $mainMod,       L, movefocus, r
+          bind = $mainMod SHIFT, H, movewindow, l
+          bind = $mainMod SHIFT, J, movewindow, d
+          bind = $mainMod SHIFT, K, movewindow, u
+          bind = $mainMod SHIFT, L, movewindow, r
 
-        bind = $mainMod,       S, togglefloating
-      '';
+          bind = $mainMod,       S, togglefloating
+        '';
+    };
+
+    gtk = {
+      enable = true;
+
+      theme = {
+        name = "Catppuccin-Macchiato-Standard-Blue-Dark";
+        package = pkgs.catppuccin-gtk.override {
+          variant = "macchiato";
+        };
+      };
+
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.catppuccin-papirus-folders.override {
+          flavor = "macchiato";
+        };
+      };
+
+      cursorTheme = {
+        name = "Catppuccin-Macchiato-Dark-Cursors";
+        package = pkgs.catppuccin-cursors.macchiatoDark;
+      };
+    };
+
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
     };
 
     programs.eww = {
@@ -112,6 +154,11 @@
 
     programs.wlogout = {
       enable = true;
+      style = ''
+        window {
+          background-color: 
+        }
+      '';
     };
 
     home.packages = with pkgs; [
