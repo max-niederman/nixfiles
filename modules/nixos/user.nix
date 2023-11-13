@@ -18,7 +18,6 @@ in
           "libvirtd"
           "wireshark"
         ];
-        shell = pkgs.nushell;
 
         inherit (secrets) hashedPassword;
 
@@ -27,6 +26,10 @@ in
         ];
       };
     };
+
+    environment.systemPackages = with pkgs; [
+      nushell
+    ];
 
     security.sudo.wheelNeedsPassword = false;
 

@@ -89,6 +89,8 @@
         "editor.acceptSuggestionOnEnter" = "smart";
         "editor.inlineSuggest.enabled" = true;
 
+        "terminal.integrated.shell.linux" = "${pkgs.nushell}/bin/nu";
+
         "direnv.path.executable" = "${pkgs.direnv}/bin/direnv";
 
         "python.languageServer" = "Pylance";
