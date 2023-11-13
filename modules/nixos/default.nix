@@ -8,5 +8,6 @@
     ./crypto.nix
     ./development.nix
     ./network.nix
+    ./boot.nix
   ];
 }
