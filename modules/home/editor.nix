@@ -53,8 +53,8 @@
         serayuzgur.crates
 
         # Python
-        # ms-python.python
-        # ms-python.vscode-pylance
+        ms-python.python
+        ms-python.vscode-pylance
 
         # Haskell
         haskell.haskell
@@ -62,6 +62,7 @@
 
         # C/C++
         ms-vscode.cpptools
+        twxs.cmake
         ms-vscode.cmake-tools
 
         # Go
@@ -89,7 +90,12 @@
         "editor.acceptSuggestionOnEnter" = "smart";
         "editor.inlineSuggest.enabled" = true;
 
-        "terminal.integrated.shell.linux" = "${pkgs.nushell}/bin/nu";
+        "terminal.integrated.profiles.linux" = {
+          "nu" = {
+            path = "/run/current-system/sw/bin/nu";
+          };
+        };
+        "terminal.integrated.defaultProfile.linux" = "nu";
 
         "direnv.path.executable" = "${pkgs.direnv}/bin/direnv";
 
@@ -106,6 +112,9 @@
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
         "[jsonc]" = {
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        };
+        "[typescript]" = {
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
         };
         "[typescriptreact]" = {

@@ -8,18 +8,13 @@
       recommendedEnvironment = true;
 
       extraConfig =
-        let
-          catppuccinMacchiato = pkgs.fetchurl {
-            url = "https://github.com/catppuccin/hyprland/releases/download/v1.2/macchiato.conf";
-            hash = "sha256-e9aRm6w9cz/zapyvLIHFAFAkyMfbyS64Ie8axLlXorI=";
-          };
-        in
         ''
-          source = ${catppuccinMacchiato}
-
           exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
           exec-once = eww open bar
-          exec-once = swww init
+
+          # why the fuck is the sleep necessary???
+          exec-once = swww init --no-daemon
+          exec-once = sleep 1 && swww img -t none ~/Pictures/Wallpapers/$(ls ~/Pictures/Wallpapers | shuf -n 1)
 
           exec-once = webcord
 
@@ -59,6 +54,8 @@
           }
 
           windowrulev2 = workspace 8, class:^(WebCord)$
+          windowrulev2 = workspace 7, clastitle:^(Polaris Simulator)$
+          windowrulev2 = float      , clastitle:^(Polaris Simulator)$
 
           $mainMod = SUPER
 
@@ -73,7 +70,7 @@
           bind = $mainMod, U,      exec, firefox
           bind = $mainMod, C,      exec, code
 
-          bind = ,         Print, exec, grim -g "$(slurp)" - | tee ~/Pictures/Screenshots/$(date -Iseconds).png | wl-copy --type image/ 
+          bind = ,         Print, exec, grim -g "$(slurp)" - | tee "~/Pictures/Screenshots/$(date -Iseconds).png" | wl-copy --type image/png
 
           bind = $mainMod, Backspace, exec, wlogout
 
