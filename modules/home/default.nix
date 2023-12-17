@@ -4,7 +4,7 @@
   imports = [
     ./nix.nix
     ./shell.nix
-    ./desktop.nix
+    ./desktop
     ./development.nix
     ./editor.nix
   ];

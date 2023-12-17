@@ -1,0 +1,41 @@
+* {
+  all: unset;
+}
+
+.bar {
+  background-color: #3a3a3a;
+  color: #b0b4bc;
+  padding: 10px;
+
+  font-family: "Iosevka Nerd Font ";
+}
+
+.rightside {
+  margin-right: 15px;
+}
+
+.rightside slider {
+  all: unset;
+  color: #ffd5cd;
+}
+
+.metric {
+    font-size: 20px;
+}
+
+.metric scale trough highlight {
+  all: unset;
+  background-color: #d35d6e;
+  color: #000000;
+  border-radius: 10px;
+}
+.metric scale trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 7px;
+  min-width: 50px;
+  margin-left: 16px;
+  margin-right: 20px;
+}
+
