@@ -27,13 +27,31 @@
 
     time.timeZone = "America/Los_Angeles";
 
+    hardware.opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+
+    services.xserver.videoDrivers = [ "nvidia" ];
+
+    hardware.nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      modesetting.enable = true;
+      nvidiaSettings = true;
+    };
+
+    environment.variables = {
+      WLR_NO_HARDWARE_CURSORS = "1";
+    };
+
     home-manager.sharedModules = [{
       # use the state version of the system, from the **NixOS** config
       home.stateVersion = config.system.stateVersion;
 
       wayland.windowManager.hyprland.extraConfig = ''
-        monitor = DP-1,     2560x1440@144, 0x0,    1
-        monitor = DP-2,     2560x1440@120,  2560x0, 1
+        monitor = DP-2,     2560x1440@144, 0x0,    1
+        monitor = DP-3,     2560x1440@120,  2560x0, 1
         monitor = HDMI-A-1, 1920x1080@75,  5120x0, 1
 
         workspace = 1, monitor:DP-1, default:true
