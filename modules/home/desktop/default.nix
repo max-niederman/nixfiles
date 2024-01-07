@@ -76,11 +76,12 @@
 
           ${lib.strings.concatMapStringsSep
               "\n"
-              (n: let n' = builtins.toString n;
+              (n: let
+                n' = builtins.toString n;
               in ''
-              bind = $mainMod,       ${n'}, workspace, ${n'}
-              bind = $mainMod SHIFT, ${n'}, movetoworkspacesilent, ${n'}
-            '')
+                bind = $mainMod,       ${n'}, workspace, ${n'}
+                bind = $mainMod SHIFT, ${n'}, movetoworkspacesilent, ${n'}
+              '')
               (lib.lists.range 1 9)}
 
           bind = $mainMod,       [, workspace, r-1
