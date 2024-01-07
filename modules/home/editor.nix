@@ -69,6 +69,7 @@
         golang.go
 
         # Web
+        ritwickdey.liveserver
         dbaeumer.vscode-eslint
         esbenp.prettier-vscode
         svelte.svelte-vscode
