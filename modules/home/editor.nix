@@ -74,6 +74,12 @@
         esbenp.prettier-vscode
         svelte.svelte-vscode
         astro-build.astro-vscode
+
+        # Java
+        redhat.java
+        vscjava.vscode-java-debug
+        vscjava.vscode-java-test
+        vscjava.vscode-gradle
       ];
 
       userSettings = {
