@@ -65,10 +65,20 @@
     };
 
     home.packages = with pkgs; [
+      # for autocomplete
       carapace
 
-      htop
+      # fetch
       neofetch
+
+      # resource monitor
+      htop
+      iftop
+
+      # utilities
+      file
+      nmap
+      dnsutils
     ];
   };
 }
