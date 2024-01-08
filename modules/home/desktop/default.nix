@@ -150,6 +150,10 @@
       enable = true;
     };
 
+    programs.chromium = {
+      enable = true;
+    };
+
     programs.wlogout = {
       enable = true;
       style = ''
@@ -170,6 +174,7 @@
     '';
 
     home.packages = with pkgs; [
+      wl-clipboard
       grim
       slurp
       hyprpicker
