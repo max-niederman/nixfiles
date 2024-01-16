@@ -78,6 +78,8 @@
       cabal-install
       haskell-language-server
 
+      julia-bin
+
       go
       gopls
 

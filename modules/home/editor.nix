@@ -60,6 +60,9 @@
         haskell.haskell
         justusadam.language-haskell
 
+        # Julia
+        julialang.language-julia
+
         # C/C++
         ms-vscode.cpptools
         twxs.cmake
