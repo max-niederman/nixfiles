@@ -17,6 +17,7 @@
         ms-vsliveshare.vsliveshare
 
         github.copilot
+        github.copilot-chat
 
         catppuccin.catppuccin-vsc
         pkief.material-icon-theme
@@ -141,7 +142,7 @@
       neovim
 
       jetbrains.idea-ultimate
-      android-studio
+      androidStudioPackages.beta
     ];
 
     home.sessionVariables = {
