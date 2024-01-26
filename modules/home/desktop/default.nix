@@ -4,8 +4,6 @@
   config = {
     wayland.windowManager.hyprland = {
       enable = true;
-      package = null;
-      recommendedEnvironment = true;
 
       extraConfig =
         ''
@@ -183,7 +181,8 @@
 
       easyeffects
 
-      webcord-vencord
+      wine-wayland
+      lutris
     ];
   };
 }
