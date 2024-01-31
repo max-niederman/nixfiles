@@ -13,9 +13,14 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... }:
+  outputs = { self, nixpkgs, home-manager, hyprland, nix-alien, ... }:
     rec {
       overlays.default = import ./overlay;
 
@@ -26,7 +31,10 @@
           defaultModules = [
             {
               nixpkgs = {
-                overlays = [ overlays.default ];
+                overlays = [
+                  nix-alien.overlays.default
+                  overlays.default
+                ];
                 config = {
                   allowUnfree = true;
                 };

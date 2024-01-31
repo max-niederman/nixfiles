@@ -9,5 +9,6 @@
     ./development.nix
     ./network.nix
     ./boot.nix
+    ./compat.nix
   ];
 }
