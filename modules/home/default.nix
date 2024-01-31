@@ -7,5 +7,6 @@
     ./desktop
     ./development.nix
     ./editor.nix
+    ./compat.nix
   ];
 }
