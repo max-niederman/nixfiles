@@ -18,7 +18,12 @@
       enable = true;
     };
 
+    services.ollama = {
+      enable = true;
+    };
+
     environment.systemPackages = [
+      config.services.ollama.package
       config.boot.kernelPackages.perf
     ];
   };
