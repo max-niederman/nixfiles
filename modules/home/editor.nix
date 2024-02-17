@@ -115,6 +115,7 @@
 
         "haskell.manageHLS" = "PATH";
 
+        "nix.enableLanguageServer" = true;
         "nix.serverPath" = "${pkgs.nil}/bin/nil";
 
         "svelte.enable-ts-plugin" = true;
