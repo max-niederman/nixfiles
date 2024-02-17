@@ -59,11 +59,15 @@
       gh
       git-crypt # transparent file encryption
 
+      distrobox
       virt-manager-qt
 
-      gcc
       lldb
       gdb
+      lurk
+      hyperfine
+
+      gcc
 
       python311
       pypy3
@@ -82,6 +86,8 @@
 
       go
       gopls
+
+      jdk
 
       nixpkgs-fmt
 

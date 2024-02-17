@@ -69,16 +69,21 @@
       carapace
 
       # fetch
-      neofetch
+      pfetch-rs
+      cpufetch
 
       # resource monitor
       htop
       iftop
 
-      # utilities
-      file
-      nmap
+      # network utilities
+      iputils
       dnsutils
+      nmap
+      caddy
+
+      # misc. utilities
+      file
     ];
   };
 }

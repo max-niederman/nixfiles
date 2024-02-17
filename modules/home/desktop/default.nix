@@ -178,11 +178,17 @@
       hyprpicker
       swww
       pavucontrol
+      gnome.gnome-system-monitor
+      gnome.nautilus
+      gnome.pomodoro
 
       easyeffects
 
       wine-wayland
       lutris
+
+      mpv
+      jellyfin-mpv-shim
     ];
   };
 }
