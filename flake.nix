@@ -20,7 +20,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, nix-alien, ... }:
+  outputs = { nixpkgs, home-manager, hyprland, nix-alien, ... }:
     rec {
       overlays.default = import ./overlay;
 
