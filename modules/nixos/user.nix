@@ -15,6 +15,7 @@ in
           "video"
           "networkmanager"
           "podman"
+          "kvm"
           "libvirtd"
           "wireshark"
         ];
