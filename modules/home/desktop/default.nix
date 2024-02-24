@@ -184,7 +184,7 @@
 
       easyeffects
 
-      wine-wayland
+      wine64Packages.wayland
       lutris
 
       mpv
