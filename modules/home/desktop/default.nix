@@ -10,9 +10,7 @@
           exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
           exec-once = eww open bar
 
-          exec-once = swww init --no-daemon
-          # why the fuck is this sleep necessary????
-          exec-once = sleep 1 && nu ${./wall.nu} daemon
+          exec-once = waypaper --restore --backend swww
 
           exec-once = webcord
 
@@ -167,16 +165,13 @@
       };
     };
 
-    programs.nushell.configFile.text = ''
-      use ${./.}/wall.nu
-    '';
-
     home.packages = with pkgs; [
       wl-clipboard
       grim
       slurp
       hyprpicker
       swww
+      waypaper
       pavucontrol
       gnome.gnome-system-monitor
       gnome.nautilus
