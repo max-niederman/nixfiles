@@ -4,19 +4,27 @@
   config = {
     programs.nushell = {
       enable = true;
-      configFile.text = ''
-        let carapace_completer = { |spans| carapace ...$spans.0 nushell ...$spans | from json }
+      configFile.text =
+        let
+          initAtuin = pkgs.runCommand "init-atuin.nu"
+            { buildInputs = with pkgs; [ atuin ]; }
+            "atuin init nu > $out";
+        in
+        ''
+          source ${initAtuin}
 
-        $env.config = {
-            show_banner: false
-            completions: {
-                external: {
-                    enable: true
-                    completer: $carapace_completer
-                }
-            }
-        }
-      '';
+          let carapace_completer = { |spans| carapace ...$spans.0 nushell ...$spans | from json }
+
+          $env.config = {
+              show_banner: false
+              completions: {
+                  external: {
+                      enable: true
+                      completer: $carapace_completer
+                  }
+              }
+          }
+        '';
     };
 
     programs.bash = {
@@ -65,7 +73,8 @@
     };
 
     home.packages = with pkgs; [
-      # for autocomplete
+      # assumed ambient by config
+      atuin
       carapace
 
       # fetch

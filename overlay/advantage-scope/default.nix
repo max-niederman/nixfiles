@@ -1,6 +1,6 @@
 { lib, stdenv, fetchurl, appimageTools, makeDesktopItem }:
 
-let 
+let
   pname = "advantagescope";
   version = "3.1.0";
 
@@ -17,7 +17,7 @@ let
     url = "https://raw.githubusercontent.com/Mechanical-Advantage/AdvantageScope/main/icons/window-icon.png";
     hash = "sha256-gqcCqthqM2g4sylg9zictKwRggbaALQk9ln/NaFHxdY=";
   };
-in 
+in
 appimageTools.wrapType2 {
   inherit pname version;
 
