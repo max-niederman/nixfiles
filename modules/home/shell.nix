@@ -11,19 +11,17 @@
             "atuin init nu > $out";
         in
         ''
-          source ${initAtuin}
-
-          let carapace_completer = { |spans| carapace ...$spans.0 nushell ...$spans | from json }
-
           $env.config = {
-              show_banner: false
+              show_banner: false,
               completions: {
-                  external: {
-                      enable: true
-                      completer: $carapace_completer
-                  }
+                  case_sensitive: false,
+                  quick: true,
+                  partial: true,
+                  algorithm: 'fuzzy',
               }
           }
+
+          source ${initAtuin}
         '';
     };
 
@@ -72,12 +70,16 @@
       '';
     };
 
+    programs.carapace = {
+      enable = true;
+    };
+
     home.packages = with pkgs; [
       # assumed ambient by config
       atuin
-      carapace
 
       # fetch
+      neofetch
       pfetch-rs
       cpufetch
 
