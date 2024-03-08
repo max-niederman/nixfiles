@@ -14,6 +14,7 @@ in
           "wheel"
           "video"
           "networkmanager"
+          "dialout"
           "podman"
           "kvm"
           "libvirtd"
