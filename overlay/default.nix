@@ -1,5 +1,7 @@
 self: super: {
-  advantage-scope = self.callPackage ./advantage-scope { };
+  advantagescope = self.callPackage ./advantagescope { };
+  choreo = self.callPackage ./choreo { };
+  pathplanner = self.callPackage ./pathplanner { };
 
   vscode-extensions = super.vscode-extensions // {
     julialang.language-julia = self.vscode-utils.extensionFromVscodeMarketplace {

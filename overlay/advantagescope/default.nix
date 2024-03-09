@@ -14,7 +14,7 @@ let
   };
 
   icon = fetchurl {
-    url = "https://raw.githubusercontent.com/Mechanical-Advantage/AdvantageScope/main/icons/window-icon.png";
+    url = "https://raw.githubusercontent.com/Mechanical-Advantage/AdvantageScope/v${version}/icons/window-icon.png";
     hash = "sha256-gqcCqthqM2g4sylg9zictKwRggbaALQk9ln/NaFHxdY=";
   };
 in

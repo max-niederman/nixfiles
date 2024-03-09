@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   config = {
@@ -75,6 +75,7 @@
       black
 
       rustup
+      cargo-generate
       cargo-flamegraph
       cargo-depgraph
 
@@ -96,7 +97,9 @@
 
       httpie
 
-      advantage-scope
+      advantagescope
+      choreo
+      pathplanner
     ];
   };
 }
