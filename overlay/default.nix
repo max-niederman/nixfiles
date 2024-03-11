@@ -1,8 +1,4 @@
 self: super: {
-  advantagescope = self.callPackage ./advantagescope { };
-  choreo = self.callPackage ./choreo { };
-  pathplanner = self.callPackage ./pathplanner { };
-
   vscode-extensions = super.vscode-extensions // {
     julialang.language-julia = self.vscode-utils.extensionFromVscodeMarketplace {
       name = "language-julia";

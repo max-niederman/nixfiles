@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    frc-nix = {
+      url = "github:FRC3636/frc-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +25,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, hyprland, nix-alien, ... }:
+  outputs = { nixpkgs, home-manager, frc-nix, hyprland, nix-alien, ... }:
     rec {
       overlays.default = import ./overlay;
 
@@ -32,6 +37,7 @@
             {
               nixpkgs = {
                 overlays = [
+                  frc-nix.overlays.default
                   nix-alien.overlays.default
                   overlays.default
                 ];

@@ -100,6 +100,9 @@
       advantagescope
       choreo
       pathplanner
+      wpilib.glass
+      wpilib.sysid
+      wpilib.datalogtool
     ];
   };
 }
