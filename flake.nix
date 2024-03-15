@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
+    secrets.url = "git+ssh://git@github.com/max-niederman/nixfiles-secrets";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +27,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, frc-nix, hyprland, nix-alien, ... }:
+  outputs = { nixpkgs, secrets, home-manager, frc-nix, hyprland, nix-alien, ... }:
     rec {
       overlays.default = import ./overlay;
 
@@ -58,6 +60,7 @@
           ];
           system = { system, modules }: nixpkgs.lib.nixosSystem {
             modules = defaultModules ++ modules;
+            specialArgs = { inherit secrets; };
           };
         in
         {

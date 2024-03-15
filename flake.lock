@@ -311,7 +311,23 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "nix-alien": "nix-alien",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "secrets": "secrets"
+      }
+    },
+    "secrets": {
+      "locked": {
+        "lastModified": 1710540379,
+        "narHash": "sha256-mkU3pIkN7upfDPpR0uNwiqrd2Uc/PRRCKA8Arptmbj0=",
+        "ref": "refs/heads/main",
+        "rev": "6063f698a07fb9612919aee067fdb7ad5cd954da",
+        "revCount": 2,
+        "type": "git",
+        "url": "ssh://git@github.com/max-niederman/nixfiles-secrets"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/max-niederman/nixfiles-secrets"
       }
     },
     "systems": {

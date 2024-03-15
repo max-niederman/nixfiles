@@ -1,8 +1,5 @@
-{ config, pkgs, lib, ... }:
+{ secrets, pkgs, lib, ... }:
 
-let
-  secrets = import ../../secrets.nix;
-in
 {
   config = {
     users = {
