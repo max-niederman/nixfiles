@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ ... }:
 
 {
   config = {
@@ -11,7 +11,6 @@
       gnupg.agent = {
         enable = true;
         enableSSHSupport = true;
-        pinentryFlavor = "qt";
       };
     };
   };

@@ -4,25 +4,19 @@
   config = {
     programs.nushell = {
       enable = true;
-      configFile.text =
-        let
-          initAtuin = pkgs.runCommand "init-atuin.nu"
-            { buildInputs = with pkgs; [ atuin ]; }
-            "atuin init nu > $out";
-        in
-        ''
-          $env.config = {
-              show_banner: false,
-              completions: {
-                  case_sensitive: false,
-                  quick: true,
-                  partial: true,
-                  algorithm: 'fuzzy',
-              }
-          }
+      configFile.text = ''
+        $env.config = {
+            show_banner: false,
+            completions: {
+                case_sensitive: false,
+                quick: true,
+                partial: true,
+                algorithm: 'fuzzy',
+            }
+        }
 
-          source ${initAtuin}
-        '';
+        source ${pkgs.atuin.src}/atuin/src/shell/atuin.nu
+      '';
     };
 
     programs.bash = {
