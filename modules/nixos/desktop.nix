@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   config = {
@@ -20,16 +20,6 @@
           user = "greeter";
         };
       };
-    };
-
-    programs.hyprland = {
-      enable = true;
-      xwayland.enable = true;
-    };
-
-    i18n.inputMethod = {
-      enabled = "fcitx5";
-      fcitx5.addons = with pkgs; [ fcitx5-mozc ];
     };
 
     services.interception-tools = {
@@ -60,15 +50,6 @@
       mediaKeys.enable = true;
     };
     security.rtkit.enable = true;
-
-    programs.light.enable = true;
-    services.actkbd = {
-      enable = true;
-      bindings = [
-        { keys = [ 224 ]; events = [ "key" ]; command = "/run/wrappers/bin/light -A 10"; }
-        { keys = [ 225 ]; events = [ "key" ]; command = "/run/wrappers/bin/light -U 10"; }
-      ];
-    };
 
     services.printing.enable = true;
 
@@ -110,11 +91,6 @@
       };
 
       fontDir.enable = true;
-    };
-
-    nix.settings = {
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
 
     programs.steam = {
