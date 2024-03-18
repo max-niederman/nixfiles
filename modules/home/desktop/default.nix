@@ -168,6 +168,11 @@
       '';
     };
 
+    # for Vesktop
+    services.arrpc = {
+      enable = true;
+    };
+
     home.file = {
       "Pictures/Wallpapers" = {
         source = ./wallpapers;
@@ -186,10 +191,10 @@
       gnome.nautilus
       gnome.pomodoro
 
+      vesktop
       easyeffects
 
       wine64Packages.wayland
-      lutris
 
       mpv
       jellyfin-mpv-shim
