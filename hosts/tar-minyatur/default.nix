@@ -45,6 +45,8 @@
       WLR_NO_HARDWARE_CURSORS = "1";
     };
 
+    services.ollama.acceleration = "cuda";
+
     home-manager.sharedModules = [{
       # use the state version of the system, from the **NixOS** config
       home.stateVersion = config.system.stateVersion;

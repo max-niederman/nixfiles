@@ -33,6 +33,8 @@
       nvidiaBusId = "PCI:1:0:0";
     };
 
+    services.ollama.acceleration = "cuda";
+
     hardware.bluetooth.enable = true;
     services.blueman.enable = true;
 
