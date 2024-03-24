@@ -13,5 +13,12 @@ self: super: {
       version = "5.8.0";
       sha256 = "sha256-IU/looiu6tluAp8u6MeSNCd7B8SSMZ6CEZ64mMsTNmU=";
     };
+
+    sourcegraph.cody-ai = extensionFromVscodeMarketplace {
+      name = "cody-ai";
+      publisher = "sourcegraph";
+      version = "1.11.1711206676";
+      sha256 = "sha256-PVR+loiDnGfgr79w8tGh/loiDsSNKBAeC26G7bPqbzQ=";
+    };
   });
 }

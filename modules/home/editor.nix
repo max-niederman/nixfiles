@@ -16,8 +16,9 @@
         vscodevim.vim
         ms-vsliveshare.vsliveshare
 
-        github.copilot
-        github.copilot-chat
+        sourcegraph.cody-ai
+        # github.copilot
+        # github.copilot-chat
 
         catppuccin.catppuccin-vsc
         pkief.material-icon-theme
@@ -102,6 +103,13 @@
         "editor.lineNumbers" = "relative";
         "editor.acceptSuggestionOnEnter" = "smart";
         "editor.inlineSuggest.enabled" = true;
+
+        "cody.autocomplete.advanced.provider" = "experimental-ollama";
+        "cody.experimental.ollamaChat" = true;
+        "cody.autocomplete.experimental.ollamaOptions" = {
+          "url" = "http://localhost:11434";
+          "model" = "codellama";
+        };
 
         "terminal.integrated.profiles.linux" = {
           "nu" = {
