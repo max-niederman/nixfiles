@@ -62,6 +62,8 @@
       xdg-utils # for stuff like xdg-open
     ];
 
+    programs.dconf.enable = true;
+
     services.gnome.gnome-keyring.enable = true;
 
     fonts = {
