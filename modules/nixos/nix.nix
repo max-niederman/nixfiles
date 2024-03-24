@@ -16,7 +16,7 @@
         substituters = [
           "https://nix-community.cachix.org"
           "https://hyprland.cachix.org"
-          "https://cache.garnix.io"
+          "https://cache.garnix.io?priority=30"
         ];
         trusted-public-keys = [
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -24,17 +24,6 @@
           "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
         ];
       };
-
-      distributedBuilds = true;
-      buildMachines = [
-        {
-          hostName = "eu.nixbuild.net";
-          systems = [ "aarch64-linux" ];
-          protocol = "ssh";
-          maxJobs = 100;
-          supportedFeatures = [ "benchmark" "big-parallel" ];
-        }
-      ];
     };
 
     programs.ssh = {
