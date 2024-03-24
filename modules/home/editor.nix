@@ -26,7 +26,9 @@
         github.vscode-pull-request-github
         github.vscode-github-actions
         github.codespaces
+
         wakatime.vscode-wakatime
+        icrawl.discord-vscode
 
         vadimcn.vscode-lldb
 
