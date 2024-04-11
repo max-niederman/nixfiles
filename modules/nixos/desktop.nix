@@ -53,6 +53,8 @@
 
     services.printing.enable = true;
 
+    hardware.opentabletdriver.enable = true;
+
     xdg = {
       mime.enable = true;
       icons.enable = true;
