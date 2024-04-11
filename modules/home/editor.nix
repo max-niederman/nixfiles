@@ -16,9 +16,9 @@
         vscodevim.vim
         ms-vsliveshare.vsliveshare
 
-        sourcegraph.cody-ai
-        # github.copilot
-        # github.copilot-chat
+        # sourcegraph.cody-ai
+        github.copilot
+        github.copilot-chat
 
         catppuccin.catppuccin-vsc
         pkief.material-icon-theme
