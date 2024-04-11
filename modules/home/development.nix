@@ -59,9 +59,6 @@
       gh
       git-crypt # transparent file encryption
 
-      distrobox
-      virt-manager-qt
-
       lldb
       gdb
       lurk
@@ -70,7 +67,6 @@
       gcc
 
       python311
-      pypy3
       poetry
       black
 
@@ -85,9 +81,6 @@
 
       julia-bin
 
-      go
-      gopls
-
       jdk
 
       nixpkgs-fmt
@@ -96,13 +89,6 @@
       sqlite-utils
 
       httpie
-
-      advantagescope
-      choreo
-      pathplanner
-      wpilib.glass
-      wpilib.sysid
-      wpilib.datalogtool
     ];
   };
 }
