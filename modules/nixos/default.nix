@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ ... }:
 
 {
   imports = [
@@ -9,6 +9,5 @@
     ./development.nix
     ./network.nix
     ./boot.nix
-    ./compat.nix
   ];
 }

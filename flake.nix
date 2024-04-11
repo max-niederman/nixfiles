@@ -20,14 +20,9 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nix-alien = {
-      url = "github:thiagokokada/nix-alien";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { nixpkgs, secrets, home-manager, frc-nix, hyprland, nix-alien, ... }:
+  outputs = { nixpkgs, secrets, home-manager, frc-nix, hyprland, ... }:
     rec {
       overlays.default = import ./overlay;
 
@@ -40,7 +35,6 @@
               nixpkgs = {
                 overlays = [
                   frc-nix.overlays.default
-                  nix-alien.overlays.default
                   overlays.default
                 ];
                 config = {
