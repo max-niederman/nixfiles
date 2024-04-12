@@ -2,6 +2,13 @@
 
 {
   config = {
+    # for Git signing
+    programs.gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+      pinentryPackage = pkgs.pinentry-gnome3;
+    };
+
     virtualisation.podman = {
       enable = true;
       autoPrune = {
