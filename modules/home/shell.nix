@@ -80,14 +80,17 @@
       # resource monitor
       htop
       iftop
+      nvtop
 
       # network utilities
       iputils
       dnsutils
       nmap
       caddy
+      dublin-traceroute
 
       # misc. utilities
+      ripgrep
       file
     ];
   };

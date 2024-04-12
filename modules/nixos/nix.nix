@@ -26,6 +26,9 @@
       };
     };
 
+    programs.nix-index.enable = true;
+    programs.command-not-found.enable = false;
+
     programs.ssh = {
       extraConfig = ''
         Host eu.nixbuild.net

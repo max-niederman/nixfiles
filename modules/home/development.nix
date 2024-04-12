@@ -74,6 +74,7 @@
       cargo-generate
       cargo-flamegraph
       cargo-depgraph
+      cargo-nextest
 
       ghc
       cabal-install
@@ -89,6 +90,8 @@
       sqlite-utils
 
       httpie
+
+      graphviz
     ];
   };
 }

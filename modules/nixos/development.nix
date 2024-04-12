@@ -19,6 +19,10 @@
       package = pkgs.wireshark;
     };
 
+    programs.dublin-traceroute = {
+      enable = true;
+    };
+
     services.ollama = {
       enable = true;
     };
