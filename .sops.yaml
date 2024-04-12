@@ -1,0 +1,8 @@
+keys:
+  - &admin age1wk7ls0mq5patn4hkgvc8wgkwst4xpj4ac6rk6q30tsjks9md8a5q65hmdu
+  - &host_tar_minyatur age1y6t2spugupljvtnml6j77c0hzhh5cf7h8pvw53c5exxcmz8fdu6ssh73c4
+creation_rules:
+  - key_groups:
+    - age:
+      - *admin
+      - *host_tar_minyatur

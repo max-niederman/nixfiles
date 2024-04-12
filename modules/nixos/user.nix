@@ -1,4 +1,4 @@
-{ secrets, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   config = {
@@ -18,13 +18,15 @@
           "wireshark"
         ];
 
-        inherit (secrets) hashedPassword;
+        hashedPasswordFile = config.sops.secrets."user/hashed_password".path;
 
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINmdKg6WzEiyKysklc3YAKLjHEDLZq4RAjRYlSVbwHs9 max"
         ];
       };
     };
+
+    sops.secrets."user/hashed_password".neededForUsers = true;
 
     environment.systemPackages = with pkgs; [
       nushell

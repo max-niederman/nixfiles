@@ -4,10 +4,13 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
-    secrets.url = "git+ssh://git@github.com/max-niederman/nixfiles-secrets";
-
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,7 +25,7 @@
     };
   };
 
-  outputs = { nixpkgs, secrets, home-manager, frc-nix, hyprland, ... }:
+  outputs = { nixpkgs, home-manager, sops-nix, frc-nix, hyprland, ... }:
     rec {
       overlays.default = import ./overlay;
 
@@ -42,8 +45,9 @@
                 };
               };
             }
-            hyprland.nixosModules.default
             home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
+            hyprland.nixosModules.default
             {
               home-manager.sharedModules = [
                 hyprland.homeManagerModules.default
@@ -54,7 +58,6 @@
           ];
           system = { system, modules }: nixpkgs.lib.nixosSystem {
             modules = defaultModules ++ modules;
-            specialArgs = { inherit secrets; };
           };
         in
         {
@@ -67,5 +70,18 @@
             modules = [ ./hosts/tar-elendil ];
           };
         };
+    
+      devShell = nixpkgs.lib.attrsets.genAttrs ["x86_64-linux"] (system: 
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        pkgs.mkShell {
+          name = "max-nixfiles";
+          packages = with pkgs; [
+            sops
+            age
+            ssh-to-age
+          ];
+        });
     };
 }
