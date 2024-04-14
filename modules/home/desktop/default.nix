@@ -198,6 +198,8 @@
 
       mpv
       jellyfin-mpv-shim
+
+      prismlauncher
     ];
   };
 }
