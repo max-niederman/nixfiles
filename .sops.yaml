@@ -1,8 +1,10 @@
 keys:
   - &admin age1mf7gjywm00gly7nr3glgj2xml4z4npvlwtqutu728elv6z4gafuqmdyp09
   - &host_tar_minyatur age1y6t2spugupljvtnml6j77c0hzhh5cf7h8pvw53c5exxcmz8fdu6ssh73c4
+  - &host_tar_elendil age1ul0xtm4hhfay0lxjqd347js7q0wxmxj58tca0kr80rl955rv5qcsmeaypl
 creation_rules:
   - key_groups:
     - age:
       - *admin
       - *host_tar_minyatur
+      - *host_tar_elendil
