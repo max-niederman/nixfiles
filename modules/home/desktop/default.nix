@@ -8,7 +8,6 @@
       extraConfig =
         ''
           exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
-          exec-once = eww open bar
 
           exec-once = waypaper --restore --backend swww
 
@@ -125,12 +124,6 @@
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
       };
-    };
-
-    programs.eww = {
-      enable = false;
-      package = pkgs.eww-wayland;
-      configDir = ./eww;
     };
 
     programs.fuzzel = {

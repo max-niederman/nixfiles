@@ -70,8 +70,6 @@
         workspace = 8, monitor:HDMI-A-1
         workspace = 9, monitor:HDMI-A-1
       '';
-
-      programs.eww.enable = lib.mkForce false;
     }];
   };
 }
