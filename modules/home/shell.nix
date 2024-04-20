@@ -80,7 +80,6 @@
       # resource monitor
       htop
       iftop
-      nvtop
 
       # network utilities
       iputils

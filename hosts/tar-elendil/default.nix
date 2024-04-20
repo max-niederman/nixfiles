@@ -35,6 +35,10 @@
 
     services.ollama.acceleration = "cuda";
 
+    environment.systemPackages = with pkgs; [
+      nvtopPackages.nvidia
+    ];
+
     hardware.bluetooth.enable = true;
     services.blueman.enable = true;
 
