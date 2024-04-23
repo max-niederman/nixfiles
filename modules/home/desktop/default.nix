@@ -126,6 +126,10 @@
       };
     };
 
+    home.file."Pictures/Wallpapers" = {
+      source = ./wallpapers;
+    };
+
     programs.fuzzel = {
       enable = true;
       settings = {
@@ -144,13 +148,6 @@
       };
     };
 
-    programs.firefox = {
-      enable = true;
-    };
-
-    programs.chromium = {
-      enable = true;
-    };
 
     programs.wlogout = {
       enable = true;
@@ -204,15 +201,81 @@
       '';
     };
 
-    # for Vesktop
-    services.arrpc = {
+    programs.hyprlock = let
+      text = "cad3f5";
+      accent = "c6a0f6";
+      red = "ed8796";
+      yellow = "eed49f";
+      surface0 = "363a4f";
+    in {
+      enable = true;
+      general = {
+        grace = 3;
+      };
+      input-fields = [{
+        size = { width = 300; height = 60; };
+        outline_thickness = 4;
+        dots_size = 0.2;
+        dots_spacing = 0.2;
+        dots_center = true;
+        outer_color = accent;
+        inner_color = surface0;
+        font_color = text;
+        fade_on_empty = false;
+        placeholder_text = ''<span foreground="##${text}"><i>󰌾 Logged in as </i><span foreground="##${accent}">Max</span>.</span>'';
+        hide_input = false;
+        check_color = accent;
+        fail_color = red;
+        fail_text = ''<i>$FAIL <b>($ATTEMPTS)</b></i>'';
+        capslock_color = yellow;
+        position = { x = 0; y = -35; };
+        halign = "center";
+        valign = "center";
+      }];
+      backgrounds = [{
+        path = "${./wallpapers}/sunset-clouds.png";
+      }];
+    };
+
+    services.hypridle = {
+      enable = true;
+
+      lockCmd = "pidof hyprlock || ${config.programs.hyprlock.package}/bin/hyprlock";
+      beforeSleepCmd = "${pkgs.systemd}/bin/loginctl lock-session";
+      afterSleepCmd = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
+
+      listeners = [
+        {
+          timeout = 300; # 5 minutes
+          onTimeout = "${pkgs.libnotify}/bin/notify-send 'Idle' 'You have been idle for 5 minutes.'";
+        }
+        {
+          timeout = 600; # 10 minutes
+          onTimeout = "${pkgs.systemd}/bin/loginctl lock-session";
+        }
+        {
+          timeout = 720; # 12 minutes
+          onTimeout = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
+          onResume = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
+        }
+        {
+          timeout = 1500; # 25 minutes
+          onTimeout = "${pkgs.systemd}/bin/systemctl suspend";
+        }
+      ];
+    };
+
+    programs.firefox = {
       enable = true;
     };
 
-    home.file = {
-      "Pictures/Wallpapers" = {
-        source = ./wallpapers;
-      };
+    programs.chromium = {
+      enable = true;
+    };
+
+    # for Vesktop
+    services.arrpc = {
+      enable = true;
     };
 
     home.packages = with pkgs; [

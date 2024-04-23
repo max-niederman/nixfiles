@@ -23,9 +23,17 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hypridle = {
+      url = "github:hyprwm/hypridle";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, sops-nix, frc-nix, hyprland, ... }:
+  outputs = { nixpkgs, home-manager, sops-nix, frc-nix, hyprland, hypridle, hyprlock, ... }:
     rec {
       overlays.default = import ./overlay;
 
@@ -51,6 +59,8 @@
             {
               home-manager.sharedModules = [
                 hyprland.homeManagerModules.default
+                hypridle.homeManagerModules.default
+                hyprlock.homeManagerModules.default
               ];
             }
 
