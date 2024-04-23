@@ -156,7 +156,50 @@
       enable = true;
       style = ''
         window {
-          background-color: 
+          background-color: rgba(0, 0, 0, 0);
+        }
+
+        button {
+          border-radius: 0;
+          border-color: black;
+          text-decoration-color: #cad3f5;
+          color: #cad3f5;
+          background-color: #24273a;
+          border-style: solid;
+          border-width: 1px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 25%;
+        }
+
+        button:focus, button:active, button:hover {
+          color: #24273a;
+          background-color: #c6a0f6;
+          outline-style: none;
+        }
+
+        #lock {
+            background-image: image(url("${config.programs.wlogout.package}/share/wlogout/icons/lock.png"));
+        }
+
+        #logout {
+            background-image: image(url("${config.programs.wlogout.package}/share/wlogout/icons/logout.png"));
+        }
+
+        #suspend {
+            background-image: image(url("${config.programs.wlogout.package}/share/wlogout/icons/suspend.png"));
+        }
+
+        #hibernate {
+            background-image: image(url("${config.programs.wlogout.package}/share/wlogout/icons/hibernate.png"));
+        }
+
+        #shutdown {
+            background-image: image(url("${config.programs.wlogout.package}/share/wlogout/icons/shutdown.png"));
+        }
+
+        #reboot {
+            background-image: image(url("${config.programs.wlogout.package}/share/wlogout/icons/reboot.png"));
         }
       '';
     };
