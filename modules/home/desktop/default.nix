@@ -169,7 +169,7 @@
           background-size: 25%;
         }
 
-        button:focus, button:active, button:hover {
+        button:focus, button:active {
           color: #24273a;
           background-color: #c6a0f6;
           outline-style: none;
