@@ -68,6 +68,10 @@
       enable = true;
     };
 
+    programs.zoxide = {
+      enable = true;
+    };
+
     home.packages = with pkgs; [
       # assumed ambient by config
       atuin
