@@ -8,10 +8,8 @@
       extraConfig =
         ''
           exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
-
+          exec-once = ${pkgs.swayosd}/bin/swayosd-server
           exec-once = waypaper --restore --backend swww
-
-          exec-once = webcord
 
           input {
             kb_layout  = us
@@ -94,6 +92,11 @@
           bind = $mainMod SHIFT, L, movewindow, r
 
           bind = $mainMod,       S, togglefloating
+
+          binde = , XF86AudioRaiseVolume,  exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume 5
+          binde = , XF86AudioLowerVolume,  exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume -5
+          binde = , XF86MonBrightnessUp,   exec, ${pkgs.brightnessctl}/bin/brightnessctl s +5%
+          binde = , XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl s 5%-
         '';
     };
 
