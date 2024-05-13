@@ -19,8 +19,12 @@
       timeout = 3;
     };
 
+    boot.supportedFilesystems = [ "zfs" ];
+    boot.zfs.forceImportRoot = false;
+
     networking = {
       hostName = "tar-minyatur";
+      hostId = "4d79803c";
       networkmanager.enable = true;
       firewall.enable = false;
     };

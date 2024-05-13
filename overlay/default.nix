@@ -1,4 +1,6 @@
 self: super: {
+  boomaga = self.callPackage ./boomaga.nix {};
+
   vscode-extensions = super.vscode-extensions // (with self.vscode-utils; {
     julialang.language-julia = extensionFromVscodeMarketplace {
       name = "language-julia";
