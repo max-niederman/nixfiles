@@ -8,6 +8,7 @@
       extraConfig =
         ''
           exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
+          exec-once = ${pkgs.swaynotificationcenter}/bin/swaync
           exec-once = ${pkgs.swayosd}/bin/swayosd-server
           exec-once = waypaper --restore --backend swww
 
