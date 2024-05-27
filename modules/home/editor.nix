@@ -104,6 +104,8 @@
         "editor.acceptSuggestionOnEnter" = "smart";
         "editor.inlineSuggest.enabled" = true;
 
+        "git.confirmSync" = false;
+
         "cody.autocomplete.advanced.provider" = "experimental-ollama";
         "cody.experimental.ollamaChat" = true;
         "cody.autocomplete.experimental.ollamaOptions" = {
