@@ -51,10 +51,6 @@
 
     services.ollama.acceleration = "cuda";
 
-    environment.systemPackages = with pkgs; [
-      nvtopPackages.nvidia
-    ];
-
     home-manager.sharedModules = [{
       # use the state version of the system, from the **NixOS** config
       home.stateVersion = config.system.stateVersion;

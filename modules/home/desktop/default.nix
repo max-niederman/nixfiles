@@ -1,5 +1,12 @@
 { config, pkgs, lib, ... }:
-
+let
+  catppuccin-hyprlang = pkgs.fetchFromGitHub {
+    owner = "catppuccin";
+    repo = "hyprland";
+    rev = "v1.3";
+    hash = "sha256-jkk021LLjCLpWOaInzO4Klg6UOR4Sh5IcKdUxIn7Dis=";
+  };
+in
 {
   config = {
     wayland.windowManager.hyprland = {
@@ -48,8 +55,6 @@
           }
 
           windowrulev2 = workspace 8, class:^(WebCord)$
-          windowrulev2 = workspace 7, clastitle:^(Polaris Simulator)$
-          windowrulev2 = float      , clastitle:^(Polaris Simulator)$
 
           $mainMod = SUPER
 
@@ -64,7 +69,7 @@
           bind = $mainMod, U,      exec, firefox
           bind = $mainMod, C,      exec, code
 
-          bind = ,         Print, exec, grim -g "$(slurp)" - | tee "~/Pictures/Screenshots/$(date -Iseconds).png" | wl-copy --type image/png
+          bind = ,         Print, exec, grim -g "$(slurp)" - | tee "$HOME/Pictures/Screenshots/$(date -Iseconds).png" | wl-copy --type image/png
 
           bind = $mainMod, Backspace, exec, wlogout
 
@@ -205,68 +210,121 @@
       '';
     };
 
-    programs.hyprlock = let
-      text = "cad3f5";
-      accent = "c6a0f6";
-      red = "ed8796";
-      yellow = "eed49f";
-      surface0 = "363a4f";
-    in {
+    programs.hyprlock = {
       enable = true;
-      general = {
-        grace = 3;
-      };
-      input-fields = [{
-        size = { width = 300; height = 60; };
-        outline_thickness = 4;
-        dots_size = 0.2;
-        dots_spacing = 0.2;
-        dots_center = true;
-        outer_color = accent;
-        inner_color = surface0;
-        font_color = text;
-        fade_on_empty = false;
-        placeholder_text = ''<span foreground="##${text}"><i>󰌾 Logged in as </i><span foreground="##${accent}">Max</span>.</span>'';
-        hide_input = false;
-        check_color = accent;
-        fail_color = red;
-        fail_text = ''<i>$FAIL <b>($ATTEMPTS)</b></i>'';
-        capslock_color = yellow;
-        position = { x = 0; y = -35; };
-        halign = "center";
-        valign = "center";
-      }];
-      backgrounds = [{
-        path = "${./wallpapers}/sunset-clouds.png";
-      }];
+      extraConfig = ''
+        source = ${catppuccin-hyprlang}/themes/macchiato.conf
+
+        $accent = $mauve
+        $accentAlpha = $mauveAlpha
+        $font = Iosevka Nerd Font
+
+        # GENERAL
+        general {
+          disable_loading_bar = true
+          hide_cursor = true
+        }
+
+        # BACKGROUND
+        background {
+          monitor =
+          path = ${./wallpapers}/sunset-clouds.png
+          blur_passes = 0
+          color = $base
+        }
+
+        # TIME
+        label {
+          monitor =
+          text = cmd[update:30000] echo "$(date +"%R")"
+          color = $text
+          font_size = 90
+          font_family = $font
+          position = -30, 0
+          halign = right
+          valign = top
+        }
+
+        # DATE 
+        label {
+          monitor = 
+          text = cmd[update:43200000] echo "$(date +"%A, %d %B %Y")"
+          color = $text
+          font_size = 25
+          font_family = $font
+          position = -30, -150
+          halign = right
+          valign = top
+        }
+
+        # USER AVATAR
+
+        image {
+          monitor = 
+          path = ~/.face
+          size = 100
+          border_color = $accent
+
+          position = 0, 75
+          halign = center
+          valign = center
+        }
+
+        # INPUT FIELD
+        input-field {
+          monitor =
+          size = 300, 60
+          outline_thickness = 4
+          dots_size = 0.2
+          dots_spacing = 0.2
+          dots_center = true
+          outer_color = $accent
+          inner_color = $surface0
+          font_color = $text
+          fade_on_empty = false
+          placeholder_text = <span foreground="##$textAlpha"><i>󰌾 Logged in as </i><span foreground="##$accentAlpha">$USER</span></span>
+          hide_input = false
+          check_color = $accent
+          fail_color = $red
+          fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i>
+          capslock_color = $yellow
+          position = 0, -35
+          halign = center
+          valign = center
+        }
+      '';
     };
+
 
     services.hypridle = {
       enable = true;
+      settings = {
+        general = {
+          lock_cmd = "pidof hyprlock || ${config.programs.hyprlock.package}/bin/hyprlock";
+          before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
+          after_sleep_cmd = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
+        };
 
-      lockCmd = "pidof hyprlock || ${config.programs.hyprlock.package}/bin/hyprlock";
-      beforeSleepCmd = "${pkgs.systemd}/bin/loginctl lock-session";
-      afterSleepCmd = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
-
-      listeners = [
-        {
-          timeout = 300; # 5 minutes
-          onTimeout = "${pkgs.libnotify}/bin/notify-send 'Idle' 'You have been idle for 5 minutes.'";
-        }
-        {
-          timeout = 600; # 10 minutes
-          onTimeout = "${pkgs.systemd}/bin/loginctl lock-session";
-        }
-        {
-          timeout = 720; # 12 minutes
-          onTimeout = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
-          onResume = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
-        }
-        {
-          timeout = 1500; # 25 minutes
-          onTimeout = "${pkgs.systemd}/bin/systemctl suspend";
-        }
-      ];
+        listener = [ 
+          {
+            timeout = 300; # 5 minutes
+            on-timeout = "${pkgs.libnotify}/bin/notify-send 'Idle' 'You have been idle for 5 minutes.'";
+          }
+          {
+            timeout = 600; # 10 minutes
+            on-timeout = "${pkgs.systemd}/bin/loginctl lock-session";
+          }
+          {
+            timeout = 720; # 12 minutes
+            on-timeout = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
+            on-resume = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
+          }
+          {
+            timeout = 1500; # 25 minutes
+            on-timeout = "${pkgs.systemd}/bin/systemctl suspend";
+          }
+        ];
+      };
     };
 
     programs.firefox = {

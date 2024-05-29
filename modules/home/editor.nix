@@ -155,7 +155,6 @@
       neovim
 
       jetbrains.idea-ultimate
-      androidStudioPackages.beta
     ];
 
     home.sessionVariables = {
