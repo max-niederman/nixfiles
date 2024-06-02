@@ -350,12 +350,11 @@ in
       pavucontrol
       gnome.gnome-system-monitor
       gnome.nautilus
-      gnome.pomodoro
+
+      plover-wlroots
 
       vesktop
       easyeffects
-
-      wine64Packages.wayland
 
       mpv
       jellyfin-mpv-shim

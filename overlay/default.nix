@@ -1,5 +1,5 @@
 self: super: {
-  boomaga = self.callPackage ./boomaga.nix {};
+  plover-wlroots = self.callPackage ./plover-wlroots.nix {};
 
   vscode-extensions = super.vscode-extensions // (with self.vscode-utils; {
     julialang.language-julia = extensionFromVscodeMarketplace {
