@@ -47,8 +47,8 @@
             modules = [ ./hosts/tar-elendil ];
           };
         };
-    
-      devShell = nixpkgs.lib.attrsets.genAttrs ["x86_64-linux"] (system: 
+
+      devShell = nixpkgs.lib.attrsets.genAttrs [ "x86_64-linux" ] (system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
         in

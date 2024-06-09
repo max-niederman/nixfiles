@@ -7,7 +7,6 @@
         experimental-features = nix-command flakes
         builders-use-substitutes = true
       '';
-
       settings = {
         trusted-users = [ "root" "@wheel" ];
 

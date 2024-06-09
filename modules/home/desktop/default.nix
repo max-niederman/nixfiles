@@ -305,7 +305,7 @@ in
           after_sleep_cmd = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
         };
 
-        listener = [ 
+        listener = [
           {
             timeout = 300; # 5 minutes
             on-timeout = "${pkgs.libnotify}/bin/notify-send 'Idle' 'You have been idle for 5 minutes.'";
