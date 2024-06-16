@@ -1,4 +1,4 @@
-{ config, osConfig, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   config = {
@@ -14,8 +14,6 @@
                 algorithm: 'fuzzy',
             }
         }
-
-        source ${pkgs.atuin.src}/atuin/src/shell/atuin.nu
       '';
     };
 
@@ -73,13 +71,8 @@
     };
 
     home.packages = with pkgs; [
-      # assumed ambient by config
-      atuin
-
       # fetch
       neofetch
-      pfetch-rs
-      cpufetch
 
       # resource monitor
       htop
@@ -87,14 +80,15 @@
 
       # network utilities
       iputils
-      dnsutils
+      dogdns
       nmap
       caddy
-      dublin-traceroute
+      mtr
 
       # misc. utilities
       ripgrep
       file
+      libtree
     ];
   };
 }

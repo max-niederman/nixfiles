@@ -257,19 +257,6 @@ in
           valign = top
         }
 
-        # USER AVATAR
-
-        image {
-          monitor = 
-          path = ~/.face
-          size = 100
-          border_color = $accent
-
-          position = 0, 75
-          halign = center
-          valign = center
-        }
-
         # INPUT FIELD
         input-field {
           monitor =
@@ -351,7 +338,11 @@ in
       gnome.gnome-system-monitor
       gnome.nautilus
 
-      plover-wlroots
+      # plover-wlroots
+
+      anki
+
+      sioyek
 
       vesktop
       easyeffects
