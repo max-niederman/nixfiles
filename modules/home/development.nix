@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   config = {
@@ -51,9 +51,14 @@
         }
       '';
     };
-    services.lorri = {
-      enable = true;
-    };
+
+    # thanks Nilstrieb!
+    # mold-wrapped has the cursed nix linker shenanigans that make it produce properly rpathed binaries.
+    home.file.".cargo/config.toml".text = ''
+      [target.x86_64-unknown-linux-gnu]
+      linker = "${lib.getExe pkgs.llvmPackages_16.clang}"
+      rustflags = ["-Clink-arg=-fuse-ld=${lib.getExe' pkgs.mold-wrapped "mold"}", "-Ctarget-cpu=native"]
+    '';
 
     home.packages = with pkgs; [
       gh
