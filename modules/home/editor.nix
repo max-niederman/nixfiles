@@ -67,6 +67,9 @@
         # Julia
         julialang.language-julia
 
+        # Clojure
+        betterthantomorrow.calva
+
         # C/C++
         ms-vscode.cpptools
         twxs.cmake
