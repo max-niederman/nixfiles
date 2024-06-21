@@ -6,6 +6,8 @@
     home-manager.url = "github:nix-community/home-manager";
     sops-nix.url = "github:Mic92/sops-nix";
     frc-nix.url = "github:FRC3636/frc-nix";
+
+    flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
   };
 
   outputs = { nixpkgs, home-manager, sops-nix, frc-nix, ... }:
@@ -17,6 +19,11 @@
       nixosConfigurations =
         let
           defaultModules = [
+            {
+              _module.args = {
+                flakeRoot = ./.;
+              };
+            }
             {
               nixpkgs = {
                 overlays = [

@@ -156,8 +156,6 @@
 
     home.packages = with pkgs; [
       neovim
-
-      jetbrains.idea-ultimate
     ];
 
     home.sessionVariables = {
