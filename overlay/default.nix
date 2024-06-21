@@ -1,5 +1,7 @@
 self: super: {
-  plover-wlroots = self.callPackage ./plover-wlroots.nix {};
+  plover-wlroots = self.callPackage ./plover-wlroots.nix { };
+
+  wolfram-desktop = self.callPackage ./wolfram-desktop.nix { };
 
   vscode-extensions = super.vscode-extensions // (with self.vscode-utils; {
     julialang.language-julia = extensionFromVscodeMarketplace {
@@ -8,7 +10,7 @@ self: super: {
       version = "1.66.2";
       sha256 = "sha256-CsrVmDOcozZ/8OV+r5SUi86LZMyQDqNk0Makmq3ayBk=";
     };
-    
+
     icrawl.discord-vscode = extensionFromVscodeMarketplace {
       name = "discord-vscode";
       publisher = "icrawl";

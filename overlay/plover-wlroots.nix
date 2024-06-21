@@ -23,19 +23,19 @@ let
 
   pywayland_0_4_7 =
     python3Packages.pywayland.overridePythonAttrs
-    (oldAttrs: rec {
-      pname = "pywayland";
-      version = "0.4.7";
+      (oldAttrs: rec {
+        pname = "pywayland";
+        version = "0.4.7";
 
-      src = python3Packages.fetchPypi {
-        inherit pname version;
-        sha256 = "0IMNOPTmY22JCHccIVuZxDhVr41cDcKNkx8bp+5h2CU=";
-      };
+        src = python3Packages.fetchPypi {
+          inherit pname version;
+          sha256 = "0IMNOPTmY22JCHccIVuZxDhVr41cDcKNkx8bp+5h2CU=";
+        };
 
-      doCheck = false;
-    });
+        doCheck = false;
+      });
 in
-  plover.dev.overridePythonAttrs
+plover.dev.overridePythonAttrs
   (oldAttrs: {
     src = fetchFromGitHub {
       owner = "openstenoproject";
@@ -52,7 +52,7 @@ in
         pywayland_0_4_7
       ];
 
-    nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [pkg-config];
+    nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ pkg-config ];
     doCheck = false; # TODO: get tests working
 
     postPatch = ''
