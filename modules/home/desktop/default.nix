@@ -65,7 +65,7 @@ in
           bind = $mainMod, M, fullscreen
 
           bind = $mainMod, Space,  exec, fuzzel
-          bind = $mainMod, Return, exec, wezterm
+          bind = $mainMod, Return, exec, alacritty
           bind = $mainMod, U,      exec, firefox
           bind = $mainMod, C,      exec, code
 
