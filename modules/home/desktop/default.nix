@@ -41,6 +41,10 @@ in
             border_size = 0
           }
 
+          cursor {
+            no_warps = true
+          }
+
           decoration {
             rounding = 8
           }
