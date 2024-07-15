@@ -45,10 +45,6 @@
       alsa.enable = true;
       pulse.enable = true;
     };
-    sound = {
-      enable = true;
-      mediaKeys.enable = true;
-    };
     security.rtkit.enable = true;
 
     services.printing.enable = true;

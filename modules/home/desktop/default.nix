@@ -339,8 +339,8 @@ in
       swww
       waypaper
       pavucontrol
-      gnome.gnome-system-monitor
-      gnome.nautilus
+      gnome-system-monitor
+      nautilus
 
       # plover-wlroots
 
