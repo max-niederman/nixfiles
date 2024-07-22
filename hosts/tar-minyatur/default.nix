@@ -46,10 +46,6 @@
       nvidiaSettings = true;
     };
 
-    environment.variables = {
-      WLR_NO_HARDWARE_CURSORS = "1";
-    };
-
     services.ollama.acceleration = "cuda";
 
     home-manager.sharedModules = [{
@@ -57,7 +53,12 @@
       home.stateVersion = config.system.stateVersion;
 
       wayland.windowManager.hyprland = {
-        settings.env = [ "LIBVA_DRIVER_NAME=nvidia" "WLR_NO_HARDWARE_CONFIG=1" ];
+        settings.env = [
+          "LIBVA_DRIVER_NAME=nvidia"
+          "NIXOS_OZONE_WL=1"
+          "WLR_NO_HARDWARE_CONFIG=1"
+          "WLR_NO_HARDWARE_CURSORS=1"
+        ];
 
         extraConfig = ''
           monitor = DP-2,     2560x1440@144, 0x0,    1
