@@ -46,6 +46,9 @@
         nvarner.typst-lsp
         tomoki1207.pdf
 
+        # LaTeX
+        james-yu.latex-workshop
+
         # Nix
         jnoortheen.nix-ide
 
