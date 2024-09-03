@@ -40,6 +40,8 @@
         '';
     };
 
+    programs.hyprland.enable = true;
+
     services.pipewire = {
       enable = true;
       alsa.enable = true;
@@ -54,6 +56,10 @@
     xdg = {
       mime.enable = true;
       icons.enable = true;
+      portal = {
+        enable = true;
+        extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      };
     };
 
     environment.systemPackages = with pkgs; [
