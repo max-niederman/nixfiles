@@ -12,12 +12,15 @@
       userName = "Max Niederman";
 
       signing = {
-        key = null; # let GPG decide
-        gpgPath = "${config.programs.gpg.package}/bin/gpg2";
+        key = "~/.ssh/id_ed25519.pub";
         signByDefault = true;
       };
 
       extraConfig = {
+        gpg.format = "ssh";
+        gpg.ssh.allowedSignersFile = toString (pkgs.writeText "allowed-signers" ''
+          max@maxniederman.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINmdKg6WzEiyKysklc3YAKLjHEDLZq4RAjRYlSVbwHs9 max
+        '');
         init.defaultBranch = "main";
         pull.rebase = true;
       };
