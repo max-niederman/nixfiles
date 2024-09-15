@@ -58,7 +58,8 @@ in
             enabled = false
           }
 
-          windowrulev2 = workspace 8, class:^(WebCord)$
+          env = HYPRCURSOR_THEME=${config.home.pointerCursor.name}
+          env = HYPRCURSOR_SIZE=${toString config.home.pointerCursor.size}
 
           $mainMod = SUPER
 
@@ -110,6 +111,14 @@ in
         '';
     };
 
+    home.pointerCursor = {
+      name = "catppuccin-macchiato-mauve-cursors";
+      package = pkgs.catppuccin-cursors.macchiatoMauve;
+      size = 32;
+
+      gtk.enable = true;
+    };
+
     gtk = {
       enable = true;
 
@@ -125,11 +134,6 @@ in
         package = pkgs.catppuccin-papirus-folders.override {
           flavor = "macchiato";
         };
-      };
-
-      cursorTheme = {
-        name = "Catppuccin-Macchiato-Dark-Cursors";
-        package = pkgs.catppuccin-cursors.macchiatoDark;
       };
     };
 
