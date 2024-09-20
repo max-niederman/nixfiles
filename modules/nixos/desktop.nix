@@ -82,6 +82,9 @@
         noto-fonts-cjk-serif
         noto-fonts-emoji
 
+        eb-garamond
+        garamond-premiere-pro
+
         (nerdfonts.override {
           fonts = [ "FiraCode" "Iosevka" ];
         })

@@ -1,4 +1,6 @@
 self: super: {
+  garamond-premiere-pro = self.callPackage ./garamond-premiere-pro { };
+
   plover-wlroots = self.callPackage ./plover-wlroots.nix { };
 
   wolfram-desktop = self.callPackage ./wolfram-desktop.nix { };
