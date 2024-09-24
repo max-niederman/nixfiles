@@ -39,9 +39,8 @@
     services.xserver.videoDrivers = [ "nvidia" ];
 
     hardware.nvidia = {
-      # fixes flickering issues with 545+ drivers
-      package = config.boot.kernelPackages.nvidiaPackages.legacy_535;
-
+      open = true;
+      powerManagement.enable = true;
       modesetting.enable = true;
       nvidiaSettings = true;
     };
@@ -61,6 +60,10 @@
         ];
 
         extraConfig = ''
+          render {
+            explicit_sync = 0
+          }
+        
           monitor = DP-2,     2560x1440@120, 0x0,    1
           monitor = DP-3,     2560x1440@144, 2560x0, 1
 
