@@ -45,6 +45,9 @@
       nvidiaSettings = true;
     };
 
+    hardware.bluetooth.enable = true;
+    services.blueman.enable = true;
+
     services.ollama.acceleration = "cuda";
 
     home-manager.sharedModules = [{
