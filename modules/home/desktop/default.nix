@@ -8,6 +8,10 @@ let
   };
 in
 {
+  imports = [
+    ./apps.nix
+  ];
+
   config = {
     wayland.windowManager.hyprland = {
       enable = true;
@@ -322,19 +326,6 @@ in
       };
     };
 
-    programs.firefox = {
-      enable = true;
-    };
-
-    programs.chromium = {
-      enable = true;
-    };
-
-    # for Vesktop
-    services.arrpc = {
-      enable = true;
-    };
-
     home.packages = with pkgs; [
       wl-clipboard
       grim
@@ -343,22 +334,6 @@ in
       swww
       waypaper
       pavucontrol
-      gnome-system-monitor
-      nautilus
-
-      # plover-wlroots
-
-      anki
-
-      sioyek
-
-      vesktop
-      easyeffects
-
-      mpv
-      jellyfin-mpv-shim
-
-      prismlauncher
     ];
   };
 }
