@@ -22,15 +22,18 @@
     };
 
     services.xserver.videoDrivers = [ "nvidia" ];
-    hardware.opengl.enable = true;
-    hardware.nvidia.prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
+    hardware.graphics.enable = true;
+    hardware.nvidia = {
+      open = true;
+      prime = {
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
 
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
     };
 
     services.ollama.acceleration = "cuda";
