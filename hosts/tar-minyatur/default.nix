@@ -45,7 +45,13 @@
       nvidiaSettings = true;
     };
 
-    hardware.bluetooth.enable = true;
+    hardware.bluetooth = {
+      enable = true;
+      settings = {
+        # fixes issues with Bose QC35
+        General.ControllerMode = "bredr";
+      };
+    };
     services.blueman.enable = true;
 
     services.ollama.acceleration = "cuda";
