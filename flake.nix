@@ -5,12 +5,16 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     sops-nix.url = "github:Mic92/sops-nix";
+    lix = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     frc-nix.url = "github:FRC3636/frc-nix";
 
     flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
   };
 
-  outputs = { nixpkgs, home-manager, sops-nix, frc-nix, ... }:
+  outputs = { nixpkgs, home-manager, sops-nix, lix, frc-nix, ... }:
     rec {
       overlays.default = import ./overlay;
 
@@ -37,6 +41,7 @@
             }
             home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
+            lix.nixosModules.default
 
             nixosModules.default
           ];
