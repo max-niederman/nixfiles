@@ -92,6 +92,8 @@
 
       jdk
 
+      lean4
+
       nixpkgs-fmt
 
       sqlite

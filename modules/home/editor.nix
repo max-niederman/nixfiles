@@ -9,7 +9,7 @@
       enableUpdateCheck = false;
 
       mutableExtensionsDir = false;
-      extensions = with pkgs.vscode-extensions; [
+      extensions = with pkgs.vscode-marketplace; [
         mkhl.direnv
         editorconfig.editorconfig
 
@@ -74,9 +74,7 @@
         betterthantomorrow.calva
 
         # C/C++
-        ms-vscode.cpptools
-        twxs.cmake
-        ms-vscode.cmake-tools
+        ms-vscode.cpptools-extension-pack
 
         # Go
         golang.go
@@ -93,6 +91,9 @@
         vscjava.vscode-java-debug
         vscjava.vscode-java-test
         vscjava.vscode-gradle
+
+        # Lean
+        leanprover.lean4
       ];
 
       userSettings = {

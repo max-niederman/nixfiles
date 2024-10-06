@@ -9,12 +9,13 @@
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     frc-nix.url = "github:FRC3636/frc-nix";
 
     flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
   };
 
-  outputs = { nixpkgs, home-manager, sops-nix, lix, frc-nix, ... }:
+  outputs = { nixpkgs, home-manager, sops-nix, lix, nix-vscode-extensions, frc-nix, ... }:
     rec {
       overlays.default = import ./overlay;
 
@@ -31,6 +32,7 @@
             {
               nixpkgs = {
                 overlays = [
+                  nix-vscode-extensions.overlays.default
                   frc-nix.overlays.default
                   overlays.default
                 ];
