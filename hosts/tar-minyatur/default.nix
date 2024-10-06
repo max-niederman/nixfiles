@@ -74,7 +74,7 @@
           }
         
           monitor = DP-2,     2560x1440@120, 0x0,    1
-          monitor = DP-3,     2560x1440@144, 2560x0, 1
+          monitor = DP-3,     2560x1440@120, 2560x0, 1
 
           workspace = 1, monitor:DP-2, default:true
           workspace = 2, monitor:DP-2
