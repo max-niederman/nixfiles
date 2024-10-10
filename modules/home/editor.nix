@@ -163,6 +163,9 @@
 
     home.packages = with pkgs; [
       neovim
+
+      typst
+      typst-lsp
     ];
 
     home.sessionVariables = {
