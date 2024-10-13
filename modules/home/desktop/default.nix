@@ -240,7 +240,7 @@ in
         # BACKGROUND
         background {
           monitor =
-          path = ${./wallpapers}/sunset-clouds.png
+          path = ${./wallpapers}/purple-night.png
           blur_passes = 0
           color = $base
         }
