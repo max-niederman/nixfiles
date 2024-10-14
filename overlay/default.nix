@@ -1,5 +1,5 @@
 self: super: {
-  garamond-premiere-pro = self.callPackage ./garamond-premiere-pro { };
+  garamond-premier-pro = self.callPackage ./garamond-premier-pro { };
 
   plover-wlroots = self.callPackage ./plover-wlroots.nix { };
 
