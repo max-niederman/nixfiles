@@ -63,9 +63,6 @@
       wayland.windowManager.hyprland = {
         settings.env = [
           "LIBVA_DRIVER_NAME=nvidia"
-          "NIXOS_OZONE_WL=1"
-          "WLR_NO_HARDWARE_CONFIG=1"
-          "WLR_NO_HARDWARE_CURSORS=1"
         ];
 
         extraConfig = ''

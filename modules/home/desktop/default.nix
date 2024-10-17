@@ -19,9 +19,17 @@ in
       extraConfig =
         ''
           exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
+          exec-once = fcitx5
           exec-once = ${pkgs.swaynotificationcenter}/bin/swaync
           exec-once = ${pkgs.swayosd}/bin/swayosd-server
           exec-once = waypaper --restore --backend swww
+
+          env = GTK_IM_MODULE,fcitx
+          env = QT_IM_MODULE,fcitx
+          env = XMODIFIERS,@im=fcitx
+
+          env = HYPRCURSOR_THEME,${config.home.pointerCursor.name}
+          env = HYPRCURSOR_SIZE,${toString config.home.pointerCursor.size}
 
           input {
             kb_layout  = us
@@ -61,9 +69,6 @@ in
           animations {
             enabled = false
           }
-
-          env = HYPRCURSOR_THEME=${config.home.pointerCursor.name}
-          env = HYPRCURSOR_SIZE=${toString config.home.pointerCursor.size}
 
           $mainMod = SUPER
 

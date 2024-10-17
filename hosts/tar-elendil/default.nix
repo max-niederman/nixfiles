@@ -56,9 +56,15 @@
       # use the state version of the system, from the **NixOS** config
       home.stateVersion = config.system.stateVersion;
 
-      wayland.windowManager.hyprland.extraConfig = ''
-        monitor = eDP-1, 1920x1200@60, 0x0, 1
-      '';
+      wayland.windowManager.hyprland = {
+        settings.env = [ 
+          "LIBVA_DRIVER_NAME=nvidia"
+        ];
+
+        extraConfig = ''
+          monitor = eDP-1, 1920x1200@60, 0x0, 1
+        '';
+      };
     }];
   };
 }

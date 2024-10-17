@@ -145,7 +145,8 @@
 
     home.packages = with pkgs; [
       # fetch
-      neofetch
+      fastfetch
+      cpufetch
 
       # resource monitor
       htop
