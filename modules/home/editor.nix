@@ -43,7 +43,7 @@
         marp-team.marp-vscode
 
         # Typst
-        nvarner.typst-lsp
+        myriad-dreamin.tinymist
         tomoki1207.pdf
 
         # LaTeX
@@ -165,7 +165,7 @@
       neovim
 
       typst
-      typst-lsp
+      tinymist
     ];
 
     home.sessionVariables = {
