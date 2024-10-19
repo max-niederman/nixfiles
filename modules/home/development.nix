@@ -88,8 +88,6 @@
       cabal-install
       haskell-language-server
 
-      julia-bin
-
       jdk
 
       lean4
