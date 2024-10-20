@@ -3,19 +3,23 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager = { 
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     sops-nix.url = "github:Mic92/sops-nix";
     lix = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin.url = "github:catppuccin/nix";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     frc-nix.url = "github:FRC3636/frc-nix";
 
     flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
   };
 
-  outputs = { nixpkgs, home-manager, sops-nix, lix, nix-vscode-extensions, frc-nix, ... }:
+  outputs = { nixpkgs, home-manager, sops-nix, lix, catppuccin, nix-vscode-extensions, frc-nix, ... }:
     rec {
       overlays.default = import ./overlay;
 
@@ -44,6 +48,13 @@
             home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
             lix.nixosModules.default
+            catppuccin.nixosModules.catppuccin
+
+            {
+              home-manager.sharedModules = [
+                catppuccin.homeManagerModules.catppuccin
+              ];
+            }
 
             nixosModules.default
           ];

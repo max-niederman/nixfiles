@@ -1,12 +1,4 @@
 { config, pkgs, lib, ... }:
-let
-  catppuccin-hyprlang = pkgs.fetchFromGitHub {
-    owner = "catppuccin";
-    repo = "hyprland";
-    rev = "v1.3";
-    hash = "sha256-jkk021LLjCLpWOaInzO4Klg6UOR4Sh5IcKdUxIn7Dis=";
-  };
-in
 {
   imports = [
     ./apps.nix
@@ -120,11 +112,12 @@ in
         '';
     };
 
+    catppuccin.pointerCursor = {
+      enable = true;
+      accent = "dark";
+    };
     home.pointerCursor = {
-      name = "catppuccin-macchiato-mauve-cursors";
-      package = pkgs.catppuccin-cursors.macchiatoMauve;
       size = 32;
-
       gtk.enable = true;
     };
 
@@ -152,28 +145,21 @@ in
       };
     };
 
+    i18n.inputMethod.fcitx5.catppuccin.enable = true;
+
     home.file."Pictures/Wallpapers" = {
       source = ./wallpapers;
     };
 
     programs.fuzzel = {
       enable = true;
+      catppuccin.enable = true;
       settings = {
         main = {
           prompt = "λ";
         };
-        colors = {
-          background = "24273add";
-          text = "cad3f5ff";
-          match = "ed8796ff";
-          selection = "5b6078ff";
-          selection-match = "ed8796ff";
-          selection-text = "cad3f5ff";
-          border = "b7bdf8ff";
-        };
       };
     };
-
 
     programs.wlogout = {
       enable = true;
@@ -230,7 +216,7 @@ in
     programs.hyprlock = {
       enable = true;
       extraConfig = ''
-        source = ${catppuccin-hyprlang}/themes/macchiato.conf
+        source = ${config.catppuccin.sources.hyprland}/themes/macchiato.conf
 
         $accent = $mauve
         $accentAlpha = $mauveAlpha

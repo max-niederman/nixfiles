@@ -14,6 +14,11 @@
       enable = true;
     };
 
+    programs.mpv = {
+      enable = true;
+      catppuccin.enable = true;
+    };
+
     # for Vesktop
     services.arrpc = {
       enable = true;
@@ -29,7 +34,6 @@
 
       vesktop
 
-      mpv
       jellyfin-mpv-shim
 
       prismlauncher

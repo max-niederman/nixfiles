@@ -6,7 +6,10 @@
       enable = true;
 
       lfs.enable = true;
-      delta.enable = true;
+      delta =  {
+        enable = true;
+        catppuccin.enable = true;
+      };
 
       userEmail = "max@maxniederman.com";
       userName = "Max Niederman";
