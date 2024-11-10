@@ -69,6 +69,10 @@
           render {
             explicit_sync = 0
           }
+
+          cursor {
+            no_hardware_cursors = true
+          }
         
           monitor = DP-2,     2560x1440@120, 0x0,    1
           monitor = DP-3,     2560x1440@120, 2560x0, 1
