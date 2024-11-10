@@ -9,7 +9,7 @@
       enableUpdateCheck = false;
 
       mutableExtensionsDir = false;
-      extensions = with pkgs.vscode-marketplace; [
+      extensions = with pkgs.vscode-extensions; [
         mkhl.direnv
         editorconfig.editorconfig
 
@@ -93,7 +93,7 @@
         vscjava.vscode-gradle
 
         # Lean
-        leanprover.lean4
+        pkgs.vscode-marketplace.leanprover.lean4
       ];
 
       userSettings = {
