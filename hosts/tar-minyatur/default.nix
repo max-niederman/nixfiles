@@ -1,9 +1,7 @@
 { config, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
   config = {
     system.stateVersion = "23.11";
@@ -44,6 +42,7 @@
       modesetting.enable = true;
       nvidiaSettings = true;
     };
+    boot.kernelModules = [ "nvidia_uvm" ];
 
     hardware.bluetooth = {
       enable = true;
@@ -56,35 +55,35 @@
 
     services.ollama.acceleration = "cuda";
 
-    home-manager.sharedModules = [{
-      # use the state version of the system, from the **NixOS** config
-      home.stateVersion = config.system.stateVersion;
+    home-manager.sharedModules = [
+      {
+        # use the state version of the system, from the **NixOS** config
+        home.stateVersion = config.system.stateVersion;
 
-      wayland.windowManager.hyprland = {
-        settings.env = [
-          "LIBVA_DRIVER_NAME=nvidia"
-        ];
+        wayland.windowManager.hyprland = {
+          settings.env = [ "LIBVA_DRIVER_NAME=nvidia" ];
 
-        extraConfig = ''
-          render {
-            explicit_sync = 0
-          }
+          extraConfig = ''
+            render {
+              explicit_sync = 0
+            }
 
-          cursor {
-            no_hardware_cursors = true
-          }
-        
-          monitor = DP-2,     2560x1440@120, 0x0,    1
-          monitor = DP-3,     2560x1440@120, 2560x0, 1
+            cursor {
+              no_hardware_cursors = true
+            }
 
-          workspace = 1, monitor:DP-2, default:true
-          workspace = 2, monitor:DP-2
-          workspace = 3, monitor:DP-2
-          workspace = 4, monitor:DP-3, default:true
-          workspace = 5, monitor:DP-3
-          workspace = 6, monitor:DP-3
-        '';
-      };
-    }];
+            monitor = DP-2,     2560x1440@100, 0x0,    1
+            monitor = DP-3,     2560x1440@120, 2560x0, 1
+
+            workspace = 1, monitor:DP-2, default:true
+            workspace = 2, monitor:DP-2
+            workspace = 3, monitor:DP-2
+            workspace = 4, monitor:DP-3, default:true
+            workspace = 5, monitor:DP-3
+            workspace = 6, monitor:DP-3
+          '';
+        };
+      }
+    ];
   };
 }

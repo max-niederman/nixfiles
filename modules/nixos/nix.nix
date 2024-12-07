@@ -1,4 +1,9 @@
-{ config, options, flakeRoot, ... }:
+{
+  config,
+  options,
+  flakeRoot,
+  ...
+}:
 
 {
   config = {
@@ -8,7 +13,10 @@
         builders-use-substitutes = true
       '';
       settings = {
-        trusted-users = [ "root" "@wheel" ];
+        trusted-users = [
+          "root"
+          "@wheel"
+        ];
 
         substituters = [
           "https://nix-community.cachix.org"

@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    home-manager = { 
+    home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -19,7 +19,17 @@
     flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
   };
 
-  outputs = { nixpkgs, home-manager, sops-nix, lix, catppuccin, nix-vscode-extensions, frc-nix, ... }:
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      sops-nix,
+      lix,
+      catppuccin,
+      nix-vscode-extensions,
+      frc-nix,
+      ...
+    }:
     rec {
       overlays.default = import ./overlay;
 
@@ -51,16 +61,12 @@
             catppuccin.nixosModules.catppuccin
 
             {
-              home-manager.sharedModules = [
-                catppuccin.homeManagerModules.catppuccin
-              ];
+              home-manager.sharedModules = [ catppuccin.homeManagerModules.catppuccin ];
             }
 
             nixosModules.default
           ];
-          system = { system, modules }: nixpkgs.lib.nixosSystem {
-            modules = defaultModules ++ modules;
-          };
+          system = { system, modules }: nixpkgs.lib.nixosSystem { modules = defaultModules ++ modules; };
         in
         {
           tar-minyatur = system {
@@ -73,7 +79,8 @@
           };
         };
 
-      devShell = nixpkgs.lib.attrsets.genAttrs [ "x86_64-linux" ] (system:
+      devShell = nixpkgs.lib.attrsets.genAttrs [ "x86_64-linux" ] (
+        system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
         in
@@ -84,6 +91,11 @@
             age
             ssh-to-age
           ];
-        });
+        }
+      );
+
+      formatter = nixpkgs.lib.attrsets.genAttrs [ "x86_64-linux" ] (
+        system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style
+      );
     };
 }

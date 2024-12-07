@@ -1,115 +1,118 @@
-{ config, pkgs, lib, ... }:
 {
-  imports = [
-    ./apps.nix
-  ];
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  imports = [ ./apps.nix ];
 
   config = {
     wayland.windowManager.hyprland = {
       enable = true;
 
-      extraConfig =
-        ''
-          exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
-          exec-once = fcitx5
-          exec-once = ${pkgs.swaynotificationcenter}/bin/swaync
-          exec-once = ${pkgs.swayosd}/bin/swayosd-server
-          exec-once = waypaper --restore --backend swww
+      extraConfig = ''
+        exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
+        exec-once = fcitx5
+        exec-once = ${pkgs.swaynotificationcenter}/bin/swaync
+        exec-once = ${pkgs.swayosd}/bin/swayosd-server
+        exec-once = waypaper --restore --backend swww
 
-          env = GTK_IM_MODULE,fcitx
-          env = QT_IM_MODULE,fcitx
-          env = XMODIFIERS,@im=fcitx
+        env = GTK_IM_MODULE,fcitx
+        env = QT_IM_MODULE,fcitx
+        env = XMODIFIERS,@im=fcitx
 
-          env = HYPRCURSOR_THEME,${config.home.pointerCursor.name}
-          env = HYPRCURSOR_SIZE,${toString config.home.pointerCursor.size}
+        env = HYPRCURSOR_THEME,${config.home.pointerCursor.name}
+        env = HYPRCURSOR_SIZE,${toString config.home.pointerCursor.size}
 
-          input {
-            kb_layout  = us
-            kb_variant = altgr-intl
+        input {
+          kb_layout  = us
+          kb_variant = altgr-intl
 
-            follow_mouse = 1
+          follow_mouse = 1
 
-            touchpad {
-              natural_scroll = true
-            }
+          touchpad {
+            natural_scroll = true
           }
+        }
 
-          gestures {
-            workspace_swipe = true
-          }
+        gestures {
+          workspace_swipe = true
+        }
 
-          general {
-            gaps_out = 25
-            gaps_in = 10
+        general {
+          gaps_out = 25
+          gaps_in = 10
 
-            border_size = 0
-          }
+          border_size = 0
+        }
 
-          cursor {
-            no_warps = true
-          }
+        cursor {
+          no_warps = true
+        }
 
-          decoration {
-            rounding = 8
-          }
+        decoration {
+          rounding = 8
+        }
 
-          misc {
-            disable_hyprland_logo = true
-            disable_splash_rendering = true
-          }
+        misc {
+          disable_hyprland_logo = true
+          disable_splash_rendering = true
+        }
 
-          animations {
-            enabled = false
-          }
+        animations {
+          enabled = false
+        }
 
-          $mainMod = SUPER
+        $mainMod = SUPER
 
-          bindm = $mainMod, mouse:272, movewindow
-          bindm = $mainMod, mouse:273, resizewindow
+        bindm = $mainMod, mouse:272, movewindow
+        bindm = $mainMod, mouse:273, resizewindow
 
-          bind = $mainMod, W, killactive
-          bind = $mainMod, M, fullscreen
+        bind = $mainMod, W, killactive
+        bind = $mainMod, M, fullscreen
 
-          bind = $mainMod, Space,  exec, fuzzel
-          bind = $mainMod, Return, exec, alacritty
-          bind = $mainMod, U,      exec, firefox
-          bind = $mainMod, C,      exec, code
+        bind = $mainMod, Space,  exec, fuzzel
+        bind = $mainMod, Return, exec, alacritty
+        bind = $mainMod, U,      exec, firefox
+        bind = $mainMod, C,      exec, code
 
-          bind = ,         Print, exec, grim -g "$(slurp)" - | tee "$HOME/Pictures/Screenshots/$(date -Iseconds).png" | wl-copy --type image/png
+        bind = ,         Print, exec, grim -g "$(slurp)" - | tee "$HOME/Pictures/Screenshots/$(date -Iseconds).png" | wl-copy --type image/png
 
-          bind = $mainMod, Backspace, exec, wlogout
+        bind = $mainMod, Backspace, exec, wlogout
 
-          ${lib.strings.concatMapStringsSep
-              "\n"
-              (n: let
-                n' = builtins.toString n;
-              in ''
-                bind = $mainMod,       ${n'}, workspace, ${n'}
-                bind = $mainMod SHIFT, ${n'}, movetoworkspacesilent, ${n'}
-              '')
-              (lib.lists.range 1 9)}
+        ${lib.strings.concatMapStringsSep "\n" (
+          n:
+          let
+            n' = builtins.toString n;
+          in
+          ''
+            bind = $mainMod,       ${n'}, workspace, ${n'}
+            bind = $mainMod SHIFT, ${n'}, movetoworkspacesilent, ${n'}
+          ''
+        ) (lib.lists.range 1 9)}
 
-          bind = $mainMod,       [, workspace, r-1
-          bind = $mainMod,       ], workspace, r+1
-          bind = $mainMod SHIFT, [, movetoworkspacesilent, r-1
-          bind = $mainMod SHIFT, ], movetoworkspacesilent, r+1
-        
-          bind = $mainMod,       H, movefocus, l
-          bind = $mainMod,       J, movefocus, d
-          bind = $mainMod,       K, movefocus, u
-          bind = $mainMod,       L, movefocus, r
-          bind = $mainMod SHIFT, H, movewindow, l
-          bind = $mainMod SHIFT, J, movewindow, d
-          bind = $mainMod SHIFT, K, movewindow, u
-          bind = $mainMod SHIFT, L, movewindow, r
+        bind = $mainMod,       [, workspace, r-1
+        bind = $mainMod,       ], workspace, r+1
+        bind = $mainMod SHIFT, [, movetoworkspacesilent, r-1
+        bind = $mainMod SHIFT, ], movetoworkspacesilent, r+1
 
-          bind = $mainMod,       S, togglefloating
+        bind = $mainMod,       H, movefocus, l
+        bind = $mainMod,       J, movefocus, d
+        bind = $mainMod,       K, movefocus, u
+        bind = $mainMod,       L, movefocus, r
+        bind = $mainMod SHIFT, H, movewindow, l
+        bind = $mainMod SHIFT, J, movewindow, d
+        bind = $mainMod SHIFT, K, movewindow, u
+        bind = $mainMod SHIFT, L, movewindow, r
 
-          binde = , XF86AudioRaiseVolume,  exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume 5
-          binde = , XF86AudioLowerVolume,  exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume -5
-          binde = , XF86MonBrightnessUp,   exec, ${pkgs.brightnessctl}/bin/brightnessctl s +5%
-          binde = , XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl s 5%-
-        '';
+        bind = $mainMod,       S, togglefloating
+
+        binde = , XF86AudioRaiseVolume,  exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume 5
+        binde = , XF86AudioLowerVolume,  exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume -5
+        binde = , XF86MonBrightnessUp,   exec, ${pkgs.brightnessctl}/bin/brightnessctl s +5%
+        binde = , XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl s 5%-
+      '';
     };
 
     catppuccin.pointerCursor = {
@@ -126,16 +129,12 @@
 
       theme = {
         name = "Catppuccin-Macchiato-Standard-Blue-Dark";
-        package = pkgs.catppuccin-gtk.override {
-          variant = "macchiato";
-        };
+        package = pkgs.catppuccin-gtk.override { variant = "macchiato"; };
       };
 
       iconTheme = {
         name = "Papirus-Dark";
-        package = pkgs.catppuccin-papirus-folders.override {
-          flavor = "macchiato";
-        };
+        package = pkgs.catppuccin-papirus-folders.override { flavor = "macchiato"; };
       };
     };
 
@@ -284,7 +283,6 @@
         }
       '';
     };
-
 
     services.hypridle = {
       enable = true;

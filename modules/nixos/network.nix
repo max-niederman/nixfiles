@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   config = {
@@ -14,8 +19,6 @@
     # see NixOS/nixpkgs#180175
     systemd.services.systemd-udevd.restartIfChanged = false;
 
-    environment.systemPackages = with pkgs; [
-      iptables
-    ];
+    environment.systemPackages = with pkgs; [ iptables ];
   };
 }

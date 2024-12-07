@@ -54,7 +54,10 @@
       catppuccin.enable = true;
       settings = {
         shell = "/run/current-system/sw/bin/nu";
-        window.padding = { x = 15; y = 15; };
+        window.padding = {
+          x = 15;
+          y = 15;
+        };
         font.normal.family = "FiraCode Nerd Font";
       };
     };

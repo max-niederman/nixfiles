@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   config = {
@@ -28,9 +33,7 @@
 
     sops.secrets."user/hashed_password".neededForUsers = true;
 
-    environment.systemPackages = with pkgs; [
-      nushell
-    ];
+    environment.systemPackages = with pkgs; [ nushell ];
 
     security.sudo.wheelNeedsPassword = false;
 

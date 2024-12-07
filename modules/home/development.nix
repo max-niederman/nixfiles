@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   config = {
@@ -6,7 +11,7 @@
       enable = true;
 
       lfs.enable = true;
-      delta =  {
+      delta = {
         enable = true;
         catppuccin.enable = true;
       };
@@ -21,9 +26,11 @@
 
       extraConfig = {
         gpg.format = "ssh";
-        gpg.ssh.allowedSignersFile = toString (pkgs.writeText "allowed-signers" ''
-          max@maxniederman.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINmdKg6WzEiyKysklc3YAKLjHEDLZq4RAjRYlSVbwHs9 max
-        '');
+        gpg.ssh.allowedSignersFile = toString (
+          pkgs.writeText "allowed-signers" ''
+            max@maxniederman.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINmdKg6WzEiyKysklc3YAKLjHEDLZq4RAjRYlSVbwHs9 max
+          ''
+        );
         init.defaultBranch = "main";
         pull.rebase = true;
       };

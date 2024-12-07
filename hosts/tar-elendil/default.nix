@@ -1,9 +1,12 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
   config = {
     system = {
@@ -38,9 +41,7 @@
 
     services.ollama.acceleration = "cuda";
 
-    environment.systemPackages = with pkgs; [
-      nvtopPackages.nvidia
-    ];
+    environment.systemPackages = with pkgs; [ nvtopPackages.nvidia ];
 
     hardware.bluetooth.enable = true;
     services.blueman.enable = true;
@@ -52,19 +53,19 @@
 
     time.timeZone = "America/Los_Angeles";
 
-    home-manager.sharedModules = [{
-      # use the state version of the system, from the **NixOS** config
-      home.stateVersion = config.system.stateVersion;
+    home-manager.sharedModules = [
+      {
+        # use the state version of the system, from the **NixOS** config
+        home.stateVersion = config.system.stateVersion;
 
-      wayland.windowManager.hyprland = {
-        settings.env = [ 
-          "LIBVA_DRIVER_NAME=nvidia"
-        ];
+        wayland.windowManager.hyprland = {
+          settings.env = [ "LIBVA_DRIVER_NAME=nvidia" ];
 
-        extraConfig = ''
-          monitor = eDP-1, 1920x1200@60, 0x0, 1
-        '';
-      };
-    }];
+          extraConfig = ''
+            monitor = eDP-1, 1920x1200@60, 0x0, 1
+          '';
+        };
+      }
+    ];
   };
 }

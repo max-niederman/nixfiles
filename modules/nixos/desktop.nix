@@ -95,7 +95,10 @@
         garamond-premier-pro
 
         (nerdfonts.override {
-          fonts = [ "FiraCode" "Iosevka" ];
+          fonts = [
+            "FiraCode"
+            "Iosevka"
+          ];
         })
       ];
 
@@ -103,9 +106,21 @@
       enableDefaultPackages = false;
 
       fontconfig.defaultFonts = {
-        serif = [ "IBM Plex Serif" "Noto Serif CJK" "Noto Color Emoji" ];
-        sansSerif = [ "IBM Plex Sans" "Noto Sans CJK" "Noto Color Emoji" ];
-        monospace = [ "IBM Plex Mono" "Noto Sans Mono CJK" "Noto Color Emoji" ];
+        serif = [
+          "IBM Plex Serif"
+          "Noto Serif CJK"
+          "Noto Color Emoji"
+        ];
+        sansSerif = [
+          "IBM Plex Sans"
+          "Noto Sans CJK"
+          "Noto Color Emoji"
+        ];
+        monospace = [
+          "IBM Plex Mono"
+          "Noto Sans Mono CJK"
+          "Noto Color Emoji"
+        ];
       };
 
       fontDir.enable = true;
