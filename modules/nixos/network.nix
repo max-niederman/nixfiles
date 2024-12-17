@@ -7,12 +7,20 @@
 
 {
   config = {
+    services.resolved = {
+      enable = true;
+    };
+
     services.avahi = {
       enable = true;
       nssmdns4 = true;
     };
 
     services.tailscale = {
+      enable = true;
+    };
+
+    services.mullvad-vpn = {
       enable = true;
     };
 
