@@ -2,26 +2,6 @@
 
 {
   config = {
-    services.greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = ''
-            ${pkgs.greetd.tuigreet}/bin/tuigreet \
-              --cmd Hyprland \
-              --remember \
-              --remember-session \
-              --asterisks \
-              --power-shutdown "systemctl poweroff" \
-              --power-reboot "systemctl reboot" \
-              --window-padding 4 \
-              --container-padding 4
-          '';
-          user = "greeter";
-        };
-      };
-    };
-
     services.interception-tools = {
       enable = true;
       plugins = with pkgs.interception-tools-plugins; [ caps2esc ];
@@ -39,8 +19,6 @@
                 EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
         '';
     };
-
-    programs.hyprland.enable = true;
 
     services.pipewire = {
       enable = true;
@@ -75,8 +53,6 @@
       xdg-utils # for stuff like xdg-open
     ];
 
-    programs.dconf.enable = true;
-
     services.gnome.gnome-keyring.enable = true;
 
     fonts = {
@@ -94,12 +70,8 @@
         eb-garamond
         garamond-premier-pro
 
-        (nerdfonts.override {
-          fonts = [
-            "FiraCode"
-            "Iosevka"
-          ];
-        })
+        nerd-fonts.fira-code
+        nerd-fonts.iosevka
       ];
 
       # use user-specified fonts rather than defaults

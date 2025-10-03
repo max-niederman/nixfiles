@@ -1,13 +1,26 @@
 {
   config,
   options,
+  pkgs,
   flakeRoot,
   ...
 }:
 
 {
   config = {
+    nixpkgs.overlays = [
+      (final: prev: {
+        inherit (config.nixpkgs.lixPackageSets.stable)
+          nixpkgs-review
+          nix-eval-jobs
+          nix-fast-build
+          colmena
+          ;
+      })
+    ];
+
     nix = {
+      package = pkgs.lixPackageSets.stable.lix;
       extraOptions = ''
         experimental-features = nix-command flakes
         builders-use-substitutes = true

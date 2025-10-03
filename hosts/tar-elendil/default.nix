@@ -10,7 +10,7 @@
 
   config = {
     system = {
-      stateVersion = "23.11";
+      stateVersion = "25.05";
     };
 
     boot = {

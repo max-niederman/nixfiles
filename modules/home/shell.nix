@@ -27,8 +27,6 @@
       enableNushellIntegration = true;
       enableBashIntegration = true;
 
-      catppuccin.enable = true;
-
       settings = {
         shell.disabled = false;
 
@@ -43,24 +41,25 @@
         };
       };
     };
+    catppuccin.starship.enable = true;
 
     programs.bat = {
       enable = true;
-      catppuccin.enable = true;
     };
+    catppuccin.bat.enable = true;
 
     programs.alacritty = {
       enable = true;
-      catppuccin.enable = true;
       settings = {
         shell = "/run/current-system/sw/bin/nu";
         window.padding = {
-          x = 15;
-          y = 15;
+          x = 16;
+          y = 16;
         };
         font.normal.family = "FiraCode Nerd Font";
       };
     };
+    catppuccin.alacritty.enable = true;
 
     programs.carapace = {
       enable = true;

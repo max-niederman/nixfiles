@@ -14,7 +14,7 @@
       pinentryPackage = pkgs.pinentry-gnome3;
     };
 
-    virtualisation.podman = {
+    virtualisation.docker = {
       enable = true;
       autoPrune = {
         enable = true;
@@ -35,12 +35,7 @@
       enable = true;
     };
 
-    services.ollama = {
-      enable = true;
-    };
-
     environment.systemPackages = [
-      config.services.ollama.package
       config.boot.kernelPackages.perf
     ];
   };

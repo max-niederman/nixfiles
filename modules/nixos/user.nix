@@ -9,6 +9,9 @@
   config = {
     users = {
       mutableUsers = false;
+
+      defaultUserShell = pkgs.nushell;
+
       users.max = {
         isNormalUser = true;
         createHome = true;
@@ -17,7 +20,7 @@
           "video"
           "networkmanager"
           "dialout"
-          "podman"
+          "docker"
           "kvm"
           "libvirtd"
           "wireshark"

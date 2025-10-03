@@ -8,13 +8,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix.url = "github:Mic92/sops-nix";
-    lix = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     catppuccin.url = "github:catppuccin/nix";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    frc-nix.url = "github:FRC3636/frc-nix";
 
     flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
   };
@@ -24,10 +19,8 @@
       nixpkgs,
       home-manager,
       sops-nix,
-      lix,
       catppuccin,
       nix-vscode-extensions,
-      frc-nix,
       ...
     }:
     rec {
@@ -47,7 +40,6 @@
               nixpkgs = {
                 overlays = [
                   nix-vscode-extensions.overlays.default
-                  frc-nix.overlays.default
                   overlays.default
                 ];
                 config = {
@@ -57,11 +49,10 @@
             }
             home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
-            lix.nixosModules.default
             catppuccin.nixosModules.catppuccin
 
             {
-              home-manager.sharedModules = [ catppuccin.homeManagerModules.catppuccin ];
+              home-manager.sharedModules = [ catppuccin.homeModules.catppuccin ];
             }
 
             nixosModules.default
@@ -95,7 +86,7 @@
       );
 
       formatter = nixpkgs.lib.attrsets.genAttrs [ "x86_64-linux" ] (
-        system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style
+        system: nixpkgs.legacyPackages.${system}.nixfmt-tree
       );
     };
 }
