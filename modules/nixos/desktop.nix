@@ -1,7 +1,9 @@
 { pkgs, ... }:
 
 {
-  config = {
+  config = {    
+    programs.niri.enable = true;
+
     services.interception-tools = {
       enable = true;
       plugins = with pkgs.interception-tools-plugins; [ caps2esc ];

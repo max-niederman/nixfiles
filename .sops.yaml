@@ -1,6 +1,8 @@
 keys:
   - &admin age1mf7gjywm00gly7nr3glgj2xml4z4npvlwtqutu728elv6z4gafuqmdyp09
+  - &host_tar_elendil age1m7ures9waue54h4kz4mhaatc9mfhy25644wa5fsrhv4e7nwn3dwsmrnewh
 creation_rules:
   - key_groups:
     - age:
       - *admin
+      - *host_tar_elendil

@@ -81,6 +81,8 @@
             sops
             age
             ssh-to-age
+
+            nixos-install-tools
           ];
         }
       );

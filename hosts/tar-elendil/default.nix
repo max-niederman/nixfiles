@@ -13,7 +13,7 @@
       stateVersion = "25.05";
     };
 
-    boot = {
+    boot = { 
       loader = {
         systemd-boot = {
           enable = true;
@@ -21,6 +21,13 @@
           editor = false;
         };
         timeout = 3;
+      };
+
+      initrd.systemd.enable = true;
+      zfs = {
+        requestEncryptionCredentials = true;
+        forceImportRoot = true; # TODO: fix me
+        # allowHibernation = true; # TODO: fix me
       };
     };
 
@@ -48,6 +55,7 @@
 
     networking = {
       hostName = "tar-elendil";
+      hostId = "2662d6f8";
       networkmanager.enable = true;
     };
 
