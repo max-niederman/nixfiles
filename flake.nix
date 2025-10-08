@@ -10,6 +10,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zen = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,6 +28,7 @@
       nixpkgs,
       sops-nix,
       home-manager,
+      niri,
       zen,
       nix-vscode-extensions,
       ...
@@ -57,6 +62,7 @@
 
             {
               home-manager.sharedModules = [
+                niri.homeModules.niri
                 zen.homeModules.beta
               ];
             }

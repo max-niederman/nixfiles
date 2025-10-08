@@ -5,7 +5,7 @@
   ...
 }:
 {
-  imports = [ ./apps.nix ];
+  imports = [ ./wm.nix ./apps.nix ];
 
   config = {
     wayland.windowManager.hyprland = {

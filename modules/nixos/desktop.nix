@@ -22,6 +22,7 @@
     };
 
     programs.hyprland.enable = true;
+    programs.niri.enable = true;
 
     services.pipewire = {
       enable = true;
