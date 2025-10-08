@@ -3,13 +3,20 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    sops-nix.url = "github:Mic92/sops-nix";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sops-nix.url = "github:Mic92/sops-nix";
-    catppuccin.url = "github:catppuccin/nix";
+
+    zen = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
+    catppuccin.url = "github:catppuccin/nix";
 
     flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
   };
@@ -17,10 +24,11 @@
   outputs =
     {
       nixpkgs,
-      home-manager,
       sops-nix,
-      catppuccin,
+      home-manager,
+      zen,
       nix-vscode-extensions,
+      catppuccin,
       ...
     }:
     rec {
@@ -52,7 +60,10 @@
             catppuccin.nixosModules.catppuccin
 
             {
-              home-manager.sharedModules = [ catppuccin.homeModules.catppuccin ];
+              home-manager.sharedModules = [
+                zen.homeModules.beta
+                catppuccin.homeModules.catppuccin
+              ];
             }
 
             nixosModules.default

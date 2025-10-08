@@ -1,8 +1,26 @@
 { pkgs, ... }:
 
 {
-  config = {    
-    programs.niri.enable = true;
+  config = {
+    services.greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = ''
+            ${pkgs.tuigreet}/bin/tuigreet \
+              --cmd Hyprland \
+              --remember \
+              --remember-session \
+              --asterisks \
+              --power-shutdown "systemctl poweroff" \
+              --power-reboot "systemctl reboot" \
+              --window-padding 4 \
+              --container-padding 4
+          '';
+          user = "greeter";
+        };
+      };
+    };
 
     services.interception-tools = {
       enable = true;
@@ -21,6 +39,8 @@
                 EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
         '';
     };
+
+    programs.hyprland.enable = true;
 
     services.pipewire = {
       enable = true;
@@ -54,6 +74,9 @@
     environment.systemPackages = with pkgs; [
       xdg-utils # for stuff like xdg-open
     ];
+
+    # FIXME: is this needed?
+    # programs.dconf.enable = true;
 
     services.gnome.gnome-keyring.enable = true;
 
