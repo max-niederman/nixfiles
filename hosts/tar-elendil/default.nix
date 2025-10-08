@@ -70,7 +70,8 @@
           settings.env = [ "LIBVA_DRIVER_NAME=nvidia" ];
 
           extraConfig = ''
-            monitor = eDP-1, 1920x1200@60, 0x0, 1
+            monitor = DP-2,  3840x2160@160, 0x0,    1
+            monitor = eDP-1, 1920x1200@60,  0x2160, 1
           '';
         };
       }

@@ -12,7 +12,7 @@
       enable = true;
 
       extraConfig = ''
-        exec-once = ${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1
+        exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
         exec-once = fcitx5
         exec-once = ${pkgs.swaynotificationcenter}/bin/swaync
         exec-once = ${pkgs.swayosd}/bin/swayosd-server
@@ -34,10 +34,6 @@
           touchpad {
             natural_scroll = true
           }
-        }
-
-        gestures {
-          workspace_swipe = true
         }
 
         general {
@@ -65,17 +61,17 @@
         bindm = $mainMod, mouse:272, movewindow
         bindm = $mainMod, mouse:273, resizewindow
 
-        bind = $mainMod, DELETE, killactive
+        bind = $mainMod, Backspace, killactive
         bind = $mainMod, M,      fullscreen
 
         bind = $mainMod, Space,  exec, fuzzel
         bind = $mainMod, Return, exec, alacritty
-        bind = $mainMod, U,      exec, firefox
+        bind = $mainMod, U,      exec, zen
         bind = $mainMod, C,      exec, code
 
         bind = ,         Print, exec, grim -g "$(slurp)" - | tee "$HOME/Pictures/Screenshots/$(date -Iseconds).png" | wl-copy --type image/png
 
-        bind = $mainMod, Backspace, exec, wlogout
+        bind = $mainMod, Delete, exec, wlogout
 
         ${lib.strings.concatMapStringsSep "\n" (
           n:
@@ -126,11 +122,6 @@
       theme = {
         name = "Catppuccin-Macchiato-Standard-Blue-Dark";
         package = pkgs.catppuccin-gtk.override { variant = "macchiato"; };
-      };
-
-      iconTheme = {
-        name = "Papirus-Dark";
-        package = pkgs.catppuccin-papirus-folders.override { flavor = "macchiato"; };
       };
     };
 
@@ -226,7 +217,7 @@
         # BACKGROUND
         background {
           monitor =
-          path = ${./wallpapers}/purple-night.png
+          path = ${./wallpapers}/purple-fuji.png
           blur_passes = 0
           color = $base
         }
