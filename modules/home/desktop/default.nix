@@ -22,9 +22,6 @@
         env = QT_IM_MODULE,fcitx
         env = XMODIFIERS,@im=fcitx
 
-        env = HYPRCURSOR_THEME,${config.home.pointerCursor.name}
-        env = HYPRCURSOR_SIZE,${toString config.home.pointerCursor.size}
-
         input {
           kb_layout  = us
           kb_variant = altgr-intl
@@ -107,22 +104,8 @@
       '';
     };
 
-    catppuccin.pointerCursor = {
-      enable = true;
-      accent = "dark";
-    };
-    home.pointerCursor = {
-      size = 32;
-      gtk.enable = true;
-    };
-
     gtk = {
       enable = true;
-
-      theme = {
-        name = "Catppuccin-Macchiato-Standard-Blue-Dark";
-        package = pkgs.catppuccin-gtk.override { variant = "macchiato"; };
-      };
     };
 
     dconf.settings = {
@@ -131,15 +114,12 @@
       };
     };
 
-    i18n.inputMethod.fcitx5.catppuccin.enable = true;
-
     home.file."Pictures/Wallpapers" = {
       source = ./wallpapers;
     };
 
     programs.fuzzel = {
       enable = true;
-      catppuccin.enable = true;
       settings = {
         main = {
           prompt = "λ";
@@ -201,74 +181,6 @@
 
     programs.hyprlock = {
       enable = true;
-      extraConfig = ''
-        source = ${config.catppuccin.sources.hyprland}/themes/macchiato.conf
-
-        $accent = $mauve
-        $accentAlpha = $mauveAlpha
-        $font = Iosevka Nerd Font
-
-        # GENERAL
-        general {
-          disable_loading_bar = true
-          hide_cursor = true
-        }
-
-        # BACKGROUND
-        background {
-          monitor =
-          path = ${./wallpapers}/purple-fuji.png
-          blur_passes = 0
-          color = $base
-        }
-
-        # TIME
-        label {
-          monitor =
-          text = cmd[update:30000] echo "$(date +"%R")"
-          color = $text
-          font_size = 90
-          font_family = $font
-          position = -30, 0
-          halign = right
-          valign = top
-        }
-
-        # DATE 
-        label {
-          monitor = 
-          text = cmd[update:43200000] echo "$(date +"%A, %d %B %Y")"
-          color = $text
-          font_size = 25
-          font_family = $font
-          position = -30, -150
-          halign = right
-          valign = top
-        }
-
-        # INPUT FIELD
-        input-field {
-          monitor =
-          size = 300, 60
-          outline_thickness = 4
-          dots_size = 0.2
-          dots_spacing = 0.2
-          dots_center = true
-          outer_color = $accent
-          inner_color = $surface0
-          font_color = $text
-          fade_on_empty = false
-          placeholder_text = <span foreground="##$textAlpha"><i>󰌾 Logged in as </i><span foreground="##$accentAlpha">$USER</span></span>
-          hide_input = false
-          check_color = $accent
-          fail_color = $red
-          fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i>
-          capslock_color = $yellow
-          position = 0, -35
-          halign = center
-          valign = center
-        }
-      '';
     };
 
     services.hypridle = {
@@ -303,12 +215,21 @@
     };
 
     home.packages = with pkgs; [
+      # clipboard utilities
       wl-clipboard
+
+      # screenshots
       grim
       slurp
+
+      # color picker
       hyprpicker
+
+      # wallpaper
       swww
       waypaper
+
+      # audio
       pavucontrol
     ];
   };

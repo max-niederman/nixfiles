@@ -2,25 +2,6 @@
 
 {
   config = {
-    services.greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = ''
-            ${pkgs.tuigreet}/bin/tuigreet \
-              --cmd Hyprland \
-              --remember \
-              --remember-session \
-              --asterisks \
-              --power-shutdown "systemctl poweroff" \
-              --power-reboot "systemctl reboot" \
-              --window-padding 4 \
-              --container-padding 4
-          '';
-          user = "greeter";
-        };
-      };
-    };
 
     services.interception-tools = {
       enable = true;
@@ -67,7 +48,12 @@
       icons.enable = true;
       portal = {
         enable = true;
-        extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+        extraPortals = [
+          # Enable three different portals for improved compatibility
+          pkgs.xdg-desktop-portal-gtk
+          pkgs.xdg-desktop-portal-gnome
+          pkgs.xdg-desktop-portal-wlr
+        ];
       };
     };
 
@@ -78,6 +64,7 @@
     # FIXME: is this needed?
     # programs.dconf.enable = true;
 
+    security.polkit.enable = true;
     services.gnome.gnome-keyring.enable = true;
 
     fonts = {

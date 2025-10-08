@@ -1,7 +1,4 @@
 {
-  config,
-  pkgs,
-  lib,
   ...
 }:
 
@@ -12,12 +9,4 @@
     ./editor.nix
     ./desktop
   ];
-
-  config = {
-    catppuccin = {
-      enable = true;
-      accent = "flamingo";
-      flavor = "macchiato";
-    };
-  };
 }

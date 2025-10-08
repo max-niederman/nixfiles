@@ -16,8 +16,6 @@
     };
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
-    catppuccin.url = "github:catppuccin/nix";
-
     flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
   };
 
@@ -28,7 +26,6 @@
       home-manager,
       zen,
       nix-vscode-extensions,
-      catppuccin,
       ...
     }:
     rec {
@@ -57,12 +54,10 @@
             }
             home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
-            catppuccin.nixosModules.catppuccin
 
             {
               home-manager.sharedModules = [
                 zen.homeModules.beta
-                catppuccin.homeModules.catppuccin
               ];
             }
 

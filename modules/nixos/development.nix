@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }:
 
@@ -20,10 +19,6 @@
         enable = true;
         dates = "weekly";
       };
-    };
-
-    virtualisation.libvirtd = {
-      enable = true;
     };
 
     programs.wireshark = {

@@ -1,10 +1,6 @@
 self: super: {
   garamond-premier-pro = self.callPackage ./garamond-premier-pro { };
 
-  plover-wlroots = self.callPackage ./plover-wlroots.nix { };
-
-  wolfram-desktop = self.callPackage ./wolfram-desktop.nix { };
-
   vscode-extensions =
     super.vscode-extensions
     // (with self.vscode-utils; {

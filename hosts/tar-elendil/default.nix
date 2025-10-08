@@ -13,7 +13,7 @@
       stateVersion = "25.05";
     };
 
-    boot = { 
+    boot = {
       loader = {
         systemd-boot = {
           enable = true;

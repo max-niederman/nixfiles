@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
   ...
 }:
 
@@ -25,7 +23,6 @@
           vscodevim.vim
           ms-vsliveshare.vsliveshare
 
-          catppuccin.catppuccin-vsc
           pkief.material-icon-theme
           pkief.material-product-icons
 
@@ -87,7 +84,7 @@
           svelte.svelte-vscode
           astro-build.astro-vscode
 
-          # Java
+          # Ja>va
           redhat.java
           vscjava.vscode-java-debug
           vscjava.vscode-java-test
@@ -110,17 +107,10 @@
 
           "git.confirmSync" = false;
 
-          "terminal.integrated.profiles.linux" = {
-            "nu" = {
-              path = "/run/current-system/sw/bin/nu";
-            };
-          };
-          "terminal.integrated.defaultProfile.linux" = "nu";
-
           "direnv.path.executable" = "${pkgs.direnv}/bin/direnv";
 
           "python.languageServer" = "Pylance";
-          "python.formatting.provider" = "black";
+          "python.formatting.provider" = "ruff";
 
           "haskell.manageHLS" = "PATH";
 
@@ -151,8 +141,6 @@
         };
       };
     };
-
-    catppuccin.enable = true;
 
     home.packages = with pkgs; [
       neovim

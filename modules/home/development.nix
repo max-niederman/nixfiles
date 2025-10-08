@@ -32,7 +32,6 @@
         pull.rebase = true;
       };
     };
-    catppuccin.delta.enable = true;
 
     programs.direnv = {
       enable = true;
@@ -58,7 +57,7 @@
 
       python3
       uv
-      black
+      ruff
 
       rustup
       cargo-generate

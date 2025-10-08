@@ -44,6 +44,7 @@
       };
     };
 
+    # TODO: make this actually work
     programs.nix-index.enable = true;
     programs.command-not-found.enable = false;
 
@@ -65,27 +66,5 @@
     };
 
     boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
-    nix.nixPath = options.nix.nixPath.default ++ [ "nixpkgs-overlays=/etc/nixos/overlays-compat" ];
-    environment.etc."nixos/overlays-compat/overlays.nix".text = ''
-      self: super:
-
-      let
-        inherit (super) lib;
-
-        flake-compat = import (
-          let lock = builtins.fromJSON (builtins.readFile ${flakeRoot}/flake.lock); in
-          fetchTarball {
-            url = lock.nodes.flake-compat.locked.url or "https://github.com/edolstra/flake-compat/archive/''${lock.nodes.flake-compat.locked.rev}.tar.gz";
-            sha256 = lock.nodes.flake-compat.locked.narHash;
-          }
-        );
-
-        outputs = (flake-compat { src = ${flakeRoot}; }).defaultNix;
-        config = (outputs.nixosConfigurations.${config.networking.hostName}).config;
-        overlays = config.nixpkgs.overlays;
-      in
-        lib.foldl' (lib.flip lib.extends) (_: super) overlays self
-    '';
   };
 }

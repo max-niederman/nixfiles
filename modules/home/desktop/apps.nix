@@ -17,7 +17,6 @@
     programs.mpv = {
       enable = true;
     };
-    catppuccin.mpv.enable = true;
 
     # for Vesktop
     services.arrpc = {
@@ -25,12 +24,7 @@
     };
 
     home.packages = with pkgs; [
-      gnome-system-monitor
-      nautilus
-
       anki
-
-      sioyek
 
       vesktop
 
