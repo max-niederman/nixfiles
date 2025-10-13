@@ -14,6 +14,10 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zen = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,6 +31,7 @@
     {
       nixpkgs,
       sops-nix,
+      stylix,
       home-manager,
       niri,
       zen,
@@ -58,6 +63,7 @@
               };
             }
             home-manager.nixosModules.home-manager
+            stylix.nixosModules.stylix
             sops-nix.nixosModules.sops
 
             {

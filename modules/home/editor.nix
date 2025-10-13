@@ -1,5 +1,5 @@
 {
-  pkgs,
+  pkgs, lib,
   ...
 }:
 
@@ -97,9 +97,7 @@
         userSettings = {
           "window.titleBarStyle" = "custom";
 
-          "editor.fontFamily" = "FiraCode Nerd Font";
           "editor.fontLigatures" = true;
-          "editor.fontSize" = 16;
 
           "editor.lineNumbers" = "relative";
           "editor.acceptSuggestionOnEnter" = "smart";

@@ -21,7 +21,6 @@
         '';
     };
 
-    programs.hyprland.enable = true;
     programs.niri.enable = true;
 
     services.pipewire = {
@@ -34,15 +33,6 @@
     services.printing.enable = true;
 
     hardware.opentabletdriver.enable = true;
-
-    i18n.inputMethod = {
-      enable = true;
-      type = "fcitx5";
-      fcitx5.addons = with pkgs; [
-        fcitx5-mozc
-        fcitx5-gtk
-      ];
-    };
 
     xdg = {
       mime.enable = true;
@@ -62,11 +52,36 @@
       xdg-utils # for stuff like xdg-open
     ];
 
-    # FIXME: is this needed?
-    # programs.dconf.enable = true;
+    programs.dconf.enable = true;
 
     security.polkit.enable = true;
     services.gnome.gnome-keyring.enable = true;
+
+    stylix = {
+      enable = true;
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+      fonts = {
+        serif = {
+          package = pkgs.ibm-plex;
+          name = "IBM Plex Serif";
+        };
+
+        sansSerif = {
+          package = pkgs.ibm-plex;
+          name = "IBM Plex Sans";
+        };
+
+        monospace = {
+          package = pkgs.nerd-fonts.fira-code;
+          name = "FiraCode Nerd Font";
+        };
+
+        emoji = {
+          package = pkgs.noto-fonts-emoji;
+          name = "Noto Color Emoji";
+        };
+      };
+    };
 
     fonts = {
       packages = with pkgs; [

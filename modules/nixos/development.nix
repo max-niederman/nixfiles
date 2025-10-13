@@ -31,7 +31,7 @@
     };
 
     environment.systemPackages = [
-      config.boot.kernelPackages.perf
+      pkgs.perf
     ];
   };
 }
