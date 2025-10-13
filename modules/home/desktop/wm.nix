@@ -1,10 +1,33 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   config = {
     programs.niri = {
       enable = true;
+
       settings = {
+        xwayland-satellite = {
+          enable = true;
+          path = lib.getExe pkgs.xwayland-satellite;
+        };
+
+        input = {
+          keyboard = {
+            xkb.layout = "us";
+            xkb.variant = "altgr-intl";
+          };
+
+          touchpad = {
+            click-method = "clickfinger";
+            dwt = true;
+          };
+        };
+
         binds = with config.lib.niri.actions; {
           "Mod+H".action = focus-column-or-monitor-left;
           "Mod+J".action = focus-window-or-workspace-down;
