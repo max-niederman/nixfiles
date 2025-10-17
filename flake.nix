@@ -14,6 +14,10 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,6 +38,7 @@
       stylix,
       home-manager,
       niri,
+      noctalia,
       zen,
       nix-vscode-extensions,
       ...
@@ -63,12 +68,14 @@
               };
             }
             home-manager.nixosModules.home-manager
+            noctalia.nixosModules.default
             stylix.nixosModules.stylix
             sops-nix.nixosModules.sops
 
             {
               home-manager.sharedModules = [
                 niri.homeModules.niri
+                noctalia.homeModules.default
                 zen.homeModules.beta
               ];
             }

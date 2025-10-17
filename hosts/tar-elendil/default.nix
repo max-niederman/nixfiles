@@ -26,8 +26,8 @@
       initrd.systemd.enable = true;
       zfs = {
         requestEncryptionCredentials = true;
-        forceImportRoot = true; # TODO: fix me
-        # allowHibernation = true; # TODO: fix me
+        forceImportRoot = false;
+        allowHibernation = true;
       };
     };
 
@@ -50,6 +50,9 @@
 
     environment.systemPackages = with pkgs; [ nvtopPackages.nvidia ];
 
+    services.power-profiles-daemon.enable = true;
+    services.upower.enable = true;
+
     hardware.bluetooth.enable = true;
     services.blueman.enable = true;
 
@@ -63,16 +66,34 @@
 
     home-manager.sharedModules = [
       {
-        # use the state version of the system, from the **NixOS** config
+        # use the state version of the system, from the NixOS config
         home.stateVersion = config.system.stateVersion;
 
-        wayland.windowManager.hyprland = {
-          settings.env = [ "LIBVA_DRIVER_NAME=nvidia" ];
+        programs.niri.settings.outputs = {
+          "eDP-1" = {
+            mode = {
+              width = 1920;
+              height = 1200;
+            };
+            position = {
+              x = 0;
+              y = 0;
+            };
+          };
 
-          extraConfig = ''
-            monitor = DP-2,  3840x2160@160, 0x0,    1
-            monitor = eDP-1, 1920x1200@60,  0x2160, 1
-          '';
+          "Shenzhen KTC Technology Group M27P6 0000000000001" = {
+            mode = {
+              width = 3840;
+              height = 2160;
+            };
+            scale = 1.5;
+            position = {
+              x = 1920;
+              y = 1200 - 2160;
+            };
+            variable-refresh-rate = true;
+            focus-at-startup = true;
+          };
         };
       }
     ];

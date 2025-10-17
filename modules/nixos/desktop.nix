@@ -2,7 +2,60 @@
 
 {
   config = {
+    # greeter
+    services.greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = ''
+            ${pkgs.tuigreet}/bin/tuigreet \
+              --cmd /run/current-system/sw/bin/niri-session \
+              --remember \
+              --remember-session \
+              --asterisks \
+              --power-shutdown "systemctl poweroff" \
+              --power-reboot "systemctl reboot" \
+              --window-padding 4 \
+              --container-padding 4
+          '';
+          user = "greeter";
+        };
+      };
+    }; 
 
+    # window manager
+    programs.niri.enable = true;
+
+    # shell
+    services.noctalia-shell.enable = true;
+
+    # audio
+    services.pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+    };
+    security.rtkit.enable = true;
+
+    # core XDG stuff
+    xdg = {
+      mime.enable = true;
+      icons.enable = true;
+      portal = {
+        enable = true;
+        extraPortals = [
+          # Enable three different portals for improved compatibility
+          pkgs.xdg-desktop-portal-gtk
+          pkgs.xdg-desktop-portal-gnome
+          pkgs.xdg-desktop-portal-wlr
+        ];
+      };
+    };
+    environment.systemPackages = with pkgs; [
+      xdg-utils # for stuff like xdg-open
+    ];
+
+    # input devices
     services.interception-tools = {
       enable = true;
       plugins = with pkgs.interception-tools-plugins; [ caps2esc ];
@@ -20,43 +73,13 @@
                 EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
         '';
     };
-
-    programs.niri.enable = true;
-
-    services.pipewire = {
-      enable = true;
-      alsa.enable = true;
-      pulse.enable = true;
-    };
-    security.rtkit.enable = true;
-
-    services.printing.enable = true;
-
     hardware.opentabletdriver.enable = true;
 
-    xdg = {
-      mime.enable = true;
-      icons.enable = true;
-      portal = {
-        enable = true;
-        extraPortals = [
-          # Enable three different portals for improved compatibility
-          pkgs.xdg-desktop-portal-gtk
-          pkgs.xdg-desktop-portal-gnome
-          pkgs.xdg-desktop-portal-wlr
-        ];
-      };
-    };
-
-    environment.systemPackages = with pkgs; [
-      xdg-utils # for stuff like xdg-open
-    ];
-
-    programs.dconf.enable = true;
-
+    # security
     security.polkit.enable = true;
     services.gnome.gnome-keyring.enable = true;
 
+    # styling
     stylix = {
       enable = true;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
@@ -83,6 +106,7 @@
       };
     };
 
+    # fonts
     fonts = {
       packages = with pkgs; [
         ibm-plex
@@ -126,6 +150,10 @@
       fontDir.enable = true;
     };
 
+    # random device drivers
+    services.printing.enable = true;
+
+    # programs that need to be enabled system-wide
     programs.steam = {
       enable = true;
     };

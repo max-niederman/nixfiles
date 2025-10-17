@@ -7,6 +7,7 @@
 {
   imports = [
     ./wm.nix
+    ./shell.nix
     ./apps.nix
     ./browser.nix
   ];
@@ -35,10 +36,6 @@
 
       # color picker
       hyprpicker
-
-      # wallpaper
-      swww
-      waypaper
 
       # audio
       pavucontrol
