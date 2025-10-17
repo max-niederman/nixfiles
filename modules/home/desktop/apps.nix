@@ -2,13 +2,6 @@
 
 {
   config = {
-    programs.zen-browser = {
-      enable = true;
-
-      nativeMessagingHosts = [ pkgs.firefoxpwa ];
-    };
-
-    home.file.".config/tridactyl/tridactylrc".source = ./tridactylrc;
 
     programs.chromium = {
       enable = true;

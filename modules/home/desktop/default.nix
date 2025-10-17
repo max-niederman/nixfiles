@@ -8,6 +8,7 @@
   imports = [
     ./wm.nix
     ./apps.nix
+    ./browser.nix
   ];
 
   config = {
