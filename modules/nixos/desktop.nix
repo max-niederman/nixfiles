@@ -21,7 +21,7 @@
           user = "greeter";
         };
       };
-    }; 
+    };
 
     # window manager
     programs.niri.enable = true;

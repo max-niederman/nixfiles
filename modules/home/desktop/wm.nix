@@ -28,6 +28,23 @@
           };
         };
 
+        cursor = {
+          size = 16;
+        };
+
+        prefer-no-csd = true;
+        window-rules = [
+          {
+            clip-to-geometry = true;
+            geometry-corner-radius = lib.attrsets.genAttrs [
+              "top-left"
+              "top-right"
+              "bottom-left"
+              "bottom-right"
+            ] (_: 4.0);
+          }
+        ];
+
         binds =
           with config.lib.niri.actions;
           let
@@ -48,7 +65,7 @@
 
             "Mod+Backspace".action = close-window;
             "Mod+Shift+Backspace".action = close-window;
-            "Mod+F".action = fullscreen-window;
+            "Mod+F".action = maximize-column;
 
             "Mod+Space".action = noctalia-ipc "launcher" "toggle";
             "Mod+Return".action = spawn (lib.getExe config.programs.alacritty.package);

@@ -70,7 +70,9 @@
         home.stateVersion = config.system.stateVersion;
 
         programs.niri.settings.outputs = {
+          # laptop built-in display
           "eDP-1" = {
+            enable = true;
             mode = {
               width = 1920;
               height = 1200;
@@ -81,14 +83,32 @@
             };
           };
 
+          # main home display
           "Shenzhen KTC Technology Group M27P6 0000000000001" = {
+            enable = true;
             mode = {
               width = 3840;
               height = 2160;
             };
-            scale = 1.5;
+            scale = 1;
             position = {
               x = 1920;
+              y = 1200 - 2160;
+            };
+            variable-refresh-rate = true;
+            focus-at-startup = true;
+          };
+
+          # mechanize office display
+          "Dell Inc. DELL U4025QW 49FC734" = {
+            enable = true;
+            mode = {
+              width = 5120;
+              height = 2160;
+            };
+            scale = 1;
+            position = {
+              x = -5120;
               y = 1200 - 2160;
             };
             variable-refresh-rate = true;

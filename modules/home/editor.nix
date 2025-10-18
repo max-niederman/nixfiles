@@ -24,6 +24,7 @@
           vscodevim.vim
           ms-vsliveshare.vsliveshare
 
+          catppuccin.catppuccin-vsc
           pkief.material-icon-theme
           pkief.material-product-icons
 
@@ -70,7 +71,7 @@
           justusadam.language-haskell
 
           # Julia
-          julialang.language-julia
+          # julialang.language-julia
 
           # C/C++
           ms-vscode.cpptools-extension-pack
@@ -98,6 +99,9 @@
         userSettings = {
           "window.titleBarStyle" = "custom";
 
+          "workbench.iconTheme" = "material-icon-theme";
+          "workbench.colorTheme" = "Catppuccin Mocha";
+
           "editor.fontLigatures" = true;
 
           "editor.lineNumbers" = "relative";
@@ -115,6 +119,8 @@
 
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "${pkgs.nil}/bin/nil";
+
+          "makefile.configureOnOpen" = true;
 
           "svelte.enable-ts-plugin" = true;
 
@@ -140,6 +146,7 @@
         };
       };
     };
+    stylix.targets.vscode.enable = false;
 
     home.packages = with pkgs; [
       neovim

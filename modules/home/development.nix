@@ -48,6 +48,8 @@
     home.packages = with pkgs; [
       claude-code
 
+      devcontainer
+
       gh
 
       lldb
@@ -81,6 +83,7 @@
       sqlite-utils
 
       httpie
+      postman
 
       graphviz
     ];
