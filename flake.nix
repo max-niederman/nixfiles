@@ -26,6 +26,10 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
@@ -40,9 +44,10 @@
       niri,
       noctalia,
       zen,
+      spicetify-nix,
       nix-vscode-extensions,
       ...
-    }:
+    } @ inputs:
     rec {
       overlays.default = import ./overlay;
 
@@ -54,6 +59,12 @@
             {
               _module.args = {
                 flakeRoot = ./.;
+                flakeInputs = inputs;
+              };
+
+              home-manager.extraSpecialArgs = {
+                flakeRoot = ./.;
+                flakeInputs = inputs;
               };
             }
             {
@@ -77,6 +88,7 @@
                 niri.homeModules.niri
                 noctalia.homeModules.default
                 zen.homeModules.beta
+                spicetify-nix.homeManagerModules.spicetify
               ];
             }
 

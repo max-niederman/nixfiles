@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, flakeInputs, ... }:
 
+let
+  spicePkgs = flakeInputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+in
 {
   config = {
 
@@ -14,6 +17,13 @@
     programs.mpv = {
       enable = true;
     };
+
+    programs.spicetify = {
+      enable = true;
+      theme = spicePkgs.themes.catppuccin;
+      colorScheme = "mocha";
+    };
+    stylix.targets.spicetify.enable = false;
 
     # for Vesktop
     services.arrpc = {
