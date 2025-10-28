@@ -5,11 +5,6 @@ let
 in
 {
   config = {
-
-    programs.chromium = {
-      enable = true;
-    };
-
     services.easyeffects = {
       enable = true;
     };

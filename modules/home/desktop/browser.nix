@@ -60,5 +60,9 @@
 
       " vim: set filetype=tridactyl
     '';
+
+    programs.chromium = {
+      enable = true;
+    };
   };
 }
