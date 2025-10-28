@@ -10,6 +10,7 @@
         tridactyl-native
       ];
     };
+    stylix.targets.zen-browser.profileNames = [ "Default Profile" ];
 
     home.file.".config/tridactyl/tridactylrc".text = ''
       " Apply catppuccin colorscheme
