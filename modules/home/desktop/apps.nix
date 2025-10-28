@@ -26,13 +26,19 @@ in
     };
 
     home.packages = with pkgs; [
+      qpwgraph
+
       anki
+
+      audacity
 
       vesktop
       slack
+      zoom-us
 
       jellyfin-mpv-shim
 
+      osu-lazer-bin
       prismlauncher
     ];
   };

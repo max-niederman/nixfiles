@@ -64,7 +64,9 @@
 
           # Python
           ms-python.python
-          ms-python.vscode-pylance
+          # we unfortunately need to install these manually because they're not on the marketplace
+          # anysphere.pyright
+          # anysphere.cursorpyright
 
           # Haskell
           haskell.haskell
@@ -86,7 +88,7 @@
           svelte.svelte-vscode
           astro-build.astro-vscode
 
-          # Ja>va
+          # Java
           redhat.java
           vscjava.vscode-java-debug
           vscjava.vscode-java-test

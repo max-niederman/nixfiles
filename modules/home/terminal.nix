@@ -76,6 +76,7 @@
 
       # network utilities
       iputils
+      unixtools.netstat
       dogdns
       nmap
       caddy
@@ -83,6 +84,7 @@
 
       # misc. utilities
       ripgrep
+      jq
       file
       libtree
     ];

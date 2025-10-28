@@ -63,6 +63,9 @@
       uv
       ruff
 
+      bun
+      nodejs
+
       rustup
       cargo-generate
       cargo-flamegraph
@@ -77,15 +80,18 @@
 
       lean4
 
-      nixpkgs-fmt
-
       sqlite
       sqlite-utils
+      duckdb
 
       httpie
       postman
 
       graphviz
+
+      google-cloud-sdk
+
+      beancount # TODO: move to somewhere more appropriate
     ];
   };
 }
