@@ -19,6 +19,9 @@
         enable = true;
         dates = "weekly";
       };
+      daemon.settings = {
+        max-concurrent-uploads = 12;
+      };
     };
 
     programs.wireshark = {
