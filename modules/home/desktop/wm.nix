@@ -9,6 +9,7 @@
   config = {
     programs.niri = {
       enable = true;
+      package = pkgs.niri;
 
       settings = {
         xwayland-satellite = {
@@ -74,8 +75,8 @@
             "Mod+Comma".action = noctalia-ipc "controlCenter" "toggle";
             "Mod+Shift+Comma".action = noctalia-ipc "settings" "toggle";
 
-            "Mod+F10".action = screenshot { show-pointer = false; };
-            "Mod+Shift+F10".action = screenshot { show-pointer = true; };
+            "Mod+F10".action = { screenshot = { show-pointer = false; }; };
+            "Mod+Shift+F10".action = { screenshot = { show-pointer = true; }; };
 
             "Mod+Delete".action = noctalia-ipc "lockScreen" "toggle";
 

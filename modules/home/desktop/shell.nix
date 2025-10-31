@@ -102,6 +102,16 @@
             ];
           };
         };
+
+        dock = {
+          enabled = true;
+          backgroundOpacity = 0.6;
+          colorizeIcons = true;
+          displayMode = "always_visible";
+          floatingRatio = 0.5;
+          size = 0.75;
+          onlySameOutput = true;
+        };
       };
     };
   };

@@ -46,9 +46,8 @@
       };
     };
 
-    services.ollama.acceleration = "cuda";
-
-    environment.systemPackages = with pkgs; [ nvtopPackages.nvidia ];
+    # FIXME: agh nvtop is broken for some goddamn reason
+    # environment.systemPackages = with pkgs; [ nvtopPackages.nvidia ];
 
     services.power-profiles-daemon.enable = true;
     services.upower.enable = true;

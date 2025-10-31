@@ -53,8 +53,6 @@
     };
     services.blueman.enable = true;
 
-    services.ollama.acceleration = "cuda";
-
     home-manager.sharedModules = [
       {
         # use the state version of the system, from the **NixOS** config

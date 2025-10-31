@@ -24,7 +24,10 @@
     };
 
     # window manager
-    programs.niri.enable = true;
+    programs.niri = {
+      enable = true;
+      package = pkgs.niri;
+    };
 
     # shell
     services.noctalia-shell.enable = true;
@@ -101,7 +104,7 @@
         };
 
         emoji = {
-          package = pkgs.noto-fonts-emoji;
+          package = pkgs.noto-fonts-color-emoji;
           name = "Noto Color Emoji";
         };
       };
@@ -118,7 +121,7 @@
         noto-fonts
         noto-fonts-cjk-sans
         noto-fonts-cjk-serif
-        noto-fonts-emoji
+        noto-fonts-color-emoji
 
         eb-garamond
         garamond-premier-pro
