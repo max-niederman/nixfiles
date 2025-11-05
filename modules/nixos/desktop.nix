@@ -123,6 +123,9 @@
         noto-fonts-cjk-serif
         noto-fonts-color-emoji
 
+        roboto
+        roboto-flex
+
         eb-garamond
         garamond-premier-pro
 
