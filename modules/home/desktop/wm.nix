@@ -78,7 +78,7 @@
             "Mod+F10".action = { screenshot = { show-pointer = false; }; };
             "Mod+Shift+F10".action = { screenshot = { show-pointer = true; }; };
 
-            "Mod+Delete".action = noctalia-ipc "lockScreen" "toggle";
+            "Mod+Delete".action = noctalia-ipc "lockScreen" "lock";
 
             "XF86AudioRaiseVolume".action = noctalia-ipc "volume" "increase";
             "XF86AudioLowerVolume".action = noctalia-ipc "volume" "decrease";
