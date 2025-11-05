@@ -17,7 +17,7 @@
         signByDefault = true;
       };
 
-      extraConfig = {
+      settings = {
         user.email = "max@maxniederman.com";
         user.name = "Max Niederman";
 
