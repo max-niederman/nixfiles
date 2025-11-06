@@ -153,6 +153,10 @@
     home.packages = with pkgs; [
       neovim
 
+      pandoc
+
+      princexml
+
       typst
       tinymist
     ];

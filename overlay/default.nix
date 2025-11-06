@@ -1,5 +1,6 @@
 self: super: {
   garamond-premier-pro = self.callPackage ./garamond-premier-pro { };
+  princexml = self.callPackage ./princexml { };
 
   vscode-extensions =
     super.vscode-extensions
