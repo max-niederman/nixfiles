@@ -114,7 +114,7 @@
 
           "direnv.path.executable" = "${pkgs.direnv}/bin/direnv";
 
-          "python.languageServer" = "Pylance";
+          "python.languageServer" = "None";
           "python.formatting.provider" = "ruff";
 
           "haskell.manageHLS" = "PATH";
