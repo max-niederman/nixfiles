@@ -104,7 +104,7 @@
         };
 
         dock = {
-          enabled = true;
+          enabled = false;
           backgroundOpacity = 0.6;
           colorizeIcons = true;
           displayMode = "always_visible";
