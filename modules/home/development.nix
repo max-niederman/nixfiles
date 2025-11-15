@@ -53,6 +53,7 @@
 
     home.packages = with pkgs; [
       claude-code
+      codex
 
       devcontainer
 
@@ -77,6 +78,8 @@
       cargo-flamegraph
       cargo-depgraph
       cargo-nextest
+
+      alejandra
 
       ghc
       cabal-install

@@ -47,7 +47,7 @@
     };
 
     # FIXME: agh nvtop is broken for some goddamn reason
-    # environment.systemPackages = with pkgs; [ nvtopPackages.nvidia ];
+    environment.systemPackages = with pkgs; [ nvtopPackages.full ];
 
     services.power-profiles-daemon.enable = true;
     services.upower.enable = true;
