@@ -35,6 +35,11 @@
     fsType = "zfs";
   };
 
+  fileSystems."/var/lib/containerd/io.containerd.snapshotter.v1.zfs" = {
+    device = "tank/local/containerd";
+    fsType = "zfs";
+  };
+
   fileSystems."/nix" = {
     device = "tank/local/nix";
     fsType = "zfs";
