@@ -48,7 +48,7 @@
     home.file.".cargo/config.toml".text = ''
       [target.x86_64-unknown-linux-gnu]
       linker = "${lib.getExe pkgs.llvmPackages_21.clang}"
-      rustflags = ["-Clink-arg=-fuse-ld=${lib.getExe' pkgs.mold-wrapped "mold"}", "-Ctarget-cpu=native"]
+      rustflags = ["-Clink-arg=-fuse-ld=${lib.getExe' pkgs.mold "mold"}", "-Ctarget-cpu=native"]
     '';
 
     home.packages = with pkgs; [

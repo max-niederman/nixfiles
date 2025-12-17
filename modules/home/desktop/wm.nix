@@ -71,7 +71,7 @@
             "Mod+Space".action = noctalia-ipc "launcher" "toggle";
             "Mod+Return".action = spawn (lib.getExe config.programs.alacritty.package);
             "Mod+U".action = spawn (lib.getExe config.programs.zen-browser.package);
-            "Mod+C".action = spawn (lib.getExe config.programs.vscode.package);
+            "Mod+C".action = spawn (lib.getExe config.programs.zed-editor.package);
             "Mod+Comma".action = noctalia-ipc "controlCenter" "toggle";
             "Mod+Shift+Comma".action = noctalia-ipc "settings" "toggle";
 

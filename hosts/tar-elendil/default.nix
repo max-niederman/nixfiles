@@ -8,7 +8,7 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  config = {
+
     system = {
       stateVersion = "25.05";
     };
@@ -67,6 +67,8 @@
       {
         # use the state version of the system, from the NixOS config
         home.stateVersion = config.system.stateVersion;
+
+        programs.zed-editor.enableExtraLanguages = true;
 
         programs.niri.settings.outputs = {
           # laptop built-in display

@@ -1,11 +1,111 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
 
 {
+  options = {
+    programs.zed-editor.enableExtraLanguages = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
+  };
+
   config = {
+    programs.zed-editor = {
+      enable = true;
+      installRemoteServer = true;
+
+      mutableUserSettings = false;
+      mutableUserKeymaps = false;
+      mutableUserTasks = false;
+
+      userSettings = {
+        vim_mode = true;
+        relative_line_numbers = true;
+        scrollbar.show = "never";
+
+        project_panel = {
+          sticky_scroll = false;
+        };
+
+        terminal = {
+          font_family = "FiraCode Nerd Font";
+        };
+
+        theme = {
+          mode = "system";
+          light = "Catppuccin Frappé";
+          dark = "Catppuccin Mocha";
+        };
+        icon_theme = {
+          mode = "system";
+          light = "Material Icon Theme";
+          dark = "Material Icon Theme";
+        };
+        buffer_font_family = "FiraCode Nerd Font";
+
+        telemetry = {
+          metrics = false;
+        };
+      };
+
+      extensions = [
+        # languages and syntaxes
+        "astro"
+        "assembly"
+        "basher"
+        "beancount"
+        "dockerfile"
+        "git-firefly"
+        "golangci-lint"
+        "graphviz"
+        "html"
+        "latex"
+        "log"
+        "make"
+        "nix"
+        "nu"
+        "ruff"
+        "proto"
+        "scss"
+        "sql"
+        "svelte"
+        "terraform"
+        "toml"
+        "xml"
+
+        "catppuccin"
+        # "catppuccin-blur" # blocking on blur support from niri
+        "material-icon-theme"
+      ]
+      ++ lib.optional config.programs.zed-editor.enableExtraLanguages [
+        "csharp"
+        "deno"
+        "elixir"
+        "gdscript"
+        "graphql"
+        "haskell"
+        "helm"
+        "java"
+        "julia"
+        "justfile"
+        "kotlin"
+        "lean"
+        "lua"
+        "pest"
+        "prisma"
+        "r"
+        "solidity"
+        "swift"
+        "vue"
+        "zig"
+      ];
+    };
+    stylix.targets.zed.enable = false;
+
     programs.vscode = {
       enable = true;
 
@@ -93,9 +193,6 @@
           vscjava.vscode-java-debug
           vscjava.vscode-java-test
           vscjava.vscode-gradle
-
-          # Lean
-          pkgs.vscode-marketplace.leanprover.lean4
         ];
 
         userSettings = {

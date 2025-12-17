@@ -114,5 +114,6 @@
         };
       };
     };
+    stylix.targets.noctalia-shell.enable = false;
   };
 }
