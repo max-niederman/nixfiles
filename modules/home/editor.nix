@@ -1,18 +1,10 @@
 {
   pkgs,
   lib,
-  config,
   ...
 }:
 
 {
-  options = {
-    programs.zed-editor.enableExtraLanguages = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-  };
-
   config = {
     programs.zed-editor = {
       enable = true;
@@ -80,28 +72,6 @@
         "catppuccin"
         # "catppuccin-blur" # blocking on blur support from niri
         "material-icon-theme"
-      ]
-      ++ lib.optional config.programs.zed-editor.enableExtraLanguages [
-        "csharp"
-        "deno"
-        "elixir"
-        "gdscript"
-        "graphql"
-        "haskell"
-        "helm"
-        "java"
-        "julia"
-        "justfile"
-        "kotlin"
-        "lean"
-        "lua"
-        "pest"
-        "prisma"
-        "r"
-        "solidity"
-        "swift"
-        "vue"
-        "zig"
       ];
     };
     stylix.targets.zed.enable = false;

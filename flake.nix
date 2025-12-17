@@ -26,6 +26,9 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zed = {
+      url = "github:zed-industries/zed";
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,6 +47,7 @@
       niri,
       noctalia,
       zen,
+      zed,
       spicetify-nix,
       nix-vscode-extensions,
       ...
@@ -70,6 +74,7 @@
             {
               nixpkgs = {
                 overlays = [
+                  zed.overlays.default
                   nix-vscode-extensions.overlays.default
                   overlays.default
                 ];

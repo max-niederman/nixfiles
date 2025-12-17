@@ -68,8 +68,6 @@
         # use the state version of the system, from the NixOS config
         home.stateVersion = config.system.stateVersion;
 
-        programs.zed-editor.enableExtraLanguages = true;
-
         programs.niri.settings.outputs = {
           # laptop built-in display
           "eDP-1" = {
@@ -118,5 +116,4 @@
         };
       }
     ];
-  };
 }
