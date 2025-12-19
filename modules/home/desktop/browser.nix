@@ -19,6 +19,10 @@
       " Binds
       "
 
+      " Switch J/K binds to make more sense for vertical tabs
+      bind J tabnext
+      bind K tabprev
+
       " Comment toggler for Reddit, Hacker News and Lobste.rs
       bind ;c hint -Jc [class*="expand"],[class*="togg"],[class="comment_folder"]
 
