@@ -79,6 +79,7 @@
       cargo-depgraph
       cargo-nextest
 
+      nixd
       alejandra
 
       ghc

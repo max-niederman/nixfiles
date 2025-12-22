@@ -16,7 +16,7 @@
 
       userSettings = {
         vim_mode = true;
-        relative_line_numbers = true;
+        relative_line_numbers = "enabled";
         scrollbar.show = "never";
 
         project_panel = {
@@ -43,6 +43,15 @@
           metrics = false;
         };
       };
+
+      userKeymaps = [
+        {
+          bindings = {
+            "ctrl-l" = ["agent::ToggleFocus" {}];
+            "ctrl-shift-l" = ["agent::NewExternalAgentThread" { agent = "claude_code"; }];
+          };
+        }
+      ];
 
       extensions = [
         # languages and syntaxes
