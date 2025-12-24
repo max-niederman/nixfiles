@@ -30,6 +30,9 @@
       daemon.settings = {
         max-concurrent-uploads = 12;
         features.containerd-snapshotter = true;
+        runtimes = {
+          runsc.path = "${pkgs.gvisor}/bin/runsc";
+        };
       };
     };
 
@@ -75,7 +78,8 @@
 
     environment.systemPackages = [
       pkgs.perf
-      pkgs.
+
+      pkgs.gvisor
       pkgs.buildkit
     ];
   };
