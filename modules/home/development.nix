@@ -80,6 +80,7 @@
       cargo-nextest
 
       nixd
+      nil
       alejandra
 
       ghc
