@@ -113,6 +113,22 @@
             variable-refresh-rate = true;
             focus-at-startup = true;
           };
+
+          # family home display
+          "PNP(AOC) Q27G1WG4 0x00020A77" = {
+            enable = true;
+            mode = {
+              width = 2560;
+              height = 1440;
+            };
+            scale = 1;
+            position = {
+              x = 0;
+              y = -1440;
+            };
+            variable-refresh-rate = false;
+            focus-at-startup = true;
+          };
         };
       }
     ];
