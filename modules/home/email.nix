@@ -55,7 +55,13 @@
       enable = true;
       profiles.default = {
         isDefault = true;
-        accountsOrder = [ "personal" "secondary" "mechanize" "reed" "echoprize" ];
+        accountsOrder = [
+          "personal"
+          "secondary"
+          "mechanize"
+          "reed"
+          "echoprize"
+        ];
       };
     };
   };

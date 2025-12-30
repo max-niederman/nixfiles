@@ -13,21 +13,18 @@
   ];
 
   config = {
+    home.pointerCursor = {
+      gtk.enable = true;
+      package = pkgs.capitaine-cursors;
+      name = "capitaine-cursors";
+    };
+
     gtk = {
       enable = true;
     };
 
     home.file."Pictures/Wallpapers" = {
       source = ./wallpapers;
-    };
-
-    programs.fuzzel = {
-      enable = true;
-      settings = {
-        main = {
-          prompt = "λ";
-        };
-      };
     };
 
     home.packages = with pkgs; [

@@ -51,7 +51,7 @@
       spicetify-nix,
       nix-vscode-extensions,
       ...
-    } @ inputs:
+    }@inputs:
     rec {
       overlays.default = import ./overlay;
 

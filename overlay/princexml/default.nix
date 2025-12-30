@@ -1,4 +1,10 @@
-{ autoPatchelfHook, fetchurl, fontconfig, glibc, stdenv }:
+{
+  autoPatchelfHook,
+  fetchurl,
+  fontconfig,
+  glibc,
+  stdenv,
+}:
 
 stdenv.mkDerivation rec {
   pname = "princexml";

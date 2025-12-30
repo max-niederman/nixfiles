@@ -47,8 +47,14 @@
       userKeymaps = [
         {
           bindings = {
-            "ctrl-l" = ["agent::ToggleFocus" {}];
-            "ctrl-shift-l" = ["agent::NewExternalAgentThread" { agent = "claude_code"; }];
+            "ctrl-l" = [
+              "agent::ToggleFocus"
+              { }
+            ];
+            "ctrl-shift-l" = [
+              "agent::NewExternalAgentThread"
+              { agent = "claude_code"; }
+            ];
           };
         }
       ];
@@ -59,6 +65,7 @@
         "assembly"
         "basher"
         "beancount"
+        "biome"
         "dockerfile"
         "git-firefly"
         "golangci-lint"
