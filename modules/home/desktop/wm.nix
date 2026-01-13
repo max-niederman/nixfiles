@@ -76,6 +76,8 @@
             "Mod+Comma".action = noctalia-ipc "controlCenter" "toggle";
             "Mod+Shift+Comma".action = noctalia-ipc "settings" "toggle";
 
+            "Mod+V".action = noctalia-ipc "launcher" "clipboard";
+
             "Mod+F10".action = {
               screenshot = {
                 show-pointer = false;

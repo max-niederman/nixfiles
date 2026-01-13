@@ -27,6 +27,19 @@
       source = ./wallpapers;
     };
 
+    services.micromanage = {
+      enable = true;
+      monitorIdentifier = "Dell Inc. DELL U4025QW 49FC734";
+      people = [
+        "Akshar"
+        "Data"
+        "Stephen"
+        "Tejas"
+        "Harish"
+      ];
+      interval = "hourly";
+    };
+
     home.packages = with pkgs; [
       # clipboard utilities
       wl-clipboard

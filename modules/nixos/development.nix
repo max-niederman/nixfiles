@@ -51,7 +51,7 @@
 
       serviceConfig = {
         Type = "notify";
-        ExecStart = "${pkgs.buildkit}/bin/buildkitd --addr fd:// --oci-worker false --containerd-worker true";
+        ExecStart = "${pkgs.buildkit}/bin/buildkitd --addr fd:// --oci-worker false --containerd-worker true --containerd-worker-namespace moby";
       };
     };
     systemd.sockets.buildkit = {

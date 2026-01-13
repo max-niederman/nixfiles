@@ -19,6 +19,11 @@
         relative_line_numbers = "enabled";
         scrollbar.show = "never";
 
+        vim = {
+          use_system_clipboard = "never";
+          toggle_relative_line_numbers = true;
+        };
+
         project_panel = {
           sticky_scroll = false;
         };

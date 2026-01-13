@@ -31,6 +31,8 @@
         };
 
         appLauncher = {
+          enableClipboardHistory = true;
+          enableClipPreview = true;
           terminalCommand = (lib.getExe config.programs.alacritty.package);
         };
 
