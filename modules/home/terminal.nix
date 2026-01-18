@@ -77,7 +77,7 @@
       # network utilities
       iputils
       unixtools.netstat
-      dogdns
+      doggo
       nmap
       caddy
       mtr
