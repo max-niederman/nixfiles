@@ -29,7 +29,7 @@
 
     services.micromanage = {
       enable = true;
-      monitorIdentifier = "Dell Inc. DELL U4025QW 49FC734";
+      monitorIdentifier = "Dell Inc. DELL U4025QW J8M9484";
       people = [
         "Akshar"
         "Data"

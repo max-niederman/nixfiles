@@ -98,7 +98,7 @@
         };
 
         # mechanize office display
-        "Dell Inc. DELL U4025QW 49FC734" = {
+        "Dell Inc. DELL U4025QW J8M9484" = {
           enable = true;
           mode = {
             width = 5120;
