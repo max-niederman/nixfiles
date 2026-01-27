@@ -78,6 +78,13 @@
 
             "Mod+V".action = noctalia-ipc "launcher" "clipboard";
 
+            "Mod+R".action =
+              spawn "sh" "-c"
+                "export OPENAI_API_KEY=$(cat /run/secrets/openai_api_key) && pgrep -x waystt >/dev/null && pkill --signal SIGUSR1 waystt || (waystt --pipe-to ydotool type --file - &)";
+            "Mod+Shift+R".action =
+              spawn "sh" "-c"
+                "export OPENAI_API_KEY=$(cat /run/secrets/openai_api_key) && pgrep -x waystt >/dev/null && pkill --signal SIGUSR1 waystt || (waystt --pipe-to wl-copy &)";
+
             "Mod+F10".action = {
               screenshot = {
                 show-pointer = false;

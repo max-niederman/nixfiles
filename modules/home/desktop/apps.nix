@@ -1,4 +1,9 @@
-{ pkgs, flakeInputs, ... }:
+{
+  pkgs,
+  lib,
+  flakeInputs,
+  ...
+}:
 
 let
   spicePkgs = flakeInputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
@@ -40,6 +45,8 @@ in
 
       osu-lazer-bin
       prismlauncher
+
+      waystt
     ];
   };
 }

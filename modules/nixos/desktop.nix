@@ -78,6 +78,12 @@
     };
     hardware.opentabletdriver.enable = true;
 
+    # ydotool
+    programs.ydotool = {
+      enable = true;
+      group = "wheel";
+    };
+
     # security
     security.polkit.enable = true;
     services.gnome.gnome-keyring.enable = true;
