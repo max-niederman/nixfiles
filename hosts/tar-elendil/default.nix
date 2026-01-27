@@ -30,6 +30,20 @@
     };
   };
 
+  services.sanoid = {
+    enable = true;
+    datasets."tank/safe" = {
+      recursive = true;
+
+      autosnap = true;
+      autoprune = true;
+
+      hourly = 12;
+      daily = 7;
+      monthly = 2;
+    };
+  };
+
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.graphics.enable = true;
   hardware.nvidia = {
