@@ -8,6 +8,7 @@
       nativeMessagingHosts = with pkgs; [
         firefoxpwa
         tridactyl-native
+        figma-agent
       ];
     };
 
