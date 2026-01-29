@@ -25,6 +25,15 @@
     # see NixOS/nixpkgs#180175
     systemd.services.systemd-udevd.restartIfChanged = false;
 
+    programs.wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+    };
+
+    programs.dublin-traceroute = {
+      enable = true;
+    };
+
     environment.systemPackages = with pkgs; [ iptables ];
   };
 }

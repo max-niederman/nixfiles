@@ -1,25 +1,12 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 
 {
   config = {
-    programs.nix-ld = {
-      enable = true;
-      libraries = [
-        (pkgs.runCommand "steamrun-lib" { } "mkdir $out; ln -s ${pkgs.steam-run.fhsenv}/usr/lib64 $out/lib")
-      ];
-    };
-
-    # for Git signing
-    programs.gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-      pinentryPackage = pkgs.pinentry-gnome3;
-    };
-
     virtualisation.docker = {
       enable = true;
       extraOptions = "--containerd /run/containerd/containerd.sock";
@@ -41,7 +28,7 @@
     };
 
     # buildkitd isn't in nixos yet unfortunately, so we need to manually configure it
-    systemd.services.buildkit = {
+    systemd.services.buildkit = lib.mkIf config.max.development {
       description = "Buildkit";
 
       requires = [ "buildkit.socket" ];
@@ -54,7 +41,7 @@
         ExecStart = "${pkgs.buildkit}/bin/buildkitd --addr fd:// --oci-worker false --containerd-worker true --containerd-worker-namespace moby";
       };
     };
-    systemd.sockets.buildkit = {
+    systemd.sockets.buildkit = lib.mkIf config.max.development {
       description = "BuildKit";
 
       wantedBy = [ "sockets.target" ];
@@ -67,20 +54,16 @@
       };
     };
 
-    programs.wireshark = {
-      enable = true;
-      package = pkgs.wireshark;
-    };
+    boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-    programs.dublin-traceroute = {
-      enable = true;
-    };
-
-    environment.systemPackages = [
-      pkgs.perf
-
-      pkgs.gvisor
-      pkgs.buildkit
-    ];
+    environment.systemPackages =
+      with pkgs;
+      [
+        perf
+        gvisor
+      ]
+      ++ lib.optionals config.max.development [
+        buildkit
+      ];
   };
 }

@@ -1,11 +1,12 @@
 {
+  config,
   ...
 }:
 
 {
   config = {
     boot.plymouth = {
-      enable = true;
+      enable = config.max.headed;
     };
   };
 }

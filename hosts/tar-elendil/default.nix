@@ -12,6 +12,12 @@
     stateVersion = "25.05";
   };
 
+  max = {
+    headed = true;
+    development = true;
+    gaming = true;
+  };
+
   boot = {
     loader = {
       systemd-boot = {

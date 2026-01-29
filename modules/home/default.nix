@@ -4,7 +4,7 @@
 
 {
   imports = [
-    ./terminal.nix
+    ./shell.nix
     ./development.nix
     ./editor.nix
     ./email.nix
