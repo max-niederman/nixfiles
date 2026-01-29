@@ -5,7 +5,6 @@
     ./audio.nix
     ./boot.nix
     ./compat.nix
-    ./crypto.nix
     ./desktop.nix
     ./gaming.nix
     ./input.nix
