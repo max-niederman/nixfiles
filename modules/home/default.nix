@@ -4,10 +4,11 @@
 
 {
   imports = [
-    ./shell.nix
+    ./desktop
     ./development.nix
     ./editor.nix
     ./email.nix
-    ./desktop
+    ./git.nix
+    ./shell.nix
   ];
 }

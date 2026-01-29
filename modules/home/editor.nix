@@ -1,5 +1,6 @@
 {
   pkgs,
+  nixosConfig,
   lib,
   ...
 }:
@@ -7,7 +8,7 @@
 {
   config = {
     programs.zed-editor = {
-      enable = true;
+      enable = nixosConfig.max.headed;
       installRemoteServer = true;
 
       mutableUserSettings = false;
@@ -98,7 +99,7 @@
     stylix.targets.zed.enable = false;
 
     programs.vscode = {
-      enable = true;
+      enable = nixosConfig.max.headed && nixosConfig.max.development;
 
       package = pkgs.code-cursor;
 

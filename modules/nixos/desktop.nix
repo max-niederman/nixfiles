@@ -58,8 +58,5 @@
     # security
     security.polkit.enable = true;
     services.gnome.gnome-keyring.enable = true;
-
-    # random device drivers
-    services.printing.enable = true;
   };
 }

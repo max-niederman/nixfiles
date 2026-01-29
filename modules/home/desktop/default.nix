@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  nixosConfig,
   ...
 }:
 {
@@ -12,7 +13,7 @@
     ./browser.nix
   ];
 
-  config = {
+  config = lib.mkIf nixosConfig.max.headed {
     home.pointerCursor = {
       gtk.enable = true;
       package = pkgs.capitaine-cursors;

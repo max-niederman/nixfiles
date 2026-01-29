@@ -2,11 +2,12 @@
   config,
   pkgs,
   lib,
+  nixosConfig,
   ...
 }:
 
 {
-  config = {
+  config = lib.mkIf nixosConfig.max.headed {
     programs.niri = {
       enable = true;
       package = pkgs.niri;

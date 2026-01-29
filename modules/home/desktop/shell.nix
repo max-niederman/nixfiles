@@ -2,11 +2,12 @@
   pkgs,
   lib,
   config,
+  nixosConfig,
   ...
 }:
 
 {
-  config = {
+  config = lib.mkIf nixosConfig.max.headed {
     programs.noctalia-shell = {
       enable = true;
 

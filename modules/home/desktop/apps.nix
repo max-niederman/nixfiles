@@ -2,6 +2,7 @@
   pkgs,
   lib,
   flakeInputs,
+  nixosConfig,
   ...
 }:
 
@@ -9,7 +10,7 @@ let
   spicePkgs = flakeInputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 in
 {
-  config = {
+  config = lib.mkIf nixosConfig.max.headed {
     programs.alacritty = {
       enable = true;
       settings = {

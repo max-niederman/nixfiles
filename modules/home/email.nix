@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ nixosConfig, ... }:
 
 {
   config = {
@@ -52,7 +52,7 @@
     };
 
     programs.thunderbird = {
-      enable = true;
+      enable = nixosConfig.max.headed;
       profiles.default = {
         isDefault = true;
         accountsOrder = [

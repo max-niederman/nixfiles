@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }:
 
@@ -73,6 +72,8 @@
 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+
+  services.printing.enable = true;
 
   networking = {
     hostName = "tar-elendil";

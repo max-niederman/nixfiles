@@ -1,7 +1,12 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  nixosConfig,
+  ...
+}:
 
 {
-  config = {
+  config = lib.mkIf nixosConfig.max.headed {
     programs.zen-browser = {
       enable = true;
 
