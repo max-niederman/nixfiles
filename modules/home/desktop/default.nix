@@ -27,17 +27,32 @@
       source = ./wallpapers;
     };
 
-    services.micromanage = {
-      enable = true;
-      monitorIdentifier = "Dell Inc. DELL U4025QW J8M9484";
-      people = [
-        "Akshar"
-        "Data"
-        "Stephen"
-        "Tejas"
-        "Harish"
-      ];
-      interval = "hourly";
+    systemd.user.services.micromanage-notify = {
+      Unit = {
+        Description = "Micromanage notification";
+      };
+      Service = {
+        Type = "oneshot";
+        ExecStart = pkgs.writeShellScript "micromanage-notify" ''
+          # Check if the monitor is attached using niri msg
+          if ${pkgs.niri}/bin/niri msg outputs | grep -q "Dell Inc. DELL U4025QW J8M9484"; then
+            ${pkgs.libnotify}/bin/notify-send "Micromanage" "Time to check in!"
+          fi
+        '';
+      };
+    };
+
+    systemd.user.timers.micromanage-notify = {
+      Unit = {
+        Description = "Micromanage notification timer";
+      };
+      Timer = {
+        OnCalendar = "hourly";
+        Persistent = true;
+      };
+      Install = {
+        WantedBy = [ "timers.target" ];
+      };
     };
 
     home.packages = with pkgs; [

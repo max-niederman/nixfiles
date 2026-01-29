@@ -33,10 +33,6 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    micromanage = {
-      url = "github:max-niederman/micromanage";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
@@ -53,7 +49,6 @@
       zen,
       zed,
       spicetify-nix,
-      micromanage,
       nix-vscode-extensions,
       ...
     }@inputs:
@@ -99,7 +94,6 @@
                 noctalia.homeModules.default
                 zen.homeModules.beta
                 spicetify-nix.homeManagerModules.spicetify
-                micromanage.homeModules.default
               ];
             }
 
