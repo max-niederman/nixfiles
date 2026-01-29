@@ -10,6 +10,17 @@ let
 in
 {
   config = {
+    programs.alacritty = {
+      enable = true;
+      settings = {
+        window.padding = {
+          x = 16;
+          y = 16;
+        };
+        font.normal.family = "FiraCode Nerd Font";
+      };
+    };
+
     services.easyeffects = {
       enable = true;
     };
