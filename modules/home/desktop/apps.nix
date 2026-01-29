@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   flakeInputs,
   nixosConfig,
   ...
@@ -42,8 +43,13 @@ in
       enable = true;
     };
 
+    # use bitwarden desktop's ssh agent
+    home.sessionVariables.SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
+
     home.packages = with pkgs; [
       qpwgraph
+
+      bitwarden-desktop
 
       anki
 
