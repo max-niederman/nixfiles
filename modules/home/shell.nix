@@ -55,6 +55,9 @@
     };
 
     home.packages = with pkgs; [
+      # credentials
+      bitwarden-cli
+
       # fetch
       fastfetch
       cpufetch

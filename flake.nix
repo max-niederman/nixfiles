@@ -29,6 +29,11 @@
     zed = {
       url = "github:zed-industries/zed";
     };
+    claude-code.url = "github:sadjow/claude-code-nix";
+    moltbot = {
+      url = "github:moltbot/nix-moltbot";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,6 +53,8 @@
       noctalia,
       zen,
       zed,
+      claude-code,
+      moltbot,
       spicetify-nix,
       nix-vscode-extensions,
       ...
@@ -76,6 +83,8 @@
                 overlays = [
                   zed.overlays.default
                   nix-vscode-extensions.overlays.default
+                  claude-code.overlays.default
+                  moltbot.overlays.default
                   overlays.default
                 ];
                 config = {
@@ -93,6 +102,7 @@
                 niri.homeModules.niri
                 noctalia.homeModules.default
                 zen.homeModules.beta
+                moltbot.homeManagerModules.moltbot
                 spicetify-nix.homeManagerModules.spicetify
               ];
             }

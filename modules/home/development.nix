@@ -20,9 +20,6 @@
     '';
 
     home.packages = with pkgs; [
-      claude-code
-      codex
-
       devcontainer
 
       gh

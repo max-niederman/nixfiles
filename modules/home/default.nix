@@ -4,6 +4,7 @@
 
 {
   imports = [
+    ./agents.nix
     ./desktop
     ./development.nix
     ./editor.nix
