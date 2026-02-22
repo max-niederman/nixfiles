@@ -25,34 +25,6 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "tank/safe/root";
-    fsType = "zfs";
-  };
-
-  fileSystems."/home" = {
-    device = "tank/safe/home";
-    fsType = "zfs";
-  };
-
-  fileSystems."/var/lib/containerd/io.containerd.snapshotter.v1.zfs" = {
-    device = "tank/local/containerd";
-    fsType = "zfs";
-  };
-
-  fileSystems."/nix" = {
-    device = "tank/local/nix";
-    fsType = "zfs";
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/6AB6-91BB";
-    fsType = "vfat";
-  };
-
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/3157ec63-ff74-4409-973b-9a87c185a59b"; }
-  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

@@ -5,7 +5,10 @@
 }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./disko.nix
+  ];
 
   system = {
     stateVersion = "25.05";

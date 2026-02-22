@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     sops-nix.url = "github:Mic92/sops-nix";
 
     home-manager = {
@@ -46,6 +50,7 @@
   outputs =
     {
       nixpkgs,
+      disko,
       sops-nix,
       stylix,
       home-manager,
@@ -92,6 +97,7 @@
                 };
               };
             }
+            disko.nixosModules.disko
             home-manager.nixosModules.home-manager
             noctalia.nixosModules.default
             stylix.nixosModules.stylix
@@ -131,6 +137,7 @@
             ssh-to-age
 
             nixos-install-tools
+            pkgs.disko
           ];
         }
       );
