@@ -122,6 +122,10 @@
             system = "x86_64-linux";
             modules = [ ./hosts/tar-elendil ];
           };
+          tar-meneldur = system {
+            system = "x86_64-linux";
+            modules = [ ./hosts/tar-meneldur ];
+          };
         };
 
       devShell = nixpkgs.lib.attrsets.genAttrs [ "x86_64-linux" ] (
