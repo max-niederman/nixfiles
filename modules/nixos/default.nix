@@ -7,6 +7,7 @@
     ./compat.nix
     ./desktop.nix
     ./gaming.nix
+    ./harbor.nix
     ./input.nix
     ./network.nix
     ./nix.nix

@@ -20,8 +20,6 @@
     '';
 
     home.packages = with pkgs; [
-      devcontainer
-
       gh
 
       lldb
