@@ -5,6 +5,10 @@
 
 {
   config = {
+    security.pki.certificateFiles = [
+      ./development-rootCA.pem
+    ];
+
     services.resolved = {
       enable = true;
     };
