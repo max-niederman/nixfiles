@@ -27,6 +27,11 @@ in
       enable = true;
     };
 
+    services.kdeconnect = {
+      enable = true;
+      indicator = true;
+    };
+
     programs.mpv = {
       enable = true;
     };
