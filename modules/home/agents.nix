@@ -35,9 +35,8 @@
       moltbot-gateway
 
       # coding tuis
-      (claude-code-bun.override {
-        bunBinName = "claude";
-      })
+      llm-agents.claude-code
+      llm-agents.claudebox
       codex
     ];
   };
