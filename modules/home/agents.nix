@@ -37,7 +37,8 @@
       # coding tuis
       llm-agents.claude-code
       llm-agents.claudebox
-      codex
+      claudewrap
+      llm-agents.codex
     ];
   };
 }

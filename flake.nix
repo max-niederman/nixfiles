@@ -43,6 +43,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    claudewrap = {
+      url = "github:max-niederman/claudewrap";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
   };
@@ -62,6 +66,7 @@
       moltbot,
       spicetify-nix,
       nix-vscode-extensions,
+      claudewrap,
       ...
     }@inputs:
     rec {
@@ -90,6 +95,7 @@
                   nix-vscode-extensions.overlays.default
                   llm-agents.overlays.default
                   moltbot.overlays.default
+                  claudewrap.overlays.default
                   overlays.default
                 ];
                 config = {
