@@ -136,11 +136,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773449407,
-        "narHash": "sha256-F4uL82dNJ9bAh8ay8X+k14xoflh4OCwVF9KyvLetbZU=",
+        "lastModified": 1773969394,
+        "narHash": "sha256-oNrV7RP4zQlXTcKqBJViyEuq4SLX5iapzqmKA+mZk0E=",
         "owner": "max-niederman",
         "repo": "claudewrap",
-        "rev": "dc8d8a3bb0db6749a77d028ceac9c186bc1a0bf8",
+        "rev": "7f812e8f08d8e2520e86e117b3a7c7319af91d49",
         "type": "github"
       },
       "original": {
