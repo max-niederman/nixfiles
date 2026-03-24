@@ -40,5 +40,9 @@
       claudewrap
       llm-agents.codex
     ];
+
+    home.shellAliases = {
+      cw = "claudewrap";
+    };
   };
 }
