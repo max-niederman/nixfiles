@@ -36,9 +36,8 @@
 
       # coding tuis
       llm-agents.claude-code
-      llm-agents.claudebox
       claudewrap
-      llm-agents.codex
+      codex
     ];
 
     home.shellAliases = {
