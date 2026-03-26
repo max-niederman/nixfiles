@@ -80,6 +80,8 @@
 
   services.printing.enable = true;
 
+  services.telemax.enable = true;
+
   networking = {
     hostName = "tar-elendil";
     hostId = "2662d6f8";
