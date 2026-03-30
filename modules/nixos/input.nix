@@ -7,6 +7,8 @@
 
 {
   config = {
+    hardware.uinput.enable = true;
+
     # input devices
     services.interception-tools = {
       enable = config.max.headed;

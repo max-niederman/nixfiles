@@ -17,6 +17,7 @@
         createHome = true;
         extraGroups = [
           "wheel"
+          "uinput"
           "video"
           "networkmanager"
           "dialout"

@@ -957,11 +957,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774509295,
-        "narHash": "sha256-tkGuKKcUjqtzGoDzcSZ912PkCiDrp51xW4cD75WWQXc=",
+        "lastModified": 1774844176,
+        "narHash": "sha256-6bEXNKB0kez6goiCySjQWEkkqCQAQjSh+S6UERHMH/A=",
         "owner": "max-niederman",
         "repo": "telemax",
-        "rev": "270abce40f2f855b052db2a98c12922ec66bc354",
+        "rev": "8d7bc5af30815a5faad0950f54e920d0bbe6104c",
         "type": "github"
       },
       "original": {
