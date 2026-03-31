@@ -61,6 +61,8 @@
 
   services.printing.enable = true;
 
+  services.telemax.enable = true;
+
   networking = {
     hostName = "tar-meneldur";
     hostId = "45d75591";
@@ -78,6 +80,8 @@
         enable = true;
         displayName = "Work Linux Machine - Tar-Meneldur";
       };
+
+      services.taiga-blocked.enable = true;
 
       programs.niri.settings.outputs = {
         # mechanize office display

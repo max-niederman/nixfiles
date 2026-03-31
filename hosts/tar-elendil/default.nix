@@ -100,6 +100,12 @@
         displayName = "Daily Driver Linux Laptop - Tar-Elendil";
       };
 
+      services.taiga-blocked = {
+        enable = true;
+        server = false;
+        url = "http://tar-meneldur:8432";
+      };
+
       programs.niri.settings.outputs = {
         # laptop built-in display
         "eDP-1" = {

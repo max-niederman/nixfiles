@@ -136,11 +136,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774772355,
-        "narHash": "sha256-jhhFWXk+kkNU2L/LBGI1jE0iM4pkBsjk4dfyVUMxlRo=",
+        "lastModified": 1773969394,
+        "narHash": "sha256-oNrV7RP4zQlXTcKqBJViyEuq4SLX5iapzqmKA+mZk0E=",
         "owner": "max-niederman",
         "repo": "claudewrap",
-        "rev": "407088576a0a108247f9cdecce58eb3182ead55a",
+        "rev": "7f812e8f08d8e2520e86e117b3a7c7319af91d49",
         "type": "github"
       },
       "original": {
@@ -325,6 +325,24 @@
     "flake-utils_3": {
       "inputs": {
         "systems": "systems_6"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_4": {
+      "inputs": {
+        "systems": "systems_7"
       },
       "locked": {
         "lastModified": 1731533236,
@@ -760,6 +778,7 @@
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
+        "taiga-blocked": "taiga-blocked",
         "telemax": "telemax",
         "zed": "zed",
         "zen": "zen"
@@ -949,7 +968,22 @@
         "type": "github"
       }
     },
-    "telemax": {
+    "systems_7": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "taiga-blocked": {
       "inputs": {
         "flake-utils": "flake-utils_3",
         "nixpkgs": [
@@ -957,11 +991,32 @@
         ]
       },
       "locked": {
-        "lastModified": 1774844176,
-        "narHash": "sha256-6bEXNKB0kez6goiCySjQWEkkqCQAQjSh+S6UERHMH/A=",
+        "lastModified": 1774685967,
+        "narHash": "sha256-PXO2k6NJzATo5RoYJo2ExL4KcCrpqPQzRL2UusRZBGA=",
+        "ref": "refs/heads/main",
+        "rev": "110aed8a81f2762c195880c3e2754942cfb6f4b4",
+        "revCount": 3,
+        "type": "git",
+        "url": "ssh://git@github.com/mechanize-work/taiga-blocked"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/mechanize-work/taiga-blocked"
+      }
+    },
+    "telemax": {
+      "inputs": {
+        "flake-utils": "flake-utils_4",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1774509295,
+        "narHash": "sha256-tkGuKKcUjqtzGoDzcSZ912PkCiDrp51xW4cD75WWQXc=",
         "owner": "max-niederman",
         "repo": "telemax",
-        "rev": "8d7bc5af30815a5faad0950f54e920d0bbe6104c",
+        "rev": "270abce40f2f855b052db2a98c12922ec66bc354",
         "type": "github"
       },
       "original": {

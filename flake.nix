@@ -51,6 +51,10 @@
       url = "github:max-niederman/telemax";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    taiga-blocked = {
+      url = "git+ssh://git@github.com/mechanize-work/taiga-blocked";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
   };
@@ -72,6 +76,7 @@
       nix-vscode-extensions,
       claudewrap,
       telemax,
+      taiga-blocked,
       ...
     }@inputs:
     rec {
@@ -102,6 +107,7 @@
                   moltbot.overlays.default
                   claudewrap.overlays.default
                   telemax.overlays.default
+                  taiga-blocked.overlays.default
                   overlays.default
                 ];
                 config = {
@@ -123,6 +129,7 @@
                 zen.homeModules.beta
                 moltbot.homeManagerModules.moltbot
                 spicetify-nix.homeManagerModules.spicetify
+                taiga-blocked.homeModules.default
               ];
             }
 
