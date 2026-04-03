@@ -30,14 +30,7 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zed = {
-      url = "github:zed-industries/zed";
-    };
     llm-agents.url = "github:numtide/llm-agents.nix";
-    moltbot = {
-      url = "github:moltbot/nix-moltbot";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -69,9 +62,7 @@
       niri,
       noctalia,
       zen,
-      zed,
       llm-agents,
-      moltbot,
       spicetify-nix,
       nix-vscode-extensions,
       claudewrap,
@@ -101,10 +92,8 @@
             {
               nixpkgs = {
                 overlays = [
-                  zed.overlays.default
                   nix-vscode-extensions.overlays.default
                   llm-agents.overlays.default
-                  moltbot.overlays.default
                   claudewrap.overlays.default
                   telemax.overlays.default
                   taiga-blocked.overlays.default
@@ -127,7 +116,6 @@
                 niri.homeModules.niri
                 noctalia.homeModules.default
                 zen.homeModules.beta
-                moltbot.homeManagerModules.moltbot
                 spicetify-nix.homeManagerModules.spicetify
                 taiga-blocked.homeModules.default
               ];

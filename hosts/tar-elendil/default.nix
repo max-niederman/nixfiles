@@ -95,11 +95,6 @@
       # use the state version of the system, from the NixOS config
       home.stateVersion = config.system.stateVersion;
 
-      services.aurora-node = {
-        enable = true;
-        displayName = "Daily Driver Linux Laptop - Tar-Elendil";
-      };
-
       services.taiga-blocked = {
         enable = true;
         server = false;

@@ -76,11 +76,6 @@
       # use the state version of the system, from the NixOS config
       home.stateVersion = config.system.stateVersion;
 
-      services.aurora-node = {
-        enable = true;
-        displayName = "Work Linux Machine - Tar-Meneldur";
-      };
-
       services.taiga-blocked.enable = true;
 
       programs.niri.settings.outputs = {

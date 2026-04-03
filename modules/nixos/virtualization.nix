@@ -17,9 +17,10 @@
       daemon.settings = {
         max-concurrent-uploads = 12;
         features.containerd-snapshotter = true;
-        runtimes = {
-          runsc.path = "${pkgs.gvisor}/bin/runsc";
-        };
+        # FIXME: gvisor broken on go 1.26, re-enable after https://github.com/NixOS/nixpkgs/pull/503624 merges
+        # runtimes = {
+        #   runsc.path = "${pkgs.gvisor}/bin/runsc";
+        # };
       };
     };
 
@@ -67,7 +68,8 @@
       with pkgs;
       [
         perf
-        gvisor
+        # FIXME: re-enable after https://github.com/NixOS/nixpkgs/pull/503624 merges
+        # gvisor
       ]
       ++ lib.optionals config.max.development [
         buildkit
