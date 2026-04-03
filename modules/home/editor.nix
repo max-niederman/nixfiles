@@ -31,6 +31,7 @@
 
         terminal = {
           font_family = "FiraCode Nerd Font";
+          shell.program = "nu"; # FIXME: IDK why this is necessary
         };
 
         theme = {
@@ -49,21 +50,6 @@
           metrics = false;
         };
       };
-
-      userKeymaps = [
-        {
-          bindings = {
-            "ctrl-l" = [
-              "agent::ToggleFocus"
-              { }
-            ];
-            "ctrl-shift-l" = [
-              "agent::NewExternalAgentThread"
-              { agent = "claude_code"; }
-            ];
-          };
-        }
-      ];
 
       extensions = [
         # languages and syntaxes
