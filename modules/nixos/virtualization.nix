@@ -5,6 +5,10 @@
   ...
 }:
 
+let
+  # FIXME: gvisor broken on go 1.26, drop override after https://github.com/NixOS/nixpkgs/pull/503624 merges
+  gvisor = pkgs.gvisor.override { buildGoModule = pkgs.buildGo125Module; };
+in
 {
   config = {
     virtualisation.docker = {
@@ -17,10 +21,9 @@
       daemon.settings = {
         max-concurrent-uploads = 12;
         features.containerd-snapshotter = true;
-        # FIXME: gvisor broken on go 1.26, re-enable after https://github.com/NixOS/nixpkgs/pull/503624 merges
-        # runtimes = {
-        #   runsc.path = "${pkgs.gvisor}/bin/runsc";
-        # };
+        runtimes = {
+          runsc.path = "${gvisor}/bin/runsc";
+        };
       };
     };
 
@@ -68,8 +71,7 @@
       with pkgs;
       [
         perf
-        # FIXME: re-enable after https://github.com/NixOS/nixpkgs/pull/503624 merges
-        # gvisor
+        gvisor
       ]
       ++ lib.optionals config.max.development [
         buildkit
