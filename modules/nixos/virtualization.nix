@@ -70,6 +70,10 @@ in
     environment.systemPackages =
       with pkgs;
       [
+        skopeo
+        crane
+        oras
+
         perf
         gvisor
       ]
