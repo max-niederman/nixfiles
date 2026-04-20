@@ -814,11 +814,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774685967,
-        "narHash": "sha256-PXO2k6NJzATo5RoYJo2ExL4KcCrpqPQzRL2UusRZBGA=",
+        "lastModified": 1776678577,
+        "narHash": "sha256-3Z9Il0IQemEi/+tK7wqJQ5XRBC0uSmOTz2n1Jx5GE3M=",
         "ref": "refs/heads/main",
-        "rev": "110aed8a81f2762c195880c3e2754942cfb6f4b4",
-        "revCount": 3,
+        "rev": "a2ea90b785bf65e4816f6f80966be5a0a3412b5a",
+        "revCount": 18,
         "type": "git",
         "url": "ssh://git@github.com/mechanize-work/taiga-blocked"
       },

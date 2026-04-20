@@ -97,8 +97,9 @@
 
       services.taiga-blocked = {
         enable = true;
-        server = false;
-        url = "http://tar-meneldur:8432";
+        peers = [
+          "http://tar-meneldur:8432"
+        ];
       };
 
       programs.niri.settings.outputs = {
