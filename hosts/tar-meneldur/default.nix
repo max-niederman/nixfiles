@@ -76,15 +76,20 @@
       # use the state version of the system, from the NixOS config
       home.stateVersion = config.system.stateVersion;
 
-      services.taiga-blocked.enable = true;
+      services.taiga-blocked = {
+        enable = true;
+        peers = [
+          "http://tar-elendil:8432"
+        ];
+      };
 
       programs.niri.settings.outputs = {
         # mechanize office display
-        "Dell Inc. DELL U4025QW J8M9484" = {
+        "Dell Inc. DELL U5226KW HM0XNF4" = {
           enable = true;
           mode = {
-            width = 5120;
-            height = 2160;
+            width = 6144;
+            height = 2560;
           };
           scale = 1;
           position = {
