@@ -35,6 +35,16 @@
           size = 16;
         };
 
+        layout = {
+          empty-workspace-above-first = true;
+
+          preset-column-widths = [
+            { proportion = 1. / 4.; }
+            { proportion = 1. / 3.; }
+            { proportion = 1. / 2.; }
+          ];
+        };
+
         prefer-no-csd = true;
         window-rules = [
           {
@@ -66,9 +76,11 @@
 
             "Mod+S".action = toggle-window-floating;
 
+            "Mod+D".action = switch-preset-column-width;
+            "Mod+F".action = maximize-column;
+
             "Mod+Backspace".action = close-window;
             "Mod+Shift+Backspace".action = close-window;
-            "Mod+F".action = maximize-column;
 
             "Mod+Space".action = noctalia-ipc "launcher" "toggle";
             "Mod+Return".action = spawn (lib.getExe config.programs.alacritty.package);
