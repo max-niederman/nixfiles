@@ -79,6 +79,7 @@
       jq
       file
       libtree
+      ffmpeg
     ];
   };
 }
