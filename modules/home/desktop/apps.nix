@@ -29,6 +29,14 @@ in
 
     programs.mpv = {
       enable = true;
+      config = {
+        # NVIDIA + Wayland: Vulkan WSI loses surfaces (VK_ERROR_SURFACE_LOST_KHR)
+        # on compositor events (DPMS, VRR transitions, pause). OpenGL is stable.
+        vo = "gpu";
+        gpu-api = "opengl";
+        gpu-context = "wayland";
+        hwdec = "nvdec";
+      };
     };
 
     programs.spicetify = {
