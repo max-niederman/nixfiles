@@ -26,6 +26,7 @@
         };
 
         project_panel = {
+          dock = "left";
           sticky_scroll = false;
         };
 
