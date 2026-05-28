@@ -60,13 +60,6 @@ in
 
     boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
-    security.wrappers.bwrap = {
-      owner = "root";
-      group = "root";
-      setuid = true;
-      source = "${pkgs.bubblewrap}/bin/bwrap";
-    };
-
     environment.systemPackages =
       with pkgs;
       [

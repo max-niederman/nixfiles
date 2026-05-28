@@ -8,6 +8,7 @@
     # coding tuis
     llm-agents.claude-code
     claudewrap
+    bubblewrap # claudewrap shells out to `bwrap`; uses unprivileged user namespaces
     codex
   ];
 
