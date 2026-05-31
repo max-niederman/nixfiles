@@ -68,6 +68,7 @@
     hostId = "45d75591";
     networkmanager.enable = true;
   };
+  services.harbor.enable = true;
 
   time.timeZone = "America/Los_Angeles";
 

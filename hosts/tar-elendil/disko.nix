@@ -59,6 +59,11 @@
             options.mountpoint = "legacy";
             mountpoint = "/nix";
           };
+          "local/media" = {
+            type = "zfs_fs";
+            options.mountpoint = "legacy";
+            mountpoint = "/mnt/media";
+          };
           "safe" = {
             type = "zfs_fs";
             options.mountpoint = "legacy";

@@ -14,6 +14,7 @@
     ./secrets.nix
     ./style.nix
     ./user.nix
+    ./video.nix
     ./virtualization.nix
   ];
 
@@ -22,6 +23,7 @@
       headed = lib.mkEnableOption "Enable software and config for headed hosts";
       development = lib.mkEnableOption "Enable software and config for software development";
       gaming = lib.mkEnableOption "Enable software and config for gaming";
+      video = lib.mkEnableOption "Enable video downloading and streaming stack";
     };
   };
 }

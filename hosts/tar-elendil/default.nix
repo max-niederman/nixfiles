@@ -18,6 +18,7 @@
     headed = true;
     development = true;
     gaming = true;
+    video = true;
   };
 
   boot = {
@@ -87,6 +88,7 @@
     hostId = "2662d6f8";
     networkmanager.enable = true;
   };
+  services.harbor.enable = true;
 
   time.timeZone = "America/Los_Angeles";
 

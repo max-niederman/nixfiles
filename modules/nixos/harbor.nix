@@ -1,10 +1,15 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
 
 let
+  cfg = config.services.harbor;
+
+  netns = cfg.netns;
+
   ip = lib.getExe' pkgs.iproute2 "ip";
   wg = lib.getExe' pkgs.wireguard-tools "wg";
   jq = lib.getExe pkgs.jq;
@@ -12,7 +17,7 @@ let
   harbor-vpn-up = pkgs.writeShellScript "harbor-vpn-up" ''
     set -euo pipefail
 
-    NETNS="harbor"
+    NETNS="${netns}"
     IFACE="wg-$NETNS"
 
     DEVICE_JSON="/etc/mullvad-vpn/device.json"
@@ -24,30 +29,14 @@ let
     TUNNEL_IPV4=$(${jq} -r '.logged_in.device.wg_data.addresses.ipv4_address' "$DEVICE_JSON")
     TUNNEL_IPV6=$(${jq} -r '.logged_in.device.wg_data.addresses.ipv6_address' "$DEVICE_JSON")
 
-    # Determine the relay location constraint from settings
-    COUNTRY=$(${jq} -r '.relay_settings.normal.location.only.location.country // empty' "$SETTINGS_JSON")
-    CITY=$(${jq} -r '.relay_settings.normal.location.only.location.city // empty' "$SETTINGS_JSON")
-
-    # Pick a relay matching the constraint
-    RELAY_FILTER='.countries[]'
-    if [ -n "$COUNTRY" ]; then
-      RELAY_FILTER="$RELAY_FILTER | select(.code == \"$COUNTRY\")"
-    fi
-    RELAY_FILTER="$RELAY_FILTER | .cities[]"
-    if [ -n "$CITY" ]; then
-      RELAY_FILTER="$RELAY_FILTER | select(.code == \"$CITY\")"
-    fi
-    RELAY_FILTER="$RELAY_FILTER | .relays[] | select(.active == true) | select(.endpoint_data.wireguard != null)"
-
-    # Pick the first matching relay
-    RELAY=$(${jq} -r "[$RELAY_FILTER] | first" "$RELAYS_JSON")
+    RELAY=$(${jq} -r ".wireguard.relays | map(select(.location == \"us-sjc\")) | first" "$RELAYS_JSON")
     if [ "$RELAY" = "null" ] || [ -z "$RELAY" ]; then
       echo "No matching WireGuard relay found" >&2
       exit 1
     fi
 
     ENDPOINT_IP=$(echo "$RELAY" | ${jq} -r '.ipv4_addr_in')
-    PEER_PUBKEY=$(echo "$RELAY" | ${jq} -r '.endpoint_data.wireguard.public_key')
+    PEER_PUBKEY=$(echo "$RELAY" | ${jq} -r '.public_key')
     ENDPOINT_PORT=51820
 
     echo "Using relay: $(echo "$RELAY" | ${jq} -r '.hostname') ($ENDPOINT_IP)"
@@ -81,7 +70,7 @@ let
 
   harbor-vpn-down = pkgs.writeShellScript "harbor-vpn-down" ''
     set -euo pipefail
-    NETNS="harbor"
+    NETNS="${netns}"
     IFACE="wg-$NETNS"
 
     # Delete the interface from inside the namespace (if namespace still exists)
@@ -110,49 +99,105 @@ let
     # Ensure harbor-vpn is up
     systemctl start harbor-vpn.service
 
-    exec ${ip} netns exec harbor sudo -u "$CALLING_USER" -- "$@"
+    exec ${ip} netns exec ${netns} sudo -u "$CALLING_USER" -- "$@"
   '';
 in
 {
-  config = {
-    systemd.services."netns@" = {
-      description = "Named Network Namespace %i";
+  options.services.harbor = {
+    enable = lib.mkEnableOption "harbor network namespace";
 
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-
-        ExecStart = [
-          "${ip} netns add %i"
-          "${ip} -n %i link set lo up"
-        ];
-        ExecStop = "${ip} netns delete %i";
-
-        # Clean up /etc/netns/%i on stop
-        ExecStopPost = "-${pkgs.coreutils}/bin/rm -rf /etc/netns/%i";
-      };
+    netns = lib.mkOption {
+      type = lib.types.str;
+      default = "harbor";
+      description = "Name of the network namespace created for harbor.";
     };
 
-    systemd.services.harbor-vpn = {
-      description = "Mullvad WireGuard VPN in harbor namespace";
+    enableMullvad = lib.mkEnableOption "Mullvad WireGuard VPN inside the harbor namespace";
 
-      bindsTo = [ "netns@harbor.service" ];
-      after = [
-        "netns@harbor.service"
-        "mullvad-daemon.service"
-        "network-online.target"
-      ];
-      wants = [ "netns@harbor.service" ];
-
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-
-        ExecStart = harbor-vpn-up;
-        ExecStop = harbor-vpn-down;
-      };
+    lanPrefix = lib.mkOption {
+      type = lib.types.str;
+      default = "fc42:1651:0:0";
+      example = "fd00:dead:beef:0";
+      description = ''
+        IPv6 /64 prefix used to connect the host to the harbor namespace
+        over a veth pair. When set, the `harbor-lan` service is enabled:
+        the host gets `''${lanPrefix}::1/64` and the namespace gets
+        `''${lanPrefix}::2/64`. Leave `null` to disable LAN access.
+      '';
     };
-
-    environment.systemPackages = [ mullvad-run ];
   };
+
+  config = lib.mkMerge [
+    {
+      # The netns@ template is always available so namespaces can be
+      # brought up independently of the harbor service itself.
+      systemd.services."netns@" = {
+        description = "Named Network Namespace %i";
+
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+
+          ExecStart = [
+            "${ip} netns add %i"
+            "${ip} -n %i link set lo up"
+          ];
+          ExecStop = "${ip} netns delete %i";
+
+          # Clean up /etc/netns/%i on stop
+          ExecStopPost = "-${pkgs.coreutils}/bin/rm -rf /etc/netns/%i";
+        };
+      };
+    }
+
+    (lib.mkIf (cfg.enable && cfg.enableMullvad) {
+      systemd.services.harbor-vpn = {
+        description = "Mullvad WireGuard VPN in harbor namespace";
+
+        bindsTo = [ "netns@${netns}.service" ];
+        after = [
+          "netns@${netns}.service"
+          "mullvad-daemon.service"
+          "network-online.target"
+        ];
+        wants = [
+          "network-online.target"
+          "netns@${netns}.service"
+        ];
+
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+
+          ExecStart = harbor-vpn-up;
+          ExecStop = harbor-vpn-down;
+        };
+      };
+
+      environment.systemPackages = [ mullvad-run ];
+    })
+
+    (lib.mkIf (cfg.enable && cfg.lanPrefix != null) {
+      systemd.services.harbor-lan = {
+        description = "Harbor LAN Access";
+
+        after = [ "netns@${netns}.service" ];
+        requires = [ "netns@${netns}.service" ];
+        wantedBy = [ "multi-user.target" ];
+
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+          ExecStart = [
+            "${ip} link add vethharbor type veth peer name vethlan netns ${netns}"
+            "${ip} addr add ${cfg.lanPrefix}::1/64 dev vethharbor"
+            "${ip} link set dev vethharbor up"
+            "${ip} -n ${netns} addr add ${cfg.lanPrefix}::2/64 dev vethlan"
+            "${ip} -n ${netns} link set dev vethlan up"
+          ];
+          ExecStop = "${ip} link del vethharbor";
+        };
+      };
+    })
+  ];
 }
