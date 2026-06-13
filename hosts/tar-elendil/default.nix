@@ -149,6 +149,21 @@
           variable-refresh-rate = true;
           focus-at-startup = true;
         };
+        "Dell Inc. DELL U5226KW HM0XNF4" = {
+          enable = true;
+          mode = {
+            width = 6144;
+            height = 2560;
+            refresh = 60.0; # unfortunately the laptop thunderbolt port can't handle 120Hz
+          };
+          scale = 1;
+          position = {
+            x = -6144;
+            y = 1200 - 2560;
+          };
+          variable-refresh-rate = true;
+          focus-at-startup = true;
+        };
 
         # family home display
         "PNP(AOC) Q27G1WG4 0x00020A77" = {
