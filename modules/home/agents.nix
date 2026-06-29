@@ -7,8 +7,7 @@
   home.packages = with pkgs; [
     # coding tuis
     llm-agents.claude-code
-    claudewrap
-    bubblewrap # claudewrap shells out to `bwrap`; uses unprivileged user namespaces
+    claudewrap # bundles its own bwrap (store path baked in via BWRAP_PATH)
     codex
   ];
 
