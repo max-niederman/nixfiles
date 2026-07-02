@@ -12,17 +12,17 @@
       enable = config.max.headed;
       settings = {
         default_session = {
-          command = ''
-            ${pkgs.tuigreet}/bin/tuigreet \
-              --cmd /run/current-system/sw/bin/niri-session \
-              --remember \
-              --remember-session \
-              --asterisks \
-              --power-shutdown "systemctl poweroff" \
-              --power-reboot "systemctl reboot" \
-              --window-padding 4 \
-              --container-padding 4
-          '';
+          command = lib.strings.concatStringsSep " " [
+            "${pkgs.tuigreet}/bin/tuigreet"
+            "--cmd /run/current-system/sw/bin/niri-session"
+            "--remember"
+            "--remember-session"
+            "--asterisks"
+            "--power-shutdown 'systemctl poweroff'"
+            "--power-reboot 'systemctl reboot'"
+            "--window-padding 4"
+            "--container-padding 4"
+          ];
           user = "greeter";
         };
       };
@@ -33,9 +33,6 @@
       enable = true;
       package = pkgs.niri;
     };
-
-    # shell
-    services.noctalia-shell.enable = true;
 
     # core XDG stuff
     xdg = {

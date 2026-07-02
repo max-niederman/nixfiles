@@ -8,115 +8,89 @@
 
 {
   config = lib.mkIf nixosConfig.max.headed {
-    programs.noctalia-shell = {
+    programs.noctalia = {
       enable = true;
+      systemd.enable = true;
 
       settings = {
-        setupCompleted = true;
-
-        general = {
-          dimDesktop = false;
+        shell = {
+          font_family = "Iosevka Nerd Font";
+          launch_apps_as_systemd_services = true;
+          clipboard_enabled = true;
         };
 
-        location = {
-          name = "San Francisco, CA";
-        };
+        backdrop.enabled = false;
 
-        screenRecorder = {
-          directory = "${config.home.homeDirectory}/Videos/Screencaps";
+        theme = {
+          mode = "dark";
+          source = "builtin";
+          builtin = "Catppuccin";
+          templates = {
+            enable_builtin_templates = false;
+            enable_community_templates = false;
+          };
         };
 
         wallpaper = {
           directory = "${config.home.homeDirectory}/Pictures/Wallpapers";
-          defaultWallpaper = "${config.home.homeDirectory}/Pictures/Wallpapers/blue-mountain.jpg";
+          default.path = "${config.home.homeDirectory}/Pictures/Wallpapers/blue-mountain.jpg";
         };
 
-        appLauncher = {
-          enableClipboardHistory = true;
-          enableClipPreview = true;
-          terminalCommand = (lib.getExe config.programs.alacritty.package);
-        };
+        location.address = "San Francisco, CA";
 
-        ui = {
-          fontDefault = "Iosevka Nerd Font";
-          fontFixed = "Iosevka Nerd Font";
-        };
-
-        colorSchemes = {
-          predefinedScheme = "Catppuccin";
-          generateTemplatesForPredefined = false;
-        };
-
-        bar = {
-          density = "comfortable";
+        bar.main = {
           position = "left";
-          showCapsule = false;
-          widgets = {
-            left = [
-              {
-                id = "SystemMonitor";
-                showCpuTemp = true;
-                showCpuUsage = true;
-                showDiskUsage = false;
-                showMemoryAsPercent = true;
-                showMemoryUsage = true;
-                showNetworkStats = true;
-              }
-              {
-                id = "ActiveWindow";
-              }
-              {
-                id = "MediaMini";
-              }
-            ];
-            center = [
-              {
-                id = "Workspace";
-              }
-            ];
-            right = [
-              {
-                id = "ScreenRecorder";
-              }
-              {
-                id = "Tray";
-              }
-              {
-                id = "NotificationHistory";
-              }
-              {
-                id = "Battery";
-              }
-              {
-                id = "Volume";
-              }
-              {
-                id = "Brightness";
-              }
-              {
-                id = "NightLight";
-              }
-              {
-                id = "Clock";
-              }
-              {
-                id = "ControlCenter";
-              }
-            ];
+          margin_ends = 15;
+          margin_edge = 20;
+
+          thickness = 45;
+
+          capsule = false;
+
+          start = [
+            "temp"
+            "cpu"
+            "ram"
+            "network_rx"
+            "network_tx"
+            "active_window"
+            "media"
+          ];
+          center = [ "workspaces" ];
+          end = [
+            "tray"
+            "notifications"
+            "battery"
+            "volume"
+            "brightness"
+            "nightlight"
+            "clock"
+            "control-center"
+          ];
+        };
+
+        widget = {
+          temp.show_label = false;
+          cpu.show_label = false;
+          ram = {
+            stat = "ram_pct";
+            show_label = false;
           };
+          network_rx.show_label = false;
+          network_tx.show_label = false;
         };
 
         dock = {
           enabled = false;
-          backgroundOpacity = 0.6;
-          colorizeIcons = true;
-          displayMode = "always_visible";
-          floatingRatio = 0.5;
-          size = 0.75;
-          onlySameOutput = true;
+          background_opacity = 0.6;
+          auto_hide = false;
+          active_monitor_only = true;
         };
       };
     };
+
+    home.sessionVariables.TERMINAL = lib.getExe config.programs.alacritty.package;
+
     stylix.targets.noctalia-shell.enable = false;
   };
 }

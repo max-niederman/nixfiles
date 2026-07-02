@@ -61,7 +61,7 @@
         binds =
           with config.lib.niri.actions;
           let
-            noctalia-ipc = spawn "noctalia-shell" "ipc" "call";
+            noctalia-msg = spawn "noctalia" "msg";
           in
           {
             "Mod+H".action = focus-column-or-monitor-left;
@@ -82,14 +82,14 @@
             "Mod+Backspace".action = close-window;
             "Mod+Shift+Backspace".action = close-window;
 
-            "Mod+Space".action = noctalia-ipc "launcher" "toggle";
+            "Mod+Space".action = noctalia-msg "panel-toggle" "launcher";
             "Mod+Return".action = spawn (lib.getExe config.programs.alacritty.package);
             "Mod+U".action = spawn (lib.getExe config.programs.zen-browser.package);
             "Mod+C".action = spawn (lib.getExe config.programs.zed-editor.package);
-            "Mod+Comma".action = noctalia-ipc "controlCenter" "toggle";
-            "Mod+Shift+Comma".action = noctalia-ipc "settings" "toggle";
+            "Mod+Comma".action = noctalia-msg "panel-toggle" "control-center";
+            "Mod+Shift+Comma".action = noctalia-msg "settings-toggle";
 
-            "Mod+V".action = noctalia-ipc "launcher" "clipboard";
+            "Mod+V".action = noctalia-msg "panel-toggle" "launcher" "/clipboard";
 
             "Mod+R".action =
               spawn "sh" "-c"
@@ -109,13 +109,13 @@
               };
             };
 
-            "Mod+Delete".action = noctalia-ipc "lockScreen" "lock";
+            "Mod+Delete".action = noctalia-msg "session" "lock";
 
-            "XF86AudioRaiseVolume".action = noctalia-ipc "volume" "increase";
-            "XF86AudioLowerVolume".action = noctalia-ipc "volume" "decrease";
-            "XF86AudioMute".action = noctalia-ipc "volume" "muteOutput";
-            "XF86MonBrightnessUp".action = noctalia-ipc "brightness" "increase";
-            "XF86MonBrightnessDown".action = noctalia-ipc "brightness" "decrease";
+            "XF86AudioRaiseVolume".action = noctalia-msg "volume-up";
+            "XF86AudioLowerVolume".action = noctalia-msg "volume-down";
+            "XF86AudioMute".action = noctalia-msg "volume-mute";
+            "XF86MonBrightnessUp".action = noctalia-msg "brightness-up";
+            "XF86MonBrightnessDown".action = noctalia-msg "brightness-down";
           };
       };
     };
