@@ -17,20 +17,106 @@ let
   # presets (VL/M CNN kernels); "lite" = the lower-end-GPU presets (M/S kernels).
   anime4kModes = {
     hq = {
-      A = [ "Clamp_Highlights" "Restore_CNN_VL" "Upscale_CNN_x2_VL" "AutoDownscalePre_x2" "AutoDownscalePre_x4" "Upscale_CNN_x2_M" ];
-      B = [ "Clamp_Highlights" "Restore_CNN_Soft_VL" "Upscale_CNN_x2_VL" "AutoDownscalePre_x2" "AutoDownscalePre_x4" "Upscale_CNN_x2_M" ];
-      C = [ "Clamp_Highlights" "Upscale_Denoise_CNN_x2_VL" "AutoDownscalePre_x2" "AutoDownscalePre_x4" "Upscale_CNN_x2_M" ];
-      AA = [ "Clamp_Highlights" "Restore_CNN_VL" "Upscale_CNN_x2_VL" "Restore_CNN_M" "AutoDownscalePre_x2" "AutoDownscalePre_x4" "Upscale_CNN_x2_M" ];
-      BB = [ "Clamp_Highlights" "Restore_CNN_Soft_VL" "Upscale_CNN_x2_VL" "AutoDownscalePre_x2" "AutoDownscalePre_x4" "Restore_CNN_Soft_M" "Upscale_CNN_x2_M" ];
-      CA = [ "Clamp_Highlights" "Upscale_Denoise_CNN_x2_VL" "AutoDownscalePre_x2" "AutoDownscalePre_x4" "Restore_CNN_M" "Upscale_CNN_x2_M" ];
+      A = [
+        "Clamp_Highlights"
+        "Restore_CNN_VL"
+        "Upscale_CNN_x2_VL"
+        "AutoDownscalePre_x2"
+        "AutoDownscalePre_x4"
+        "Upscale_CNN_x2_M"
+      ];
+      B = [
+        "Clamp_Highlights"
+        "Restore_CNN_Soft_VL"
+        "Upscale_CNN_x2_VL"
+        "AutoDownscalePre_x2"
+        "AutoDownscalePre_x4"
+        "Upscale_CNN_x2_M"
+      ];
+      C = [
+        "Clamp_Highlights"
+        "Upscale_Denoise_CNN_x2_VL"
+        "AutoDownscalePre_x2"
+        "AutoDownscalePre_x4"
+        "Upscale_CNN_x2_M"
+      ];
+      AA = [
+        "Clamp_Highlights"
+        "Restore_CNN_VL"
+        "Upscale_CNN_x2_VL"
+        "Restore_CNN_M"
+        "AutoDownscalePre_x2"
+        "AutoDownscalePre_x4"
+        "Upscale_CNN_x2_M"
+      ];
+      BB = [
+        "Clamp_Highlights"
+        "Restore_CNN_Soft_VL"
+        "Upscale_CNN_x2_VL"
+        "AutoDownscalePre_x2"
+        "AutoDownscalePre_x4"
+        "Restore_CNN_Soft_M"
+        "Upscale_CNN_x2_M"
+      ];
+      CA = [
+        "Clamp_Highlights"
+        "Upscale_Denoise_CNN_x2_VL"
+        "AutoDownscalePre_x2"
+        "AutoDownscalePre_x4"
+        "Restore_CNN_M"
+        "Upscale_CNN_x2_M"
+      ];
     };
     lite = {
-      A = [ "Clamp_Highlights" "Restore_CNN_M" "Upscale_CNN_x2_M" "AutoDownscalePre_x2" "AutoDownscalePre_x4" "Upscale_CNN_x2_S" ];
-      B = [ "Clamp_Highlights" "Restore_CNN_Soft_M" "Upscale_CNN_x2_M" "AutoDownscalePre_x2" "AutoDownscalePre_x4" "Upscale_CNN_x2_S" ];
-      C = [ "Clamp_Highlights" "Upscale_Denoise_CNN_x2_M" "AutoDownscalePre_x2" "AutoDownscalePre_x4" "Upscale_CNN_x2_S" ];
-      AA = [ "Clamp_Highlights" "Restore_CNN_M" "Upscale_CNN_x2_M" "Restore_CNN_S" "AutoDownscalePre_x2" "AutoDownscalePre_x4" "Upscale_CNN_x2_S" ];
-      BB = [ "Clamp_Highlights" "Restore_CNN_Soft_M" "Upscale_CNN_x2_M" "AutoDownscalePre_x2" "AutoDownscalePre_x4" "Restore_CNN_Soft_S" "Upscale_CNN_x2_S" ];
-      CA = [ "Clamp_Highlights" "Upscale_Denoise_CNN_x2_M" "AutoDownscalePre_x2" "AutoDownscalePre_x4" "Restore_CNN_S" "Upscale_CNN_x2_S" ];
+      A = [
+        "Clamp_Highlights"
+        "Restore_CNN_M"
+        "Upscale_CNN_x2_M"
+        "AutoDownscalePre_x2"
+        "AutoDownscalePre_x4"
+        "Upscale_CNN_x2_S"
+      ];
+      B = [
+        "Clamp_Highlights"
+        "Restore_CNN_Soft_M"
+        "Upscale_CNN_x2_M"
+        "AutoDownscalePre_x2"
+        "AutoDownscalePre_x4"
+        "Upscale_CNN_x2_S"
+      ];
+      C = [
+        "Clamp_Highlights"
+        "Upscale_Denoise_CNN_x2_M"
+        "AutoDownscalePre_x2"
+        "AutoDownscalePre_x4"
+        "Upscale_CNN_x2_S"
+      ];
+      AA = [
+        "Clamp_Highlights"
+        "Restore_CNN_M"
+        "Upscale_CNN_x2_M"
+        "Restore_CNN_S"
+        "AutoDownscalePre_x2"
+        "AutoDownscalePre_x4"
+        "Upscale_CNN_x2_S"
+      ];
+      BB = [
+        "Clamp_Highlights"
+        "Restore_CNN_Soft_M"
+        "Upscale_CNN_x2_M"
+        "AutoDownscalePre_x2"
+        "AutoDownscalePre_x4"
+        "Restore_CNN_Soft_S"
+        "Upscale_CNN_x2_S"
+      ];
+      CA = [
+        "Clamp_Highlights"
+        "Upscale_Denoise_CNN_x2_M"
+        "AutoDownscalePre_x2"
+        "AutoDownscalePre_x4"
+        "Restore_CNN_S"
+        "Upscale_CNN_x2_S"
+      ];
     };
   };
 
@@ -77,10 +163,18 @@ in
       # the iGPU nvdec silently breaks). These mirror nixos' `nvidia-offload`
       # wrapper, and are mutually exclusive with the package/scripts options (unset).
       extraMakeWrapperArgs = [
-        "--set" "__NV_PRIME_RENDER_OFFLOAD" "1"
-        "--set" "__NV_PRIME_RENDER_OFFLOAD_PROVIDER" "NVIDIA-G0"
-        "--set" "__GLX_VENDOR_LIBRARY_NAME" "nvidia"
-        "--set" "__VK_LAYER_NV_optimus" "NVIDIA_only"
+        "--set"
+        "__NV_PRIME_RENDER_OFFLOAD"
+        "1"
+        "--set"
+        "__NV_PRIME_RENDER_OFFLOAD_PROVIDER"
+        "NVIDIA-G0"
+        "--set"
+        "__GLX_VENDOR_LIBRARY_NAME"
+        "nvidia"
+        "--set"
+        "__VK_LAYER_NV_optimus"
+        "NVIDIA_only"
       ];
 
       # Anime4K upscaling/restoration (https://github.com/bloc97/Anime4K), toggled
