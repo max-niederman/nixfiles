@@ -36,6 +36,10 @@
       forceImportRoot = false;
       allowHibernation = true;
     };
+
+    # the BIOS claims the SMBus I/O region via ACPI (\GSA1.SMBI), which blocks
+    # i2c-piix4 from binding; lax lets it bind anyway so OpenRGB can reach the RAM
+    kernelParams = [ "acpi_enforce_resources=lax" ];
   };
 
   services.sanoid = {
@@ -53,6 +57,12 @@
   };
 
   hardware.graphics.enable = true;
+
+  # RGB control for the Trident Z5 DIMMs (ENE controller on the SMBus)
+  services.hardware.openrgb = {
+    enable = true;
+    motherboard = "amd";
+  };
 
   environment.systemPackages = with pkgs; [ nvtopPackages.full ];
 

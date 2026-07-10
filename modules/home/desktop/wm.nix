@@ -89,7 +89,7 @@
             "Mod+Comma".action = noctalia-msg "panel-toggle" "control-center";
             "Mod+Shift+Comma".action = noctalia-msg "settings-toggle";
 
-            "Mod+V".action = noctalia-msg "panel-toggle" "launcher" "/clipboard";
+            "Mod+V".action = noctalia-msg "panel-toggle" "clipboard";
 
             "Mod+R".action =
               spawn "sh" "-c"
