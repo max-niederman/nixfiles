@@ -41,7 +41,15 @@
 
     security.sudo.wheelNeedsPassword = false;
 
-    services.openssh.enable = true;
+    services.openssh = {
+      enable = true;
+      settings = {
+        # key-only auth: authorizedKeys is configured above, so passwords are
+        # unnecessary and only add a remote brute-force path to a passwordless-sudo account
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+      };
+    };
 
     home-manager = {
       useGlobalPkgs = true;
