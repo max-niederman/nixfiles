@@ -97,7 +97,7 @@
               nixpkgs = {
                 overlays = [
                   nix-vscode-extensions.overlays.default
-                  llm-agents.overlays.default
+                  llm-agents.overlays.shared-nixpkgs
                   claudewrap.overlays.default
                   telemax.overlays.default
                   taiga-blocked.overlays.default

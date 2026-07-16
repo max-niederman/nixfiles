@@ -82,7 +82,6 @@
 
         dock = {
           enabled = false;
-          background_opacity = 0.6;
           auto_hide = false;
           active_monitor_only = true;
         };
@@ -91,6 +90,6 @@
 
     home.sessionVariables.TERMINAL = lib.getExe config.programs.alacritty.package;
 
-    stylix.targets.noctalia-shell.enable = false;
+    stylix.targets.noctalia.enable = false;
   };
 }

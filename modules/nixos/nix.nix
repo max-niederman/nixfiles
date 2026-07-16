@@ -18,9 +18,10 @@
           ;
       })
     ];
-    # FIXME: for bitwarden desktop
+    # FIXME: for bitwarden desktop and vesktop
     nixpkgs.config.permittedInsecurePackages = [
       "electron-39.8.10"
+      "electron-40.10.5"
     ];
 
     nix = {
