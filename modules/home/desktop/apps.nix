@@ -251,8 +251,7 @@ in
       nautilus
       file-roller
 
-      # currently insecure due to outdated Electron
-      # bitwarden-desktop
+      bitwarden-desktop
 
       anki
 
