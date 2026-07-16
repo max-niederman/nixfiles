@@ -17,7 +17,8 @@
   max = {
     headed = true;
     development = true;
-    gaming = false;
+    gaming = true;
+    backups = true;
   };
 
   boot = {
@@ -40,20 +41,6 @@
     # the BIOS claims the SMBus I/O region via ACPI (\GSA1.SMBI), which blocks
     # i2c-piix4 from binding; lax lets it bind anyway so OpenRGB can reach the RAM
     kernelParams = [ "acpi_enforce_resources=lax" ];
-  };
-
-  services.sanoid = {
-    enable = true;
-    datasets."tank/safe" = {
-      recursive = true;
-
-      autosnap = true;
-      autoprune = true;
-
-      hourly = 12;
-      daily = 7;
-      monthly = 2;
-    };
   };
 
   hardware.graphics.enable = true;

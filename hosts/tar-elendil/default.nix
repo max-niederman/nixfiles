@@ -19,6 +19,7 @@
     development = true;
     gaming = true;
     video = true;
+    backups = true;
   };
 
   boot = {
@@ -36,20 +37,6 @@
       requestEncryptionCredentials = true;
       forceImportRoot = false;
       allowHibernation = true;
-    };
-  };
-
-  services.sanoid = {
-    enable = true;
-    datasets."tank/safe" = {
-      recursive = true;
-
-      autosnap = true;
-      autoprune = true;
-
-      hourly = 12;
-      daily = 7;
-      monthly = 2;
     };
   };
 
