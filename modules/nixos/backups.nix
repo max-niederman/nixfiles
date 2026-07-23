@@ -27,7 +27,7 @@ in
 
         hourly = 12;
         daily = 7;
-        monthly = 2;
+        monthly = 0;
       };
     };
 
