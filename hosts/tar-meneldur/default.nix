@@ -63,8 +63,52 @@
   networking = {
     hostName = "tar-meneldur";
     hostId = "45d75591";
-    networkmanager.enable = true;
+
+    useNetworkd = true;
+    # no catch-all DHCP networks; every link this host has is declared below
+    useDHCP = false;
   };
+
+  systemd.network = {
+    # onboard 2.5GbE, the only link this machine is expected to have
+    networks."10-lan" = {
+      matchConfig.Name = "enp9s0";
+      networkConfig = {
+        DHCP = "yes";
+        IPv6PrivacyExtensions = "kernel";
+      };
+      # networkd would otherwise identify itself by a machine-id-derived DUID,
+      # which is not what a DHCP reservation is keyed on
+      dhcpV4Config.ClientIdentifier = "mac";
+      linkConfig.RequiredForOnline = "routable";
+    };
+
+    # dock/USB ethernet: configure it when it appears, but never hold up
+    # network-online.target waiting for a NIC that isn't plugged in
+    networks."20-usb-ethernet" = {
+      matchConfig = {
+        Type = "ether";
+        Kind = "!*"; # physical interfaces have no kind
+      };
+      networkConfig = {
+        DHCP = "yes";
+        IPv6PrivacyExtensions = "kernel";
+      };
+      dhcpV4Config.RouteMetric = 200;
+      linkConfig.RequiredForOnline = "no";
+    };
+
+    # this host does not do wifi: no supplicant runs, so the radio can never
+    # associate, and networkd is told to leave the interface alone entirely
+    networks."30-wireless-unmanaged" = {
+      matchConfig.WLANInterfaceType = "station";
+      linkConfig.Unmanaged = "yes";
+    };
+
+    # booting with the cable out shouldn't stall for the default two minutes
+    wait-online.timeout = 30;
+  };
+
   services.harbor.enable = true;
 
   time.timeZone = "America/Los_Angeles";
