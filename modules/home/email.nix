@@ -23,15 +23,6 @@
         thunderbird.enable = true;
       };
 
-      mechanize = {
-        address = "max@mechanize.work";
-        realName = "Max Niederman";
-
-        flavor = "gmail.com";
-
-        thunderbird.enable = true;
-      };
-
       reed = {
         address = "mniederman@reed.edu";
         realName = "Max Niederman";
