@@ -74,13 +74,6 @@
       # use the state version of the system, from the NixOS config
       home.stateVersion = config.system.stateVersion;
 
-      services.taiga-blocked = {
-        enable = true;
-        peers = [
-          "http://tar-elendil:8432"
-        ];
-      };
-
       programs.niri.settings.outputs = {
         # home office display
         "Dell Inc. DELL U5226KW 9R7BNF4" = {

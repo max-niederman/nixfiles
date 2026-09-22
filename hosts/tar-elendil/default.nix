@@ -84,13 +84,6 @@
       # use the state version of the system, from the NixOS config
       home.stateVersion = config.system.stateVersion;
 
-      services.taiga-blocked = {
-        enable = true;
-        peers = [
-          "http://tar-meneldur:8432"
-        ];
-      };
-
       programs.niri.settings.outputs = {
         # laptop built-in display
         "eDP-1" = {
