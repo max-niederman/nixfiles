@@ -126,8 +126,8 @@
       };
 
       programs.niri.settings.outputs = {
-        # mechanize office display
-        "Dell Inc. DELL U5226KW HM0XNF4" = {
+        # home office display
+        "Dell Inc. DELL U5226KW 9R7BNF4" = {
           enable = true;
           mode = {
             width = 6144;
