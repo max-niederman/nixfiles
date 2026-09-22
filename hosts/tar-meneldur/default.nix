@@ -35,7 +35,7 @@
     zfs = {
       requestEncryptionCredentials = true;
       forceImportRoot = false;
-      allowHibernation = true;
+      unsafeAllowHibernation = true;
     };
 
     # the BIOS claims the SMBus I/O region via ACPI (\GSA1.SMBI), which blocks

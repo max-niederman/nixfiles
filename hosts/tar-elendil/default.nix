@@ -36,7 +36,7 @@
     zfs = {
       requestEncryptionCredentials = true;
       forceImportRoot = false;
-      allowHibernation = true;
+      unsafeAllowHibernation = true;
     };
   };
 

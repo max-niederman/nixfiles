@@ -18,6 +18,9 @@
       ];
     };
 
+    # profiles aren't managed by home-manager, so stylix has nothing to theme
+    stylix.targets.zen-browser.enable = false;
+
     home.file.".config/tridactyl/tridactylrc".text = ''
       " Apply catppuccin colorscheme
       colourscheme shydactyl

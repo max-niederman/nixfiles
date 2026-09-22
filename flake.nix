@@ -104,7 +104,6 @@
             }
             disko.nixosModules.disko
             home-manager.nixosModules.home-manager
-            noctalia.nixosModules.default
             stylix.nixosModules.stylix
             sops-nix.nixosModules.sops
             telemax.nixosModules.default
