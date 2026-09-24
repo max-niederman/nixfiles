@@ -58,8 +58,6 @@
 
   services.printing.enable = true;
 
-  services.telemax.enable = true;
-
   networking = {
     hostName = "tar-meneldur";
     hostId = "45d75591";

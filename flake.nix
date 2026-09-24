@@ -44,10 +44,6 @@
       url = "github:max-niederman/claudewrap";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    telemax = {
-      url = "github:max-niederman/telemax";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
   };
@@ -66,7 +62,6 @@
       spicetify-nix,
       nix-vscode-extensions,
       claudewrap,
-      telemax,
       ...
     }@inputs:
     rec {
@@ -94,7 +89,6 @@
                   nix-vscode-extensions.overlays.default
                   llm-agents.overlays.shared-nixpkgs
                   claudewrap.overlays.default
-                  telemax.overlays.default
                   overlays.default
                 ];
                 config = {
@@ -106,7 +100,6 @@
             home-manager.nixosModules.home-manager
             stylix.nixosModules.stylix
             sops-nix.nixosModules.sops
-            telemax.nixosModules.default
 
             {
               home-manager.sharedModules = [

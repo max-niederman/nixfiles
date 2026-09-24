@@ -14,7 +14,6 @@
         firefoxpwa
         tridactyl-native
         figma-agent
-        telemax-native-messaging-host
       ];
     };
 
