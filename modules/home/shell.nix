@@ -58,6 +58,11 @@
             }
             zeditor ...$bool_flags ...$value_flags $dir
         }
+
+        # Parse JSON Lines (one JSON value per line) into a list.
+        def "from jsonl" [] {
+            lines | each { from json }
+        }
       '';
     };
 
