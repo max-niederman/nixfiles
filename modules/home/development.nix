@@ -64,6 +64,7 @@
       graphviz
 
       (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
+      depot-cli
 
       beancount # TODO: move to somewhere more appropriate
     ];
